@@ -1,0 +1,36 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.uramnoil.common.test" >
+4
+5    <uses-sdk
+5-->/Users/uramnoil/IdeaProjects/endervision/common/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger10624744785847802230.xml:5:5-74
+6        android:minSdkVersion="24"
+6-->/Users/uramnoil/IdeaProjects/endervision/common/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger10624744785847802230.xml:5:15-41
+7        android:targetSdkVersion="30" />
+7-->/Users/uramnoil/IdeaProjects/endervision/common/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger10624744785847802230.xml:5:42-71
+8
+9    <instrumentation
+9-->/Users/uramnoil/IdeaProjects/endervision/common/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger10624744785847802230.xml:11:5-15:74
+10        android:name="android.test.InstrumentationTestRunner"
+10-->/Users/uramnoil/IdeaProjects/endervision/common/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger10624744785847802230.xml:11:22-75
+11        android:functionalTest="false"
+11-->/Users/uramnoil/IdeaProjects/endervision/common/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger10624744785847802230.xml:14:22-52
+12        android:handleProfiling="false"
+12-->/Users/uramnoil/IdeaProjects/endervision/common/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger10624744785847802230.xml:13:22-53
+13        android:label="Tests for com.uramnoil.common.test"
+13-->/Users/uramnoil/IdeaProjects/endervision/common/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger10624744785847802230.xml:15:22-72
+14        android:targetPackage="com.uramnoil.common.test" />
+14-->/Users/uramnoil/IdeaProjects/endervision/common/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger10624744785847802230.xml:12:22-70
+15
+16    <application
+16-->/Users/uramnoil/IdeaProjects/endervision/common/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger10624744785847802230.xml:7:5-9:19
+17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+17-->[androidx.core:core:1.6.0] /Users/uramnoil/.gradle/caches/transforms-3/7e3493f985f3a0ac2df29181b10d05ab/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+18        android:debuggable="true" >
+18-->/Users/uramnoil/IdeaProjects/endervision/common/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger10624744785847802230.xml:7:18-43
+19        <uses-library android:name="android.test.runner" />
+19-->/Users/uramnoil/IdeaProjects/endervision/common/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger10624744785847802230.xml:8:9-60
+19-->/Users/uramnoil/IdeaProjects/endervision/common/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger10624744785847802230.xml:8:23-57
+20    </application>
+21
+22</manifest>

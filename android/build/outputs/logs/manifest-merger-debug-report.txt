@@ -1,0 +1,188 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:2:1-14:12
+INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:2:1-14:12
+INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:2:1-14:12
+INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:2:1-14:12
+MERGED from [:common] /Users/uramnoil/IdeaProjects/endervision/common/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [org.jetbrains.compose.material:material-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/fe5a89a3b520db9152ecbee4cbf0baa2/transformed/material-debug/AndroidManifest.xml:17:1-24:12
+MERGED from [org.jetbrains.compose.material:material-ripple-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/a47d92d797c201a52cdfb2576fa929e2/transformed/material-ripple-debug/AndroidManifest.xml:17:1-24:12
+MERGED from [org.jetbrains.compose.foundation:foundation-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/e136c4adb4e5eb54b9721cd58b120725/transformed/foundation-debug/AndroidManifest.xml:17:1-24:12
+MERGED from [org.jetbrains.compose.animation:animation-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/d1fdc5827d6d8e7bd95d57bd4f8c1e29/transformed/animation-debug/AndroidManifest.xml:17:1-24:12
+MERGED from [org.jetbrains.compose.foundation:foundation-layout-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/e78ac3f76bba5b6ee437c4d23359deec/transformed/foundation-layout-debug/AndroidManifest.xml:17:1-24:12
+MERGED from [org.jetbrains.compose.animation:animation-core-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/0b02ad9d0fbe0fb98a23e5583e57b573/transformed/animation-core-debug/AndroidManifest.xml:17:1-24:12
+MERGED from [org.jetbrains.compose.material:material-icons-core-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/501396d74cee92cbb79bf69c4fe0252c/transformed/material-icons-core-debug/AndroidManifest.xml:17:1-24:12
+MERGED from [org.jetbrains.compose.ui:ui-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/f673b241f99344fc8034b0a095114e35/transformed/ui-debug/AndroidManifest.xml:17:1-24:12
+MERGED from [org.jetbrains.compose.ui:ui-text-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/ee6071c4b8cc58f08a497761633302f3/transformed/ui-text-debug/AndroidManifest.xml:17:1-24:12
+MERGED from [org.jetbrains.compose.ui:ui-graphics-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/8fcbbcf43b1b6373b65ce084a5ba7d5d/transformed/ui-graphics-debug/AndroidManifest.xml:17:1-24:12
+MERGED from [org.jetbrains.compose.ui:ui-unit-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/19d615bfcdd790fe856dcaa3b45788a4/transformed/ui-unit-debug/AndroidManifest.xml:17:1-24:12
+MERGED from [org.jetbrains.compose.ui:ui-geometry-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/ca0b504212dc1ae1f214a2a60dc774c5/transformed/ui-geometry-debug/AndroidManifest.xml:17:1-24:12
+MERGED from [org.jetbrains.compose.runtime:runtime-saveable-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/750aa8354fa57b02b5c90ea136b51058/transformed/runtime-saveable-debug/AndroidManifest.xml:17:1-24:12
+MERGED from [org.jetbrains.compose.runtime:runtime-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/7d735f39a56dc67332d459b0e4ae91f9/transformed/runtime-debug/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core-ktx:1.6.0] /Users/uramnoil/.gradle/caches/transforms-3/bc48644138f50c6871ffd724e924fcbb/transformed/core-ktx-1.6.0/AndroidManifest.xml:2:1-9:12
+MERGED from [org.jetbrains.compose.ui:ui-util-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/4f58af4162291e1bd1040533482dd627/transformed/ui-util-debug/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat:1.3.1] /Users/uramnoil/.gradle/caches/transforms-3/ad675fc4a0e4452f7df9dd6898204971/transformed/appcompat-1.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/dcc93c26daca5e7447b61bdf443ba0e9/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.3.6] /Users/uramnoil/.gradle/caches/transforms-3/d3c8bc14fecaa4818ac68e6d57341b60/transformed/fragment-1.3.6/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.2.4] /Users/uramnoil/.gradle/caches/transforms-3/a62d196a0618f0bf29e0751ea599f41a/transformed/activity-1.2.4/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.3.1] /Users/uramnoil/.gradle/caches/transforms-3/60c2f3ef33ebe677f759081130964f59/transformed/appcompat-resources-1.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/d85f0486cc066f47117739b6323de84b/transformed/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/uramnoil/.gradle/caches/transforms-3/d266991cca0cc48fb1508cd9843d6a87/transformed/lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/uramnoil/.gradle/caches/transforms-3/c7bd231ab60cb62780bbf07b26c48de9/transformed/savedstate-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/05356035fd88a6873c02fdb1c629f4e3/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/ff732e186e20b929266df8e91b176b00/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/uramnoil/.gradle/caches/transforms-3/540f1a251f8834abb25f8cf3bad3508e/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/uramnoil/.gradle/caches/transforms-3/b0e237ad70fbe3505a43d6701984d161/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/7605d13c5f260df59fbcc731785001ab/transformed/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.autofill:autofill:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/832297c8e52ee8d4e43be89fc0a3f7a8/transformed/autofill-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.6.0] /Users/uramnoil/.gradle/caches/transforms-3/7e3493f985f3a0ac2df29181b10d05ab/transformed/core-1.6.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/uramnoil/.gradle/caches/transforms-3/8872003d7510e170a980f7c74e354692/transformed/lifecycle-runtime-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/uramnoil/.gradle/caches/transforms-3/75637bbc61fcea334a2c258795a3aa14/transformed/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/e6c67323fe209fe622aebb1205082c9d/transformed/tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/uramnoil/.gradle/caches/transforms-3/a8b94fb573dbaa6fb258f29b6bed8fcd/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/uramnoil/.gradle/caches/transforms-3/62f6b64a032682f5c05082135b9912d6/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/uramnoil/.gradle/caches/transforms-3/61a72923cb4792c15252245341ffeb1b/transformed/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/uramnoil/.gradle/caches/transforms-3/439eddc3a89f6aa20a44b7e6cb921a98/transformed/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/184b50c16ce5458fe505e7c35171edcd/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/uramnoil/.gradle/caches/transforms-3/546678ef3f0feef786cd35a6b6bfd2be/transformed/annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
+INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:2:1-14:12
+INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:2:1-14:12
+INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:2:1-14:12
+	package
+		ADDED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:2:70-100
+		INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml
+		INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml
+		ADDED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:2:1-14:12
+		INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml
+		ADDED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:2:1-14:12
+		INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:3:5-13:19
+MERGED from [androidx.core:core:1.6.0] /Users/uramnoil/.gradle/caches/transforms-3/7e3493f985f3a0ac2df29181b10d05ab/transformed/core-1.6.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.6.0] /Users/uramnoil/.gradle/caches/transforms-3/7e3493f985f3a0ac2df29181b10d05ab/transformed/core-1.6.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/uramnoil/.gradle/caches/transforms-3/a8b94fb573dbaa6fb258f29b6bed8fcd/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/uramnoil/.gradle/caches/transforms-3/a8b94fb573dbaa6fb258f29b6bed8fcd/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.6.0] /Users/uramnoil/.gradle/caches/transforms-3/7e3493f985f3a0ac2df29181b10d05ab/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:5:13-39
+	android:allowBackup
+		ADDED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:4:13-40
+	android:theme
+		ADDED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:6:13-69
+activity#com.uramnoil.android.MainActivity
+ADDED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:7:13-12:20
+	android:name
+		ADDED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:7:23-51
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:8:13-11:29
+action#android.intent.action.MAIN
+ADDED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:9:17-68
+	android:name
+		ADDED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:9:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:10:17-76
+	android:name
+		ADDED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml:10:27-74
+uses-sdk
+INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml
+INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml
+MERGED from [:common] /Users/uramnoil/IdeaProjects/endervision/common/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:common] /Users/uramnoil/IdeaProjects/endervision/common/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [org.jetbrains.compose.material:material-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/fe5a89a3b520db9152ecbee4cbf0baa2/transformed/material-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.material:material-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/fe5a89a3b520db9152ecbee4cbf0baa2/transformed/material-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.material:material-ripple-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/a47d92d797c201a52cdfb2576fa929e2/transformed/material-ripple-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.material:material-ripple-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/a47d92d797c201a52cdfb2576fa929e2/transformed/material-ripple-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.foundation:foundation-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/e136c4adb4e5eb54b9721cd58b120725/transformed/foundation-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.foundation:foundation-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/e136c4adb4e5eb54b9721cd58b120725/transformed/foundation-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.animation:animation-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/d1fdc5827d6d8e7bd95d57bd4f8c1e29/transformed/animation-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.animation:animation-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/d1fdc5827d6d8e7bd95d57bd4f8c1e29/transformed/animation-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.foundation:foundation-layout-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/e78ac3f76bba5b6ee437c4d23359deec/transformed/foundation-layout-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.foundation:foundation-layout-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/e78ac3f76bba5b6ee437c4d23359deec/transformed/foundation-layout-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.animation:animation-core-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/0b02ad9d0fbe0fb98a23e5583e57b573/transformed/animation-core-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.animation:animation-core-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/0b02ad9d0fbe0fb98a23e5583e57b573/transformed/animation-core-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.material:material-icons-core-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/501396d74cee92cbb79bf69c4fe0252c/transformed/material-icons-core-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.material:material-icons-core-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/501396d74cee92cbb79bf69c4fe0252c/transformed/material-icons-core-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.ui:ui-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/f673b241f99344fc8034b0a095114e35/transformed/ui-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.ui:ui-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/f673b241f99344fc8034b0a095114e35/transformed/ui-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.ui:ui-text-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/ee6071c4b8cc58f08a497761633302f3/transformed/ui-text-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.ui:ui-text-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/ee6071c4b8cc58f08a497761633302f3/transformed/ui-text-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.ui:ui-graphics-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/8fcbbcf43b1b6373b65ce084a5ba7d5d/transformed/ui-graphics-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.ui:ui-graphics-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/8fcbbcf43b1b6373b65ce084a5ba7d5d/transformed/ui-graphics-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.ui:ui-unit-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/19d615bfcdd790fe856dcaa3b45788a4/transformed/ui-unit-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.ui:ui-unit-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/19d615bfcdd790fe856dcaa3b45788a4/transformed/ui-unit-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.ui:ui-geometry-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/ca0b504212dc1ae1f214a2a60dc774c5/transformed/ui-geometry-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.ui:ui-geometry-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/ca0b504212dc1ae1f214a2a60dc774c5/transformed/ui-geometry-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.runtime:runtime-saveable-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/750aa8354fa57b02b5c90ea136b51058/transformed/runtime-saveable-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.runtime:runtime-saveable-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/750aa8354fa57b02b5c90ea136b51058/transformed/runtime-saveable-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.runtime:runtime-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/7d735f39a56dc67332d459b0e4ae91f9/transformed/runtime-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.runtime:runtime-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/7d735f39a56dc67332d459b0e4ae91f9/transformed/runtime-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-ktx:1.6.0] /Users/uramnoil/.gradle/caches/transforms-3/bc48644138f50c6871ffd724e924fcbb/transformed/core-ktx-1.6.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.6.0] /Users/uramnoil/.gradle/caches/transforms-3/bc48644138f50c6871ffd724e924fcbb/transformed/core-ktx-1.6.0/AndroidManifest.xml:5:5-7:41
+MERGED from [org.jetbrains.compose.ui:ui-util-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/4f58af4162291e1bd1040533482dd627/transformed/ui-util-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [org.jetbrains.compose.ui:ui-util-android-debug:1.0.0-alpha3] /Users/uramnoil/.gradle/caches/transforms-3/4f58af4162291e1bd1040533482dd627/transformed/ui-util-debug/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.3.1] /Users/uramnoil/.gradle/caches/transforms-3/ad675fc4a0e4452f7df9dd6898204971/transformed/appcompat-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.3.1] /Users/uramnoil/.gradle/caches/transforms-3/ad675fc4a0e4452f7df9dd6898204971/transformed/appcompat-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/dcc93c26daca5e7447b61bdf443ba0e9/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/dcc93c26daca5e7447b61bdf443ba0e9/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.3.6] /Users/uramnoil/.gradle/caches/transforms-3/d3c8bc14fecaa4818ac68e6d57341b60/transformed/fragment-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.3.6] /Users/uramnoil/.gradle/caches/transforms-3/d3c8bc14fecaa4818ac68e6d57341b60/transformed/fragment-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.4] /Users/uramnoil/.gradle/caches/transforms-3/a62d196a0618f0bf29e0751ea599f41a/transformed/activity-1.2.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.4] /Users/uramnoil/.gradle/caches/transforms-3/a62d196a0618f0bf29e0751ea599f41a/transformed/activity-1.2.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.3.1] /Users/uramnoil/.gradle/caches/transforms-3/60c2f3ef33ebe677f759081130964f59/transformed/appcompat-resources-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.3.1] /Users/uramnoil/.gradle/caches/transforms-3/60c2f3ef33ebe677f759081130964f59/transformed/appcompat-resources-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/d85f0486cc066f47117739b6323de84b/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/d85f0486cc066f47117739b6323de84b/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/uramnoil/.gradle/caches/transforms-3/d266991cca0cc48fb1508cd9843d6a87/transformed/lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/uramnoil/.gradle/caches/transforms-3/d266991cca0cc48fb1508cd9843d6a87/transformed/lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/uramnoil/.gradle/caches/transforms-3/c7bd231ab60cb62780bbf07b26c48de9/transformed/savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/uramnoil/.gradle/caches/transforms-3/c7bd231ab60cb62780bbf07b26c48de9/transformed/savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/05356035fd88a6873c02fdb1c629f4e3/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/05356035fd88a6873c02fdb1c629f4e3/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/ff732e186e20b929266df8e91b176b00/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/ff732e186e20b929266df8e91b176b00/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/uramnoil/.gradle/caches/transforms-3/540f1a251f8834abb25f8cf3bad3508e/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/uramnoil/.gradle/caches/transforms-3/540f1a251f8834abb25f8cf3bad3508e/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/uramnoil/.gradle/caches/transforms-3/b0e237ad70fbe3505a43d6701984d161/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/uramnoil/.gradle/caches/transforms-3/b0e237ad70fbe3505a43d6701984d161/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/7605d13c5f260df59fbcc731785001ab/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/7605d13c5f260df59fbcc731785001ab/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.autofill:autofill:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/832297c8e52ee8d4e43be89fc0a3f7a8/transformed/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.autofill:autofill:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/832297c8e52ee8d4e43be89fc0a3f7a8/transformed/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.6.0] /Users/uramnoil/.gradle/caches/transforms-3/7e3493f985f3a0ac2df29181b10d05ab/transformed/core-1.6.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.6.0] /Users/uramnoil/.gradle/caches/transforms-3/7e3493f985f3a0ac2df29181b10d05ab/transformed/core-1.6.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/uramnoil/.gradle/caches/transforms-3/8872003d7510e170a980f7c74e354692/transformed/lifecycle-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/uramnoil/.gradle/caches/transforms-3/8872003d7510e170a980f7c74e354692/transformed/lifecycle-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/uramnoil/.gradle/caches/transforms-3/75637bbc61fcea334a2c258795a3aa14/transformed/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/uramnoil/.gradle/caches/transforms-3/75637bbc61fcea334a2c258795a3aa14/transformed/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/e6c67323fe209fe622aebb1205082c9d/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/e6c67323fe209fe622aebb1205082c9d/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/uramnoil/.gradle/caches/transforms-3/a8b94fb573dbaa6fb258f29b6bed8fcd/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/uramnoil/.gradle/caches/transforms-3/a8b94fb573dbaa6fb258f29b6bed8fcd/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/uramnoil/.gradle/caches/transforms-3/62f6b64a032682f5c05082135b9912d6/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/uramnoil/.gradle/caches/transforms-3/62f6b64a032682f5c05082135b9912d6/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/uramnoil/.gradle/caches/transforms-3/61a72923cb4792c15252245341ffeb1b/transformed/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/uramnoil/.gradle/caches/transforms-3/61a72923cb4792c15252245341ffeb1b/transformed/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/uramnoil/.gradle/caches/transforms-3/439eddc3a89f6aa20a44b7e6cb921a98/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/uramnoil/.gradle/caches/transforms-3/439eddc3a89f6aa20a44b7e6cb921a98/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/184b50c16ce5458fe505e7c35171edcd/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/uramnoil/.gradle/caches/transforms-3/184b50c16ce5458fe505e7c35171edcd/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/uramnoil/.gradle/caches/transforms-3/546678ef3f0feef786cd35a6b6bfd2be/transformed/annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/uramnoil/.gradle/caches/transforms-3/546678ef3f0feef786cd35a6b6bfd2be/transformed/annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml
+INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml
+		ADDED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml
+		INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml
+		ADDED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml
+		INJECTED from /Users/uramnoil/IdeaProjects/endervision/android/src/main/AndroidManifest.xml

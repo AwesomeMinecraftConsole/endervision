@@ -1,0 +1,2 @@
+com/uramnoil/common/BuildConfig.java
+ com.uramnoil.common.BuildConfig
