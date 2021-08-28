@@ -18,3 +18,4 @@ rootProject.name = "endervision"
 include(":android")
 include(":desktop")
 include(":common")
+include(":desktopimpl")
