@@ -19,3 +19,9 @@ include(":android")
 include(":desktop")
 include(":common")
 include(":desktopimpl")
+
+object Properties {
+    object Version {
+        const val kodein = "7.2.0"
+    }
+}

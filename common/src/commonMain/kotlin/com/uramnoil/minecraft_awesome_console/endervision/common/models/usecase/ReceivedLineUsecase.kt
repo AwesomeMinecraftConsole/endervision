@@ -7,3 +7,4 @@ interface ReceivedLineUsecaseInputPort {
 interface ReceivedLineUsecaseOutputPort {
     fun handle(line: String)
 }
+

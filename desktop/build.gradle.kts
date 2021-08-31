@@ -18,8 +18,11 @@ kotlin {
     sourceSets {
         val jvmMain by getting {
             dependencies {
+                val kodein_version: String by project
+
                 implementation(project(":common"))
                 implementation(compose.desktop.currentOs)
+                implementation("org.kodein.di:kodein-di:${kodein_version}")
             }
         }
         val jvmTest by getting

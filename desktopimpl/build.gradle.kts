@@ -14,7 +14,7 @@ val grpcVersion = "1.39.0"
 val grpcKotlinVersion = "1.1.0"
 
 dependencies {
-    implementation("org.kodein.di:kodein-di:7.6.0")
+    implementation("org.kodein.di:kodein-di:7.7.0")
     implementation("com.google.protobuf:protobuf-java-util:$protobufVersion")
     implementation("io.grpc:grpc-netty-shaded:$grpcVersion")
     implementation("io.grpc:grpc-protobuf:$grpcVersion")

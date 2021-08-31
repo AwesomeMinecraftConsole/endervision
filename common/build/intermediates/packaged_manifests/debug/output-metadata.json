@@ -4,7 +4,7 @@
     "type": "PACKAGED_MANIFESTS",
     "kind": "Directory"
   },
-  "applicationId": "com.uramnoil.common",
+  "applicationId": "com.uramnoil.awesome_minecraft_console.endervision.common",
   "variantName": "debug",
   "elements": [
     {

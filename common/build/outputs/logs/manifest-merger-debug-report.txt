@@ -1,10 +1,10 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/uramnoil/IdeaProjects/endervision/common/src/androidMain/AndroidManifest.xml:2:1-101
-INJECTED from /Users/uramnoil/IdeaProjects/endervision/common/src/androidMain/AndroidManifest.xml:2:1-101
-INJECTED from /Users/uramnoil/IdeaProjects/endervision/common/src/androidMain/AndroidManifest.xml:2:1-101
+ADDED from /Users/uramnoil/IdeaProjects/endervision/common/src/androidMain/AndroidManifest.xml:2:1-139
+INJECTED from /Users/uramnoil/IdeaProjects/endervision/common/src/androidMain/AndroidManifest.xml:2:1-139
+INJECTED from /Users/uramnoil/IdeaProjects/endervision/common/src/androidMain/AndroidManifest.xml:2:1-139
 	package
-		ADDED from /Users/uramnoil/IdeaProjects/endervision/common/src/androidMain/AndroidManifest.xml:2:70-99
+		ADDED from /Users/uramnoil/IdeaProjects/endervision/common/src/androidMain/AndroidManifest.xml:2:70-137
 		INJECTED from /Users/uramnoil/IdeaProjects/endervision/common/src/androidMain/AndroidManifest.xml
 		INJECTED from /Users/uramnoil/IdeaProjects/endervision/common/src/androidMain/AndroidManifest.xml
 	xmlns:android
