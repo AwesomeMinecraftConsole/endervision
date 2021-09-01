@@ -7,21 +7,17 @@ pluginManagement {
     }
 
     plugins {
+        val compose_version: String by settings
         kotlin("multiplatform") version "1.5.21"
         kotlin("jvm") version "1.5.21"
-        id("org.jetbrains.compose") version "1.0.0-alpha3"
+        id("org.jetbrains.compose") version compose_version
     }
 }
-rootProject.name = "endervision"
+
+rootProject.name = "com.uramnoil.awesome_minecraft_console.endervision"
 
 
 include(":android")
-include(":desktop")
+include(":main")
 include(":common")
-include(":desktopimpl")
-
-object Properties {
-    object Version {
-        const val kodein = "7.2.0"
-    }
-}
+include(":desktop")
