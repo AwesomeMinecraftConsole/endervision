@@ -25,7 +25,7 @@ fun ConsoleMonitor() {
     var isTrackingBottom by remember { mutableStateOf(true) }
 
     BoxWithConstraints(
-        Modifier.fillMaxWidth(0.7f).fillMaxHeight().background(Color(0xFF272A2B)).padding(5.dp)
+        Modifier.fillMaxSize().background(Color(0xFF272A2B)).padding(5.dp)
     ) {
         val lazyListState = rememberLazyListState()
 
@@ -33,7 +33,7 @@ fun ConsoleMonitor() {
             viewModel.lineFlow.collect {
                 lines.add(it)
                 if (isTrackingBottom) {
-                    lazyListState.scrollToItem(lines.size)
+                    lazyListState.animateScrollToItem(lines.size)
                     println("hoge")
                 }
             }
