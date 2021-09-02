@@ -2,10 +2,6 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="15">
-      <module name="com.uramnoil.awesome_minecraft_console.endervision.common.commonMain" target="11" />
-      <module name="com.uramnoil.awesome_minecraft_console.endervision.common.commonTest" target="11" />
-      <module name="com.uramnoil.awesome_minecraft_console.endervision.common.desktopMain" target="11" />
-      <module name="com.uramnoil.awesome_minecraft_console.endervision.common.desktopTest" target="11" />
       <module name="endervision.common.commonMain" target="11" />
       <module name="endervision.common.commonTest" target="11" />
       <module name="endervision.common.desktopMain" target="11" />

@@ -16,7 +16,6 @@ pluginManagement {
 
 rootProject.name = "com.uramnoil.awesome_minecraft_console.endervision"
 
-
 include(":android")
 include(":main")
 include(":common")
