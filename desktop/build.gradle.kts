@@ -15,6 +15,7 @@ dependencies {
     implementation(compose.desktop.currentOs)
     implementation("org.kodein.di:kodein-di:${kodein_version}")
     implementation("org.kodein.di:kodein-di-framework-compose:${kodein_version}")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
 }
 
 compose.desktop {
