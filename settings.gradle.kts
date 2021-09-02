@@ -7,10 +7,13 @@ pluginManagement {
     }
 
     plugins {
+        val kotlin_version: String by settings
         val compose_version: String by settings
-        kotlin("multiplatform") version "1.5.21"
-        kotlin("jvm") version "1.5.21"
+        val protobuf_gradle_version: String by settings
+        kotlin("multiplatform") version kotlin_version
+        kotlin("jvm") version kotlin_version
         id("org.jetbrains.compose") version compose_version
+        id("com.google.protobuf") version protobuf_gradle_version
     }
 }
 
