@@ -52,8 +52,8 @@ class EnderVisionClient(
 
     fun connectOnlinePlayers() = launch {
         stub.onlinePlayers(Empty.newBuilder().build()).collect {
-            mutableOnlinePlayersFlow.emit(it.onlinePlayersList.map {
-                OnlinePlayer(it.id, it.name, it.ping.toUInt())
+            mutableOnlinePlayersFlow.emit(it.onlinePlayersList.map { onlinePlayer ->
+                OnlinePlayer(onlinePlayer.id, onlinePlayer.name, onlinePlayer.ping.toUInt())
             })
         }
     }
