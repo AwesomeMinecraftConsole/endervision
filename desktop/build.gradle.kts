@@ -32,6 +32,8 @@ dependencies {
     implementation("io.grpc:grpc-netty-shaded:$grpc_version")
     implementation("io.grpc:grpc-protobuf:$grpc_version")
     implementation("io.grpc:grpc-kotlin-stub:$grpc_kotlin_version")
+
+    testImplementation(kotlin("test"))
 }
 
 java {
