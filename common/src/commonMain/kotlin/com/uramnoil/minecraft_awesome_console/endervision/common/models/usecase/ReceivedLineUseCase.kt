@@ -5,6 +5,5 @@ interface ReceivedLineUseCaseInputPort {
 }
 
 interface ReceivedLineUseCaseOutputPort {
-    fun handle(line: String)
+    fun handle(line: Line)
 }
-
