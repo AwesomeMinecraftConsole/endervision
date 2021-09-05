@@ -6,14 +6,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import androidx.compose.ui.window.awaitApplication
 import com.uramnoil.awesome_minecraft_console.endervision.compose.molecules.SideBar
 import com.uramnoil.awesome_minecraft_console.endervision.compose.organisms.Console
 import org.kodein.di.DI
 import org.kodein.di.compose.withDI
+import kotlin.coroutines.CoroutineContext
 
-fun app(
-    vararg module: DI.Module,
-) = application {
+suspend fun app(
+    coroutineContext: CoroutineContext, vararg module: DI.Module,
+) = awaitApplication {
     withDI(*module) {
         Window(onCloseRequest = ::exitApplication, title = "EnderVision") {
             BoxWithConstraints(Modifier.fillMaxSize().background(Color(0xFF464D49))) {
