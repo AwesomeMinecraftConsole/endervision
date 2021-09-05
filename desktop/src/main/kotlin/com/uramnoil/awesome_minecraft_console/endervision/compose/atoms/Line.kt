@@ -10,7 +10,7 @@ import com.uramnoil.minecraft_awesome_console.endervision.common.models.usecase.
 
 @Composable
 fun Line(line: Line) {
-    Text(line.line, color = Color.White, modifier = Modifier.fillMaxWidth())
+    Text(line.value, color = Color.White, modifier = Modifier.fillMaxWidth())
 }
 
 @Preview
