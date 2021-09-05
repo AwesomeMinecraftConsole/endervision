@@ -1,3 +1,3 @@
 package com.uramnoil.minecraft_awesome_console.endervision.common.models.usecase
 
-data class Line(val line: String)
+data class Line(val value: String)
