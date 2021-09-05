@@ -1,9 +1,9 @@
 package com.uramnoil.minecraft_awesome_console.endervision.common.models.usecase
 
-interface SendOperationUseCaseInputPort {
+fun interface SendOperationUseCaseInputPort {
     fun execute(operation: Operation)
 }
 
-interface SendOperationUseCaseOutputPort {
+fun interface SendOperationUseCaseOutputPort {
     fun handle(operation: Operation)
 }

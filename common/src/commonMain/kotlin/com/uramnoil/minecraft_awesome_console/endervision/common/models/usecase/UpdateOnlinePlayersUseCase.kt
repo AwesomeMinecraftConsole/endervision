@@ -1,9 +1,9 @@
 package com.uramnoil.minecraft_awesome_console.endervision.common.models.usecase
 
-interface UpdateOnlinePlayersUseCaseInputPort {
+fun interface UpdateOnlinePlayersUseCaseInputPort {
     fun execute(onlinePlayers: OnlinePlayers)
 }
 
-interface UpdateOnlinePlayersUseCaseOutputPort {
+fun interface UpdateOnlinePlayersUseCaseOutputPort {
     fun handle(onlinePlayers: OnlinePlayers)
 }
