@@ -1,4 +1,4 @@
-package com.uramnoil.minecraft_awesome_console.endervision.common.models.usecase
+package com.uramnoil.awesome_minecraft_console.endervision.common.usecase
 
 fun interface NewLineUseCaseInputPort {
     fun execute(line: String)

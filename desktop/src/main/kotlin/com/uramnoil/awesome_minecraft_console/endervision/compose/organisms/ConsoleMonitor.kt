@@ -11,8 +11,8 @@ import androidx.compose.ui.unit.dp
 import com.uramnoil.awesome_minecraft_console.endervision.compose.atoms.ArrowDownToggleButton
 import com.uramnoil.awesome_minecraft_console.endervision.compose.atoms.Lines
 import com.uramnoil.awesome_minecraft_console.endervision.compose.atoms.Scrollbar
-import com.uramnoil.minecraft_awesome_console.endervision.common.models.usecase.Line
-import com.uramnoil.minecraft_awesome_console.endervision.common.models.usecase.LineViewModel
+import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.Line
+import com.uramnoil.awesome_minecraft_console.endervision.common.presentation.LineViewModel
 import kotlinx.coroutines.flow.collect
 import org.kodein.di.compose.LocalDI
 import org.kodein.di.instance

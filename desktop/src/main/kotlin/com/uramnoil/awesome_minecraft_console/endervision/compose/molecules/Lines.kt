@@ -8,7 +8,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.uramnoil.minecraft_awesome_console.endervision.common.models.usecase.Line
+import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.Line
 
 @Composable
 fun Lines(lines: List<Line>, lazyListState: LazyListState) {

@@ -1,6 +1,6 @@
 package com.uramnoil.awesome_minecraft_console.endervision.grpc
 
-import com.uramnoil.minecraft_awesome_console.endervision.common.models.usecase.OnlinePlayer
+import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.OnlinePlayer
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job

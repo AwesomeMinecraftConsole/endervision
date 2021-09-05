@@ -1,7 +1,7 @@
 package com.uramnoil.awesome_minecraft_console.endervision.grpc
 
-import com.uramnoil.minecraft_awesome_console.endervision.common.models.usecase.*
-import com.uramnoil.minecraft_awesome_console.endervision.common.models.usecase.Operation.*
+import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.Operation.*
+import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.*
 import io.grpc.ManagedChannel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -69,7 +69,7 @@ class EnderVision(
         }
     }
 
-    override fun sendOperation(operation: com.uramnoil.minecraft_awesome_console.endervision.common.models.usecase.Operation) {
+    override fun sendOperation(operation: com.uramnoil.awesome_minecraft_console.endervision.common.usecase.Operation) {
         launch {
             mutableOperationFlow.emit(
                 when (operation) {

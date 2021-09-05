@@ -6,7 +6,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.uramnoil.minecraft_awesome_console.endervision.common.models.usecase.Line
+import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.Line
 
 @Composable
 fun Line(line: Line) {
