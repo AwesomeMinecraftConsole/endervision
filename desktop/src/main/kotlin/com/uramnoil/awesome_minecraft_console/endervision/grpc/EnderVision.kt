@@ -53,7 +53,7 @@ class EnderVision(
             }
             mutableOnlinePlayersFlow.collect {
                 updateOnlinePlayersUseCaseInputPort.execute(OnlinePlayers(it.map { onlinePlayer ->
-                    com.uramnoil.minecraft_awesome_console.endervision.common.models.usecase.OnlinePlayer(
+                    OnlinePlayer(
                         Id(onlinePlayer.id),
                         Name(onlinePlayer.name),
                         Ping(onlinePlayer.ping.toUInt())
