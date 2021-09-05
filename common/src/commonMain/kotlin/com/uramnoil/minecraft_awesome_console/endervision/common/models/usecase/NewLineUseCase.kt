@@ -1,9 +1,9 @@
 package com.uramnoil.minecraft_awesome_console.endervision.common.models.usecase
 
-interface ReceivedLineUseCaseInputPort {
+interface NewLineUseCaseInputPort {
     fun execute(line: String)
 }
 
-interface ReceivedLineUseCaseOutputPort {
+interface NewLineUseCaseOutputPort {
     fun handle(line: Line)
 }
