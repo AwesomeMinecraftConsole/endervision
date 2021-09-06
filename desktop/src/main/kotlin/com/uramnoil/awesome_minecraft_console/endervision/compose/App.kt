@@ -6,6 +6,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.awaitApplication
 import com.uramnoil.awesome_minecraft_console.endervision.compose.molecules.SideBar
@@ -26,10 +27,10 @@ suspend fun app() = awaitApplication {
 
         withDI(module) {
             BoxWithConstraints(Modifier.fillMaxSize().background(Color(0xFF464D49))) {
-                Box(Modifier.fillMaxHeight().fillMaxWidth(0.7f)) {
+                Box(Modifier.fillMaxSize().padding(0.dp, 0.dp, 200.dp, 0.dp)) {
                     Console()
                 }
-                Box(Modifier.fillMaxHeight().fillMaxWidth(0.3f)) {
+                Box(Modifier.fillMaxSize().padding(200.dp, 0.dp, 0.dp, 0.dp)) {
                     SideBar()
                 }
             }
