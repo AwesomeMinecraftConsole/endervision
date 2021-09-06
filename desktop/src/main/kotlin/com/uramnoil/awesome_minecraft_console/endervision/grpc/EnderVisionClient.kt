@@ -3,23 +3,15 @@ package com.uramnoil.awesome_minecraft_console.endervision.grpc
 import awesome_minecraft_console.endervision.EnderVisionGrpcKt
 import awesome_minecraft_console.weaver.WeaverOuterClass
 import com.google.protobuf.Empty
-import com.uramnoil.awesome_minecraft_console.endervision.grpc.Operation.*
+import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.*
 import io.grpc.ManagedChannel
-import io.grpc.ManagedChannelBuilder
-import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 import java.io.Closeable
 import kotlin.coroutines.CoroutineContext
-
-data class OnlinePlayer(val id: String, val name: String, val ping: Int)
-enum class Operation(id: Int) {
-    Start(0),
-    Unrecognized(-1),
-}
 
 interface EnderVisionClient : Closeable {
     fun connectConsole()
@@ -27,21 +19,30 @@ interface EnderVisionClient : Closeable {
     fun connectOnlinePlayers()
 }
 
+
+
 class EnderVisionClientImpl(
     private val channel: ManagedChannel,
-    private val mutableLineFlow: MutableSharedFlow<String>,
-    private val commandFlow: Flow<String>,
-    private val mutableNotificationFlow: MutableSharedFlow<String>,
-    private val operationFlow: Flow<Operation> = MutableSharedFlow(),
-    private val mutableOnlinePlayersFlow: MutableSharedFlow<List<OnlinePlayer>>,
-    coroutineContext: CoroutineContext
-) : EnderVisionClient, CoroutineScope by CoroutineScope(coroutineContext) {
+    private val mutableLineFlow: MutableSharedFlow<Line>,
+    private val commandFlow: Flow<Command>,
+    private val mutableNotificationFlow: MutableSharedFlow<Notification>,
+    private val operationFlow: Flow<Operation>,
+    private val mutableOnlinePlayersFlow: MutableSharedFlow<OnlinePlayers>,
+    private val parent: CoroutineContext
+) : EnderVisionClient, CoroutineScope {
+    override val coroutineContext: CoroutineContext
+        get() = parent + CoroutineExceptionHandler { _, throwable ->
+            if (throwable is CancellationException) {
+                close()
+            }
+        }
+
     private val stub = EnderVisionGrpcKt.EnderVisionCoroutineStub(channel)
 
     override fun connectConsole() {
         launch {
-            stub.console(commandFlow.map { WeaverOuterClass.Command.newBuilder().setCommand(it).build() }).collect {
-                mutableLineFlow.emit(it.line)
+            stub.console(commandFlow.map { WeaverOuterClass.Command.newBuilder().setCommand(it.value).build() }).collect {
+                mutableLineFlow.emit(Line(it.line))
             }
         }
     }
@@ -50,12 +51,11 @@ class EnderVisionClientImpl(
         launch {
             stub.management(operationFlow.map {
                 val type = when (it) {
-                    Start -> WeaverOuterClass.Operation.Type.OPERATION_START
-                    Unrecognized -> WeaverOuterClass.Operation.Type.UNRECOGNIZED
+                    Operation.Start -> WeaverOuterClass.Operation.Type.OPERATION_START
                 }
                 WeaverOuterClass.Operation.newBuilder().setOperation(type).build()
             }).collect {
-                mutableNotificationFlow.emit(it.notification)
+                mutableNotificationFlow.emit(Notification(it.notification))
             }
         }
     }
@@ -64,7 +64,7 @@ class EnderVisionClientImpl(
         launch {
             stub.onlinePlayers(Empty.newBuilder().build()).collect {
                 mutableOnlinePlayersFlow.emit(it.onlinePlayersList.map { onlinePlayer ->
-                    OnlinePlayer(onlinePlayer.id, onlinePlayer.name, onlinePlayer.ping)
+                    OnlinePlayer(onlinePlayer.id, onlinePlayer.name, onlinePlayer.ping.toUInt())
                 })
             }
         }
