@@ -34,7 +34,6 @@ fun ConsoleMonitor() {
                 lines.add(it)
                 if (isTrackingBottom) {
                     lazyListState.animateScrollToItem(lines.size)
-                    println("hoge")
                 }
             }
         }

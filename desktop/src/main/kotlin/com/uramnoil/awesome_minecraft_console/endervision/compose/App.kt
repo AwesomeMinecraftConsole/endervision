@@ -13,9 +13,7 @@ import org.kodein.di.DI
 import org.kodein.di.compose.withDI
 import kotlin.coroutines.CoroutineContext
 
-suspend fun app(
-    coroutineContext: CoroutineContext, vararg module: DI.Module,
-) = awaitApplication {
+suspend fun app(vararg module: DI.Module) = awaitApplication {
     withDI(*module) {
         Window(onCloseRequest = ::exitApplication, title = "EnderVision") {
             BoxWithConstraints(Modifier.fillMaxSize().background(Color(0xFF464D49))) {

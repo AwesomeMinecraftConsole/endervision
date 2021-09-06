@@ -5,6 +5,7 @@ import awesome_minecraft_console.weaver.WeaverOuterClass
 import com.google.protobuf.Empty
 import com.uramnoil.awesome_minecraft_console.endervision.grpc.Operation.*
 import io.grpc.ManagedChannel
+import io.grpc.ManagedChannelBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -27,7 +28,7 @@ interface EnderVisionClient : Closeable {
 }
 
 class EnderVisionClientImpl(
-    channel: ManagedChannel,
+    private val channel: ManagedChannel,
     private val mutableLineFlow: MutableSharedFlow<String>,
     private val commandFlow: Flow<String>,
     private val mutableNotificationFlow: MutableSharedFlow<String>,
@@ -69,5 +70,7 @@ class EnderVisionClientImpl(
         }
     }
 
-    override fun close() {}
+    override fun close() {
+        channel.shutdown()
+    }
 }
