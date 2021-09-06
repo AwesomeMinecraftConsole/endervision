@@ -5,5 +5,5 @@ fun interface NewLineUseCaseInputPort {
 }
 
 fun interface NewLineUseCaseOutputPort {
-    fun handle(line: Line)
+    fun handle(line: String)
 }
