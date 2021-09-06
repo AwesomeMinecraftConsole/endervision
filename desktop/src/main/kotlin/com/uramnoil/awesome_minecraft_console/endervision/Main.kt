@@ -23,7 +23,7 @@ suspend fun main() {
 
     val lineFlow = MutableSharedFlow<Line>()
     val notificationFlow = MutableSharedFlow<Notification>()
-    val onlinePlayersFlow = MutableSharedFlow<OnlinePlayers>()
+    val onlinePlayersFlow = MutableSharedFlow<List<OnlinePlayer>>()
 
     val viewModelModule = DI.Module("view_models", false) {
         bindSingleton {
@@ -64,7 +64,7 @@ suspend fun main() {
                 .keepAliveTime(1000, TimeUnit.MILLISECONDS)
                 .keepAliveTimeout(5000, TimeUnit.MILLISECONDS)
         )
-        enderVisionServiceImplService.start()
+        enderVisionServiceImplService.connect()
 
         bindSingleton { CommandController(SendCommandUseCaseInteractor(enderVisionServiceImplService)) }
         bindSingleton { OperationController(SendOperationUseCaseInteractor(enderVisionServiceImplService)) }
