@@ -25,11 +25,11 @@ class EnderVisionServiceImpl(
 
     private lateinit var flowJob: Job
 
-    private val mutableLineFlow = MutableSharedFlow<String>()
-    private val mutableCommandFlow = MutableSharedFlow<String>()
-    private val mutableNotificationFlow = MutableSharedFlow<String>()
+    private val mutableLineFlow = MutableSharedFlow<Line>()
+    private val mutableCommandFlow = MutableSharedFlow<Command>()
+    private val mutableNotificationFlow = MutableSharedFlow<Notification>()
     private val mutableOperationFlow = MutableSharedFlow<Operation>()
-    private val mutableOnlinePlayersFlow = MutableSharedFlow<List<com.uramnoil.awesome_minecraft_console.endervision.grpc.OnlinePlayer>>()
+    private val mutableOnlinePlayersFlow = MutableSharedFlow<OnlinePlayers>()
 
     private var client: EnderVisionClient? = null
 
@@ -42,16 +42,10 @@ class EnderVisionServiceImpl(
             newLineUseCaseInputPort.execute(it)
         }
         mutableNotificationFlow.collect {
-            sendNotificationUseCaseInputPort.execute(Notification(it))
+            sendNotificationUseCaseInputPort.execute(it)
         }
         mutableOnlinePlayersFlow.collect {
-            updateOnlinePlayersUseCaseInputPort.execute(OnlinePlayers(it.map { onlinePlayer ->
-                OnlinePlayer(
-                    Id(onlinePlayer.id),
-                    Name(onlinePlayer.name),
-                    Ping(onlinePlayer.ping.toUInt())
-                )
-            }))
+            updateOnlinePlayersUseCaseInputPort.execute(it)
         }
     }
 
@@ -84,17 +78,13 @@ class EnderVisionServiceImpl(
 
     override fun sendCommand(command: Command) {
         launch {
-            mutableCommandFlow.emit(command.value)
+            mutableCommandFlow.emit(command)
         }
     }
 
-    override fun sendOperation(operation: com.uramnoil.awesome_minecraft_console.endervision.common.usecase.Operation) {
+    override fun sendOperation(operation: Operation) {
         launch {
-            mutableOperationFlow.emit(
-                when (operation) {
-                    Start -> Operation.Start
-                }
-            )
+            mutableOperationFlow.emit(operation)
         }
     }
 }

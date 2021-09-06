@@ -5,7 +5,7 @@ import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.NewLine
 import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.NewLineUseCaseOutputPort
 
 class NewLineUseCaseInteractor(private val outputPort: NewLineUseCaseOutputPort) : NewLineUseCaseInputPort {
-    override fun execute(line: String) {
-        outputPort.handle(Line(line))
+    override fun execute(line: Line) {
+        outputPort.handle(line)
     }
 }
