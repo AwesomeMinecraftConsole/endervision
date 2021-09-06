@@ -4,7 +4,7 @@ import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 
-class EnderVisionClientTest {
+class EnderVisionServiceImplTest {
     @BeforeTest
     fun setUp() {
     }
