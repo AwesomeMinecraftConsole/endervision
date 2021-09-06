@@ -4,9 +4,12 @@ import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.*
 import com.uramnoil.awesome_minecraft_console.endervision.grpc.EnderVisionClient
 import com.uramnoil.awesome_minecraft_console.endervision.grpc.EnderVisionClientImpl
 import io.grpc.ManagedChannelBuilder
-import kotlinx.coroutines.*
+import io.grpc.netty.shaded.io.netty.util.internal.ThreadExecutorMap.apply
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 import kotlin.coroutines.CoroutineContext
 
@@ -93,27 +96,21 @@ fun EnderVisionServiceImpl(
     mutableOnlinePlayersSharedFlow: MutableSharedFlow<List<OnlinePlayer>>,
     coroutineScope: CoroutineScope,
 ): EnderVisionServiceImpl {
+    val presenter = EnderVisionPresenter(
+        mutableLineSharedFlow,
+        mutableNotificationSharedFlow,
+        mutableOnlinePlayersSharedFlow,
+        coroutineContext = coroutineScope.coroutineContext
+    )
     return EnderVisionServiceImpl(
-        newLineUseCaseInputPort = NewLineUseCaseInteractor {
-            coroutineScope.launch {
-                mutableLineSharedFlow.emit(it)
-            }
+        newLineUseCaseInputPort = NewLineUseCaseInteractor(presenter),
+        sendNotificationUseCaseInputPort = SendNotificationUseCaseInteractor(presenter),
+        updateOnlinePlayersUseCaseInputPort = UpdateOnlinePlayersUseCaseInteractor(presenter),
+        channel = ManagedChannelBuilder.forAddress(host, port).apply {
+            if (System.getenv("ENDERVISION_USEPLAINTEXT").toBoolean()) usePlaintext()
+            keepAliveTime(1000, TimeUnit.MILLISECONDS)
+            keepAliveTimeout(5000, TimeUnit.MILLISECONDS)
         },
-        sendNotificationUseCaseInputPort = SendNotificationUseCaseInteractor {
-            coroutineScope.launch {
-                mutableNotificationSharedFlow.emit(it)
-            }
-        },
-        updateOnlinePlayersUseCaseInputPort = UpdateOnlinePlayersUseCaseInteractor {
-            coroutineScope.launch {
-                mutableOnlinePlayersSharedFlow.emit(it)
-            }
-        },
-        channel = ManagedChannelBuilder
-            .forAddress(host, port)
-            .usePlaintext()
-            .keepAliveTime(1000, TimeUnit.MILLISECONDS)
-            .keepAliveTimeout(5000, TimeUnit.MILLISECONDS),
         coroutineContext = coroutineScope.coroutineContext
     )
 }
