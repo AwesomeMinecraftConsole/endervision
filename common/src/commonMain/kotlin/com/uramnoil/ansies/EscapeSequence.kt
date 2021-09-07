@@ -19,3 +19,5 @@ sealed class EscapeSequence : Control() {
     abstract val type: EscapeSequenceType
     abstract override fun toString(): String
 }
+
+operator fun EscapeSequence.plus(string: String): String = this.toString() + string
