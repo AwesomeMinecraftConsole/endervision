@@ -11,12 +11,12 @@ enum class ControlSequenceIntroducer(val abbr: String, val c2: String) {
     EraseDisplay("ED", "J"),
     EraseInLine("EL", "K"),
     ScrollUp("SU", "S"),
-    ScrollDown("SD","T"),
+    ScrollDown("SD", "T"),
     HorizontalVerticalPosition("HVP", "f"),
     SelectGraphicRendition("SGR", "m"),
     AuxPortOn("", "5i"),
     AuxPortOff("", "4i"),
-    DeviceStatusReport("DSR", "6n"),;
+    DeviceStatusReport("DSR", "6n"), ;
 
     override fun toString(): String = c2
 }

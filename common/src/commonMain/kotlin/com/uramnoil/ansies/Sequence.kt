@@ -54,7 +54,7 @@ enum class Control(val abbr: String, val c0: Int) {
     /**
      *
      */
-    DEL("DEL", 0x7F),;
+    DEL("DEL", 0x7F), ;
 
     override fun toString(): String = Char(c0).toString()
 }

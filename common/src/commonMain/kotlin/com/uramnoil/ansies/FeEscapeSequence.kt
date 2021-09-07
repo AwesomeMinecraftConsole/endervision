@@ -9,7 +9,7 @@ enum class FeEscapeSequenceType(val abbr: String, val c1: Int) {
     OperatingSystemCommand("OSC", 0x9D),
     StartOfString("SOS", 0x98),
     PrivacyMessage("PM", 0x9E),
-    ApplicationProgramCommand("APC", 0x9F),;
+    ApplicationProgramCommand("APC", 0x9F), ;
 
     override fun toString(): String = Char(c1).toString()
 }
