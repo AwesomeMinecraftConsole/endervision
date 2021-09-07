@@ -2,14 +2,14 @@ package com.uramnoil.ansies
 
 val reset = ResetOrNormal()
 
-val black = SelectGraphicRendition(SetForegroundColorRed())
+val black = SelectGraphicRendition(SetForegroundColorBlack())
 val red = SelectGraphicRendition(SetForegroundColorRed())
-val green = SelectGraphicRendition(SetForegroundColorRed())
-val yellow = SelectGraphicRendition(SetForegroundColorRed())
-val blue = SelectGraphicRendition(SetForegroundColorRed())
-val magenta = SelectGraphicRendition(SetForegroundColorRed())
-val cyan = SelectGraphicRendition(SetForegroundColorRed())
-val white = SelectGraphicRendition(SetForegroundColorRed())
+val green = SelectGraphicRendition(SetForegroundColorGreen())
+val yellow = SelectGraphicRendition(SetForegroundColorYellow())
+val blue = SelectGraphicRendition(SetForegroundColorBlue())
+val magenta = SelectGraphicRendition(SetForegroundColorMagenta())
+val cyan = SelectGraphicRendition(SetForegroundColorCyan())
+val white = SelectGraphicRendition(SetForegroundColorWhite())
 
 class AnsiEscapeBuilder(val string: String) {
     private val mutableCodeList = mutableListOf<EscapeSequence>()
@@ -61,7 +61,7 @@ class AnsiEscapeBuilder(val string: String) {
     override fun toString(): String = mutableCodeList.joinToString("") + string
 }
 
-fun String.black() = AnsiEscapeBuilder(this).red()
+fun String.black() = AnsiEscapeBuilder(this).black()
 
 fun String.red() = AnsiEscapeBuilder(this).red()
 
