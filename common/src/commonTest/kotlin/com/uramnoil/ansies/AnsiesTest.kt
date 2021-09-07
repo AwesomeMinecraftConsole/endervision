@@ -2,6 +2,7 @@ package com.uramnoil.ansies
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFails
 
 class AnsiesTest {
     @Test
@@ -66,5 +67,23 @@ class AnsiesTest {
             "${Char(0x1B)}${Char(0x9B)}37m",
             "".white().toString()
         )
+    }
+
+    @Test
+    fun testColor8() {
+        assertEquals(
+            "${Char(0x1B)}${Char(0x9B)}38;5;0m",
+            "".color8(0).toString()
+        )
+        assertEquals(
+            "${Char(0x1B)}${Char(0x9B)}38;5;255m",
+            "".color8(255).toString()
+        )
+        assertFails {
+            "".color8(-1)
+        }
+        assertFails {
+            "".color8(256)
+        }
     }
 }
