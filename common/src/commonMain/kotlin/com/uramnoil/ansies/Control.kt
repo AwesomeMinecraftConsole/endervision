@@ -1,6 +1,6 @@
 package com.uramnoil.ansies
 
-enum class Control(val abbr: String, val c0: Int) {
+enum class ControlCharacter(val abbr: String, val c0: Int) {
     /**
      * Bell
      * Makes an audible noise.
@@ -59,7 +59,7 @@ enum class Control(val abbr: String, val c0: Int) {
     override fun toString(): String = Char(c0).toString()
 }
 
-sealed class Sequence {
-    abstract val control: Control
+sealed class Control {
+    abstract val controlCharacter: ControlCharacter
     abstract override fun toString(): String
 }

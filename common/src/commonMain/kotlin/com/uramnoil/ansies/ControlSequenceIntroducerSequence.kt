@@ -23,16 +23,16 @@ enum class ControlSequenceIntroducer(val abbr: String, val c2: String) {
 
 typealias Csi = ControlSequenceIntroducer
 
-sealed class ControlSequenceIntroducerSequence : FeEscapeSequence() {
-    override val fe: FeEscapeSequenceType = FeEscapeSequenceType.ControlSequenceIntroducer
+sealed class ControlSequenceIntroducerSequence : EscapeSequence() {
+    override val type: EscapeSequenceType = EscapeSequenceType.ControlSequenceIntroducer
     abstract val csi: Csi
 }
 
-fun ControlSequenceIntroducerSequence.withoutArg() = "$control$fe$csi"
+fun ControlSequenceIntroducerSequence.withoutArg() = "$controlCharacter$type$csi"
 
-fun ControlSequenceIntroducerSequence.withArgN(n: Int) = "$control$fe$n$csi"
+fun ControlSequenceIntroducerSequence.withArgN(n: Int) = "$controlCharacter$type$n$csi"
 
-fun ControlSequenceIntroducerSequence.withArgNM(n: Int, m: Int) = "$control$fe$n:$m$csi"
+fun ControlSequenceIntroducerSequence.withArgNM(n: Int, m: Int) = "$controlCharacter$type$n:$m$csi"
 
 class CursorUp(val n: Int = 1) : ControlSequenceIntroducerSequence() {
     override val csi: Csi = Csi.CursorUp
@@ -96,7 +96,7 @@ class HorizontalVerticalPosition(val n: Int = 1) : ControlSequenceIntroducerSequ
 
 class SelectGraphicRendition(val parameter: SelectGraphicRenditionParameter) : ControlSequenceIntroducerSequence() {
     override val csi: Csi = Csi.SelectGraphicRendition
-    override fun toString(): String = "$control$fe$parameter$csi"
+    override fun toString(): String = "$controlCharacter$type$parameter$csi"
 }
 
 class AuxPortOn(val n: Int = 1) : ControlSequenceIntroducerSequence() {
