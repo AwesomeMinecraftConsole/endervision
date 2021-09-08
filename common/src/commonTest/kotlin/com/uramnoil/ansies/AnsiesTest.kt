@@ -2,13 +2,17 @@ package com.uramnoil.ansies
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertFails
+
 
 class AnsiesTest {
+    companion object {
+        val csi = "${Char(0x1B)}["
+    }
+
     @Test
     fun testBlack() {
         assertEquals(
-            "${Char(0x1B)}${Char(0x9B)}30m",
+            "${csi}30m",
             "".black().toString()
         )
     }
@@ -16,7 +20,7 @@ class AnsiesTest {
     @Test
     fun testRed() {
         assertEquals(
-            "${Char(0x1B)}${Char(0x9B)}31m",
+            "${csi}31m",
             "".red().toString()
         )
     }
@@ -24,7 +28,7 @@ class AnsiesTest {
     @Test
     fun testGreen() {
         assertEquals(
-            "${Char(0x1B)}${Char(0x9B)}32m",
+            "${csi}32m",
             "".green().toString()
         )
     }
@@ -32,7 +36,7 @@ class AnsiesTest {
     @Test
     fun testYellow() {
         assertEquals(
-            "${Char(0x1B)}${Char(0x9B)}33m",
+            "${csi}33m",
             "".yellow().toString()
         )
     }
@@ -40,7 +44,7 @@ class AnsiesTest {
     @Test
     fun testBlue() {
         assertEquals(
-            "${Char(0x1B)}${Char(0x9B)}34m",
+            "${csi}34m",
             "".blue().toString()
         )
     }
@@ -48,7 +52,7 @@ class AnsiesTest {
     @Test
     fun testMagenta() {
         assertEquals(
-            "${Char(0x1B)}${Char(0x9B)}35m",
+            "${csi}35m",
             "".magenta().toString()
         )
     }
@@ -56,7 +60,7 @@ class AnsiesTest {
     @Test
     fun testCyan() {
         assertEquals(
-            "${Char(0x1B)}${Char(0x9B)}36m",
+            "${csi}36m",
             "".cyan().toString()
         )
     }
@@ -64,22 +68,22 @@ class AnsiesTest {
     @Test
     fun testWhite() {
         assertEquals(
-            "${Char(0x1B)}${Char(0x9B)}37m",
+            "${csi}37m",
             "".white().toString()
         )
     }
 
     @Test
-    fun testColor8() {
+    fun testColorPalette() {
         assertEquals(
-            "${Char(0x1B)}${Char(0x9B)}38;5;0m",
+            "${csi}38;5;0m",
             "".colorPalette(0u).toString()
         )
     }
 
     @Test
     fun testRgb() {
-        assertEquals("${Char(0x1B)}${Char(0x9B)}38;2;0;100;200m",
+        assertEquals("${csi}38;2;0;100;200m",
             "".rgb(0u, 100u, 200u).toString()
         )
     }
