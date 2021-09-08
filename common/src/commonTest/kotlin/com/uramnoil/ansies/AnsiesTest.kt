@@ -76,4 +76,11 @@ class AnsiesTest {
             "".colorPalette(0u).toString()
         )
     }
+
+    @Test
+    fun testRgb() {
+        assertEquals("${Char(0x1B)}${Char(0x9B)}38;2;0;100;200m",
+            "".rgb(0u, 100u, 200u).toString()
+        )
+    }
 }
