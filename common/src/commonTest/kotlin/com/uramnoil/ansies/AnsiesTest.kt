@@ -75,9 +75,5 @@ class AnsiesTest {
             "${Char(0x1B)}${Char(0x9B)}38;5;0m",
             "".colorPalette(0u).toString()
         )
-        assertEquals(
-            "${Char(0x1B)}${Char(0x9B)}38;5;255m",
-            "".colorPalette(255u).toString()
-        )
     }
 }
