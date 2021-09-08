@@ -20,6 +20,7 @@ val grpc_version: String by project
 val grpc_kotlin_version: String by project
 
 dependencies {
+    val kotlin_version: String by project
     val napier_version: String by project
     val coroutines_version: String by project
     val kodein_version: String by project
@@ -36,7 +37,7 @@ dependencies {
     implementation("io.grpc:grpc-protobuf:$grpc_version")
     implementation("io.grpc:grpc-kotlin-stub:$grpc_kotlin_version")
 
-    testImplementation(kotlin("test"))
+    testImplementation(kotlin("test", kotlin_version))
 }
 
 java {
