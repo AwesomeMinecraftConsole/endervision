@@ -58,8 +58,8 @@ class AnsiEscapeBuilder(val string: String) {
         return this
     }
 
-    fun color8(color: Int): AnsiEscapeBuilder {
-        add(SelectGraphicRendition(SetForegroundColor(Mode8ColorParameter(color))))
+    fun colorPalette(color: UByte): AnsiEscapeBuilder {
+        add(SelectGraphicRendition(SetForegroundColor(ColorPaletteParameter(color))))
         return this
     }
 
@@ -82,4 +82,4 @@ fun String.cyan() = AnsiEscapeBuilder(this).cyan()
 
 fun String.white() = AnsiEscapeBuilder(this).white()
 
-fun String.color8(color: Int) = AnsiEscapeBuilder(this).color8(color)
+fun String.colorPalette(color: UByte) = AnsiEscapeBuilder(this).colorPalette(color)

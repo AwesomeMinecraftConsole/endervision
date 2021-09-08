@@ -523,29 +523,12 @@ sealed class ColorParameter {
     abstract override fun toString(): String
 }
 
-class Mode8ColorParameter(val color: Int) : ColorParameter() {
-    init {
-        if (color !in 0..0xFF) {
-            throw IllegalArgumentException("The color level exceeds the range of 0 to 255.")
-        }
-    }
-
-    override val mode = ColorMode.Bit8
+class ColorPaletteParameter(val color: UByte) : ColorParameter() {
+    override val mode = ColorMode.ColorPalette
     override fun toString(): String = "$mode;$color"
 }
 
-class Mode24ColorParameter(val red: Int, val green: Int, val blue: Int) : ColorParameter() {
-    init {
-        if (red !in 0..0xFF) {
-            throw IllegalArgumentException("The color level exceeds the range of 0 to 255.")
-        }
-        if (green !in 0..0xFF) {
-            throw IllegalArgumentException("The color level exceeds the range of 0 to 255.")
-        }
-        if (blue !in 0..0xFF) {
-            throw IllegalArgumentException("The color level exceeds the range of 0 to 255.")
-        }
-    }
-    override val mode = ColorMode.Bit24
+class RgbParameter(val red: UByte, val green: UByte, val blue: UByte) : ColorParameter() {
+    override val mode = ColorMode.Rgb
     override fun toString(): String = "$mode;$red;$green;$blue"
 }

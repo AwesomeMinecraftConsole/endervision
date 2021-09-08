@@ -73,17 +73,11 @@ class AnsiesTest {
     fun testColor8() {
         assertEquals(
             "${Char(0x1B)}${Char(0x9B)}38;5;0m",
-            "".color8(0).toString()
+            "".colorPalette(0u).toString()
         )
         assertEquals(
             "${Char(0x1B)}${Char(0x9B)}38;5;255m",
-            "".color8(255).toString()
+            "".colorPalette(255u).toString()
         )
-        assertFails {
-            "".color8(-1)
-        }
-        assertFails {
-            "".color8(256)
-        }
     }
 }
