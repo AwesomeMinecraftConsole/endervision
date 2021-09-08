@@ -512,8 +512,8 @@ class SetBrightBackgroundColorWhite : SelectGraphicRenditionParameter() {
 
 
 enum class ColorMode(val mode: Int) {
-    Bit8(5),
-    Bit24(2), ;
+    ColorPalette(5),
+    Rgb(2), ;
 
     override fun toString(): String = mode.toString()
 }
