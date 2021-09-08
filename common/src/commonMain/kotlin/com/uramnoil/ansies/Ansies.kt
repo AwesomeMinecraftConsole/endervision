@@ -63,23 +63,30 @@ class AnsiEscapeBuilder(val string: String) {
         return this
     }
 
+    fun rgb(red: UByte, green: UByte, blue: UByte): AnsiEscapeBuilder {
+        add(SelectGraphicRendition(SetForegroundColor(RgbParameter(red, green, blue))))
+        return this
+    }
+
     override fun toString(): String = mutableCodeList.joinToString("") + string
 }
 
-fun String.black() = AnsiEscapeBuilder(this).black()
+fun String.black(): AnsiEscapeBuilder = AnsiEscapeBuilder(this).black()
 
-fun String.red() = AnsiEscapeBuilder(this).red()
+fun String.red(): AnsiEscapeBuilder = AnsiEscapeBuilder(this).red()
 
-fun String.green() = AnsiEscapeBuilder(this).green()
+fun String.green(): AnsiEscapeBuilder = AnsiEscapeBuilder(this).green()
 
-fun String.yellow() = AnsiEscapeBuilder(this).yellow()
+fun String.yellow(): AnsiEscapeBuilder = AnsiEscapeBuilder(this).yellow()
 
-fun String.blue() = AnsiEscapeBuilder(this).blue()
+fun String.blue(): AnsiEscapeBuilder = AnsiEscapeBuilder(this).blue()
 
-fun String.magenta() = AnsiEscapeBuilder(this).magenta()
+fun String.magenta(): AnsiEscapeBuilder = AnsiEscapeBuilder(this).magenta()
 
-fun String.cyan() = AnsiEscapeBuilder(this).cyan()
+fun String.cyan(): AnsiEscapeBuilder = AnsiEscapeBuilder(this).cyan()
 
-fun String.white() = AnsiEscapeBuilder(this).white()
+fun String.white(): AnsiEscapeBuilder = AnsiEscapeBuilder(this).white()
 
-fun String.colorPalette(color: UByte) = AnsiEscapeBuilder(this).colorPalette(color)
+fun String.colorPalette(color: UByte): AnsiEscapeBuilder = AnsiEscapeBuilder(this).colorPalette(color)
+
+fun String.rgb(red: UByte, green: UByte, blue: UByte): AnsiEscapeBuilder = AnsiEscapeBuilder(this).rgb(red, green, blue)
