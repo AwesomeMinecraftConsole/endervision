@@ -13,60 +13,32 @@ val white = SelectGraphicRendition(SetForegroundColorWhite())
 
 class AnsiEscapeBuilder(val string: String) {
     private val mutableCodeList = mutableListOf<EscapeSequence>()
-    
-    private fun add(sequence: EscapeSequence) {
+
+    internal fun add(sequence: EscapeSequence) {
         mutableCodeList.add(sequence)
     }
-    
-    fun black(): AnsiEscapeBuilder {
-        add(black)
-        return this
-    }
-    
-    fun red(): AnsiEscapeBuilder {
-        add(red)
-        return this
-    }
-    
-    fun green(): AnsiEscapeBuilder {
-        add(green)
-        return this
-    }
 
-    fun yellow(): AnsiEscapeBuilder {
-        add(yellow)
-        return this
-    }
+    fun black(): AnsiEscapeBuilder = apply { add(black) }
 
-    fun blue(): AnsiEscapeBuilder {
-        add(blue)
-        return this
-    }
+    fun red(): AnsiEscapeBuilder = apply { add(red) }
 
-    fun magenta(): AnsiEscapeBuilder {
-        add(magenta)
-        return this
-    }
+    fun green(): AnsiEscapeBuilder = apply { add(green) }
 
-    fun cyan(): AnsiEscapeBuilder {
-        add(cyan)
-        return this
-    }
+    fun yellow(): AnsiEscapeBuilder = apply { add(yellow) }
 
-    fun white(): AnsiEscapeBuilder {
-        add(white)
-        return this
-    }
+    fun blue(): AnsiEscapeBuilder = apply { add(blue) }
 
-    fun colorPalette(color: UByte): AnsiEscapeBuilder {
-        add(SelectGraphicRendition(SetForegroundColor(ColorPaletteParameter(color))))
-        return this
-    }
+    fun magenta(): AnsiEscapeBuilder = apply { add(magenta) }
 
-    fun rgb(red: UByte, green: UByte, blue: UByte): AnsiEscapeBuilder {
-        add(SelectGraphicRendition(SetForegroundColor(RgbParameter(red, green, blue))))
-        return this
-    }
+    fun cyan(): AnsiEscapeBuilder = apply { add(cyan) }
+
+    fun white(): AnsiEscapeBuilder = apply { add(white) }
+
+    fun colorPalette(color: UByte): AnsiEscapeBuilder =
+        apply { add(SelectGraphicRendition(SetForegroundColor(ColorPaletteParameter(color)))) }
+
+    fun rgb(red: UByte, green: UByte, blue: UByte): AnsiEscapeBuilder =
+        apply { add(SelectGraphicRendition(SetForegroundColor(RgbParameter(red, green, blue)))) }
 
     override fun toString(): String = mutableCodeList.joinToString("") + string
 }
