@@ -1,6 +1,6 @@
 package com.uramnoil.ansies
 
-enum class EscapeSequenceType(val abbr: String, val c1: Int) {
+enum class EscapeSequenceParameterType(val abbr: String, val c1: Int) {
     SingleShiftTwo("SS2", 0x8E),
     SingleShiftThree("SS3", 0x8F),
     DeviceControlString("DCS", 0x90),
@@ -14,10 +14,14 @@ enum class EscapeSequenceType(val abbr: String, val c1: Int) {
     override fun toString(): String = Char(c1).toString()
 }
 
-sealed class EscapeSequence : Control() {
-    override val controlCharacter: ControlCharacter = ControlCharacter.Escape
-    abstract val type: EscapeSequenceType
-    abstract override fun toString(): String
+class EscapeSequence(val parameter: EscapeSequenceParameter) {
+    val controlCharacter: ControlCharacter = ControlCharacter.Escape
+    fun build() = controlCharacter.toString() + parameter.build()
+}
+
+sealed class EscapeSequenceParameter {
+    abstract val type: EscapeSequenceParameterType
+    abstract fun build(): String
 }
 
 operator fun EscapeSequence.plus(string: String): String = this.toString() + string

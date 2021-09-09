@@ -1,21 +1,23 @@
 package com.uramnoil.ansies
 
-val reset = ResetOrNormal()
+val reset = EscapeSequence(ControlSequenceIntroducer(SelectGraphicRendition(ResetOrNormal())))
 
-val black = SelectGraphicRendition(SetForegroundColorBlack())
-val red = SelectGraphicRendition(SetForegroundColorRed())
-val green = SelectGraphicRendition(SetForegroundColorGreen())
-val yellow = SelectGraphicRendition(SetForegroundColorYellow())
-val blue = SelectGraphicRendition(SetForegroundColorBlue())
-val magenta = SelectGraphicRendition(SetForegroundColorMagenta())
-val cyan = SelectGraphicRendition(SetForegroundColorCyan())
-val white = SelectGraphicRendition(SetForegroundColorWhite())
+val black = EscapeSequence(ControlSequenceIntroducer(SelectGraphicRendition(SetForegroundColorBlack())))
+val red = EscapeSequence(ControlSequenceIntroducer(SelectGraphicRendition(SetForegroundColorRed())))
+val green = EscapeSequence(ControlSequenceIntroducer(SelectGraphicRendition(SetForegroundColorGreen())))
+val yellow = EscapeSequence(ControlSequenceIntroducer(SelectGraphicRendition(SetForegroundColorYellow())))
+val blue = EscapeSequence(ControlSequenceIntroducer(SelectGraphicRendition(SetForegroundColorBlue())))
+val magenta = EscapeSequence(ControlSequenceIntroducer(SelectGraphicRendition(SetForegroundColorMagenta())))
+val cyan = EscapeSequence(ControlSequenceIntroducer(SelectGraphicRendition(SetForegroundColorCyan())))
+val white = EscapeSequence(ControlSequenceIntroducer(SelectGraphicRendition(SetForegroundColorWhite())))
 
 class AnsiEscapeBuilder(val string: String) {
     private val mutableCodeList = mutableListOf<EscapeSequence>()
+    val escaped: String
+        get() = mutableCodeList.map { it.build() }.joinToString("") + string
 
-    internal fun add(sequence: EscapeSequence) {
-        mutableCodeList.add(sequence)
+    internal fun add(escapeSequence: EscapeSequence) {
+        mutableCodeList.add(escapeSequence)
     }
 
     fun black(): AnsiEscapeBuilder = apply { add(black) }
@@ -35,13 +37,23 @@ class AnsiEscapeBuilder(val string: String) {
     fun white(): AnsiEscapeBuilder = apply { add(white) }
 
     fun colorPalette(color: UByte): AnsiEscapeBuilder =
-        apply { add(SelectGraphicRendition(SetForegroundColor(ColorPaletteParameter(color)))) }
+        apply { add(EscapeSequence(ControlSequenceIntroducer(SelectGraphicRendition(SetForegroundColor(ColorPaletteParameter(color)))))) }
 
     fun rgb(red: UByte, green: UByte, blue: UByte): AnsiEscapeBuilder =
-        apply { add(SelectGraphicRendition(SetForegroundColor(RgbParameter(red, green, blue)))) }
+        apply { add(EscapeSequence(ControlSequenceIntroducer(SelectGraphicRendition(SetForegroundColor(RgbParameter(red, green, blue)))))) }
 
-    override fun toString(): String = mutableCodeList.joinToString("") + string
+    fun build(): String = escaped + reset.build()
 }
+
+operator fun AnsiEscapeBuilder.plus(builder: AnsiEscapeBuilder) = listOf(this, builder)
+
+operator fun AnsiEscapeBuilder.plus(escapeSequence: EscapeSequence) = listOf(this, AnsiEscapeBuilder("").add(escapeSequence))
+
+operator fun List<AnsiEscapeBuilder>.plus(builder: AnsiEscapeBuilder): List<AnsiEscapeBuilder> = apply { toMutableList().add(builder) }
+
+operator fun List<AnsiEscapeBuilder>.plus(escapeSequence: EscapeSequence) = listOf(this, AnsiEscapeBuilder("").add(escapeSequence))
+
+fun List<AnsiEscapeBuilder>.build(): String = map { it.escaped }.joinToString("") + reset.build()
 
 fun String.black(): AnsiEscapeBuilder = AnsiEscapeBuilder(this).black()
 

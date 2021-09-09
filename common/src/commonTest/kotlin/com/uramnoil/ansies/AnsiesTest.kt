@@ -3,88 +3,97 @@ package com.uramnoil.ansies
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-
 class AnsiesTest {
     companion object {
-        val csi = "${Char(0x1B)}["
+        fun csiWithReset(arg: String, string: String = "") = "${Char(0x1B)}[${arg}m${string}${reset.build()}"
+        fun csi(arg: String, string: String) = "${Char(0x1B)}[${arg}m${string}"
     }
 
     @Test
     fun testBlack() {
         assertEquals(
-            "${csi}30m",
-            "".black().toString()
+            csiWithReset("30"),
+            "".black().build()
         )
     }
 
     @Test
     fun testRed() {
         assertEquals(
-            "${csi}31m",
-            "".red().toString()
+            csiWithReset("31"),
+            "".red().build()
         )
     }
 
     @Test
     fun testGreen() {
         assertEquals(
-            "${csi}32m",
-            "".green().toString()
+            csiWithReset("32"),
+            "".green().build()
         )
     }
 
     @Test
     fun testYellow() {
         assertEquals(
-            "${csi}33m",
-            "".yellow().toString()
+            csiWithReset("33"),
+            "".yellow().build()
         )
     }
 
     @Test
     fun testBlue() {
         assertEquals(
-            "${csi}34m",
-            "".blue().toString()
+            csiWithReset("34"),
+            "".blue().build()
         )
     }
 
     @Test
     fun testMagenta() {
         assertEquals(
-            "${csi}35m",
-            "".magenta().toString()
+            csiWithReset("35"),
+            "".magenta().build()
         )
     }
 
     @Test
     fun testCyan() {
         assertEquals(
-            "${csi}36m",
-            "".cyan().toString()
+            csiWithReset("36"),
+            "".cyan().build()
         )
     }
 
     @Test
     fun testWhite() {
         assertEquals(
-            "${csi}37m",
-            "".white().toString()
+            csiWithReset("37"),
+            "".white().build()
         )
     }
 
     @Test
     fun testColorPalette() {
         assertEquals(
-            "${csi}38;5;0m",
-            "".colorPalette(0u).toString()
+            csiWithReset("38;5;0"),
+            "".colorPalette(0u).build()
         )
     }
 
     @Test
     fun testRgb() {
-        assertEquals("${csi}38;2;0;100;200m",
-            "".rgb(0u, 100u, 200u).toString()
+        assertEquals(
+            csiWithReset("38;2;0;100;200"),
+            "".rgb(0u, 100u, 200u).build()
+        )
+    }
+
+    @Test
+    fun testAnsiEscapeBuilderPlus() {
+        assertEquals(
+            csi("30", "hoge") + csiWithReset("37", "fuga"),
+            ("hoge".black() + "fuga".white()).build()
         )
     }
 }
