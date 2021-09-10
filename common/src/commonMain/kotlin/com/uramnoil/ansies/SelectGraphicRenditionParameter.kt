@@ -391,12 +391,14 @@ object NotOverlined : Overline() {
     override fun toString(): String = withoutArg()
 }
 
-class SetUnderlineColor(val parameter: ColorParameter) : SelectGraphicRenditionParameter() {
+sealed class UnderLineColor : SelectGraphicRenditionParameter()
+
+class SetUnderlineColor(val parameter: ColorParameter) : UnderLineColor() {
     override val type = SelectGraphicRenditionParameterType.SetUnderlineColor
     override fun toString(): String = type.toString() + parameter.build()
 }
 
-object DefaultUnderlineColor : SelectGraphicRenditionParameter() {
+object DefaultUnderlineColor : UnderLineColor() {
     override val type = SelectGraphicRenditionParameterType.DefaultUnderlineColor
     override fun toString(): String = withoutArg()
 }
