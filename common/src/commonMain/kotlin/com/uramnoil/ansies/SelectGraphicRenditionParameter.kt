@@ -249,106 +249,106 @@ object NotCrossedOut : SelectGraphicRenditionParameter() {
     override fun toString(): String = withoutArg()
 }
 
-interface ForegroundColor
+sealed class SetForegroundColor : SelectGraphicRenditionParameter()
 
-object SetForegroundColorBlack : SelectGraphicRenditionParameter(), ForegroundColor {
+object SetForegroundColorBlack : SetForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColorBlack
     override fun toString(): String = withoutArg()
 }
 
-object SetForegroundColorRed : SelectGraphicRenditionParameter(), ForegroundColor {
+object SetForegroundColorRed : SetForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColorRed
     override fun toString(): String = withoutArg()
 }
 
-object SetForegroundColorGreen : SelectGraphicRenditionParameter(), ForegroundColor {
+object SetForegroundColorGreen : SetForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColorGreen
     override fun toString(): String = withoutArg()
 }
 
-object SetForegroundColorYellow : SelectGraphicRenditionParameter(), ForegroundColor {
+object SetForegroundColorYellow : SetForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColorYellow
     override fun toString(): String = withoutArg()
 }
 
-object SetForegroundColorBlue : SelectGraphicRenditionParameter(), ForegroundColor {
+object SetForegroundColorBlue : SetForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColorBlue
     override fun toString(): String = withoutArg()
 }
 
-object SetForegroundColorMagenta : SelectGraphicRenditionParameter(), ForegroundColor {
+object SetForegroundColorMagenta : SetForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColorMagenta
     override fun toString(): String = withoutArg()
 }
 
-object SetForegroundColorCyan : SelectGraphicRenditionParameter(), ForegroundColor {
+object SetForegroundColorCyan : SetForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColorCyan
     override fun toString(): String = withoutArg()
 }
 
-object SetForegroundColorWhite : SelectGraphicRenditionParameter(), ForegroundColor {
+object SetForegroundColorWhite : SetForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColorWhite
     override fun toString(): String = withoutArg()
 }
 
-class SetForegroundColor(val parameter: ColorParameter) : SelectGraphicRenditionParameter(), ForegroundColor {
+class SetForegroundColorWith(val parameter: ColorParameter) : SetForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColor
     override fun toString(): String = "$type;$parameter"
 }
 
-object DefaultForegroundColor : SelectGraphicRenditionParameter(), ForegroundColor {
+object DefaultForegroundColor : SetForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.DefaultForegroundColor
     override fun toString(): String = withoutArg()
 }
 
-interface BackgroundColor
+sealed class SetBackgroundColor : SelectGraphicRenditionParameter() 
 
-object SetBackgroundColorBlack : SelectGraphicRenditionParameter(), BackgroundColor {
+object SetBackgroundColorBlack : SetBackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorBlack
     override fun toString(): String = withoutArg()
 }
 
-object SetBackgroundColorRed : SelectGraphicRenditionParameter(), BackgroundColor {
+object SetBackgroundColorRed : SetBackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorRed
     override fun toString(): String = withoutArg()
 }
 
-object SetBackgroundColorGreen : SelectGraphicRenditionParameter(), BackgroundColor {
+object SetBackgroundColorGreen : SetBackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorGreen
     override fun toString(): String = withoutArg()
 }
 
-object SetBackgroundColorYellow : SelectGraphicRenditionParameter(), BackgroundColor {
+object SetBackgroundColorYellow : SetBackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorYellow
     override fun toString(): String = withoutArg()
 }
 
-object SetBackgroundColorBlue : SelectGraphicRenditionParameter(), BackgroundColor {
+object SetBackgroundColorBlue : SetBackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorBlue
     override fun toString(): String = withoutArg()
 }
 
-object SetBackgroundColorMagenta : SelectGraphicRenditionParameter(), BackgroundColor {
+object SetBackgroundColorMagenta : SetBackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorMagenta
     override fun toString(): String = withoutArg()
 }
 
-object SetBackgroundColorCyan : SelectGraphicRenditionParameter(), BackgroundColor {
+object SetBackgroundColorCyan : SetBackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorCyan
     override fun toString(): String = withoutArg()
 }
 
-object SetBackgroundColorWhite : SelectGraphicRenditionParameter(), BackgroundColor {
+object SetBackgroundColorWhite : SetBackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorWhite
     override fun toString(): String = withoutArg()
 }
 
-class SetBackgroundColor(val parameter: ColorParameter) : SelectGraphicRenditionParameter(), BackgroundColor {
+class SetBackgroundColorWith(val parameter: ColorParameter) : SetBackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColor
     override fun toString(): String = "$type;$parameter"
 }
 
-object DefaultBackgroundColor : SelectGraphicRenditionParameter(), BackgroundColor {
+object DefaultBackgroundColor : SetBackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.DefaultBackgroundColor
     override fun toString(): String = withoutArg()
 }
