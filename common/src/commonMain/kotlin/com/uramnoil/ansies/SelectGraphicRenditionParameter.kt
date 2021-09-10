@@ -102,7 +102,9 @@ object ResetOrNormal : SelectGraphicRenditionParameter() {
 
 interface Attribute
 
-object BoldOrIncreasedIntensity : SelectGraphicRenditionParameter(), Attribute {
+sealed class Font : SelectGraphicRenditionParameter()
+
+object BoldOrIncreasedIntensity : Font() {
     override val type = SelectGraphicRenditionParameterType.BoldOrIncreasedIntensity
     override fun toString(): String = withoutArg()
 }
@@ -112,7 +114,7 @@ object FaintDecreasedIntensityOrDim : SelectGraphicRenditionParameter(), Attribu
     override fun toString(): String = withoutArg()
 }
 
-object Italic : SelectGraphicRenditionParameter(), Attribute {
+object Italic : Font() {
     override val type = SelectGraphicRenditionParameterType.Italic
     override fun toString(): String = withoutArg()
 }
@@ -216,7 +218,7 @@ object NormalIntensity : SelectGraphicRenditionParameter() {
     override fun toString(): String = withoutArg()
 }
 
-object NeitherItalicNorBlackletter : SelectGraphicRenditionParameter() {
+object NeitherItalicNorBlackletter : Font() {
     override val type = SelectGraphicRenditionParameterType.NeitherItalicNorBlackletter
     override fun toString(): String = withoutArg()
 }
