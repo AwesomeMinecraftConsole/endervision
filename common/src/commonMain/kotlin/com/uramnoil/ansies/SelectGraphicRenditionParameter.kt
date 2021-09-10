@@ -100,8 +100,6 @@ object ResetOrNormal : SelectGraphicRenditionParameter() {
     override fun toString(): String = withoutArg()
 }
 
-interface Attribute
-
 sealed class Font : SelectGraphicRenditionParameter()
 
 sealed class Intensity : SelectGraphicRenditionParameter()
@@ -140,19 +138,19 @@ object RapidBlink : Blink() {
     override fun toString(): String = withoutArg()
 }
 
-object ReverseVideoOrInvert : SelectGraphicRenditionParameter(), Attribute {
+object ReverseVideoOrInvert : SelectGraphicRenditionParameter() {
     override val type = SelectGraphicRenditionParameterType.ReverseVideoOrInvert
     override fun toString(): String = withoutArg()
 }
 
-sealed class Conceal : Attribute()
+sealed class Conceal : SelectGraphicRenditionParameter()
 
 object Concealed : Conceal() {
     override val type = SelectGraphicRenditionParameterType.ConcealOrHide
     override fun toString(): String = withoutArg()
 }
 
-sealed class Strikethrough : Attribute()
+sealed class Strikethrough : SelectGraphicRenditionParameter()
 
 object CrossedOut : Strikethrough() {
     override val type = SelectGraphicRenditionParameterType.CrossedOutOrStrike
@@ -436,8 +434,8 @@ object IdeogramStressMarking : Ideogram() {
     override fun toString(): String = withoutArg()
 }
 
-object NoIdeogramAttributes : Ideogram() {
-    override val type = SelectGraphicRenditionParameterType.NoIdeogramAttributes
+object NoIdeogramSelectGraphicRenditionParameters : Ideogram() {
+    override val type = SelectGraphicRenditionParameterType.NoIdeogramSelectGraphicRenditionParameters
     override fun toString(): String = withoutArg()
 }
 
