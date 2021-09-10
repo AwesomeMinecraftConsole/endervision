@@ -301,7 +301,7 @@ object SetForegroundColorWhite : ForegroundColor() {
 
 class SetForegroundColorWith(val parameter: ColorParameter) : ForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColor
-    override fun toString(): String = "$type;$parameter"
+    override fun toString(): String = "$type;${parameter.build()}"
 }
 
 object DefaultForegroundColor : ForegroundColor() {
@@ -353,7 +353,7 @@ object SetBackgroundColorWhite : BackgroundColor() {
 
 class SetBackgroundColorWith(val parameter: ColorParameter) : BackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColor
-    override fun toString(): String = "$type;$parameter"
+    override fun toString(): String = "$type;${parameter.build()}"
 }
 
 object DefaultBackgroundColor : BackgroundColor() {

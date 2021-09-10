@@ -96,4 +96,8 @@ class AnsiesTest {
             ("hoge".black() + "fuga".white()).build()
         )
     }
+
+    @Test
+    fun testParseAnsi() {
+    }
 }
