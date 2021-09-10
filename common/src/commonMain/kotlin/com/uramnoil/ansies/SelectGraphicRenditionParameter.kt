@@ -437,17 +437,19 @@ object NoIdeogramAttributes : Ideogram() {
     override fun toString(): String = withoutArg()
 }
 
-object Superscript : SelectGraphicRenditionParameter() {
+sealed class Script : SelectGraphicRenditionParameter()
+
+object Superscript : Script() {
     override val type = SelectGraphicRenditionParameterType.Superscript
     override fun toString(): String = withoutArg()
 }
 
-object Subscript : SelectGraphicRenditionParameter() {
+object Subscript : Script() {
     override val type = SelectGraphicRenditionParameterType.Subscript
     override fun toString(): String = withoutArg()
 }
 
-object NeitherSuperscriptNorSubscript : SelectGraphicRenditionParameter() {
+object NeitherSuperscriptNorSubscript : Script() {
     override val type = SelectGraphicRenditionParameterType.NeitherSuperscriptNorSubscript
     override fun toString(): String = withoutArg()
 }
