@@ -143,7 +143,9 @@ object ReverseVideoOrInvert : SelectGraphicRenditionParameter(), Attribute {
     override fun toString(): String = withoutArg()
 }
 
-object ConcealOrHide : SelectGraphicRenditionParameter(), Attribute {
+sealed class Conceal : Attribute()
+
+object Concealed : Conceal() {
     override val type = SelectGraphicRenditionParameterType.ConcealOrHide
     override fun toString(): String = withoutArg()
 }
@@ -243,7 +245,7 @@ object NotReversed : SelectGraphicRenditionParameter() {
     override fun toString(): String = withoutArg()
 }
 
-object Reveal : SelectGraphicRenditionParameter() {
+object Reveal : Conceal() {
     override val type = SelectGraphicRenditionParameterType.Reveal
     override fun toString(): String = withoutArg()
 }
