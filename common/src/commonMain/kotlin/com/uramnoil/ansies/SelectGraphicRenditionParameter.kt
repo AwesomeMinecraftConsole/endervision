@@ -374,7 +374,9 @@ object Encircled : SelectGraphicRenditionParameter() {
     override fun toString(): String = withoutArg()
 }
 
-object Overlined : SelectGraphicRenditionParameter() {
+sealed class Overline : SelectGraphicRenditionParameter()
+
+object Overlined : Overline() {
     override val type = SelectGraphicRenditionParameterType.Overlined
     override fun toString(): String = withoutArg()
 }
@@ -384,7 +386,7 @@ object NeitherFramedNorEncircled : SelectGraphicRenditionParameter() {
     override fun toString(): String = withoutArg()
 }
 
-object NotOverlined : SelectGraphicRenditionParameter() {
+object NotOverlined : Overline() {
     override val type = SelectGraphicRenditionParameterType.NotOverlined
     override fun toString(): String = withoutArg()
 }
