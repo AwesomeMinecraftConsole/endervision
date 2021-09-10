@@ -100,47 +100,49 @@ class ResetOrNormal : SelectGraphicRenditionParameter() {
     override fun toString(): String = withoutArg()
 }
 
-class BoldOrIncreasedIntensity : SelectGraphicRenditionParameter() {
+interface Attribute
+
+class BoldOrIncreasedIntensity : SelectGraphicRenditionParameter(), Attribute {
     override val type = SelectGraphicRenditionParameterType.BoldOrIncreasedIntensity
     override fun toString(): String = withoutArg()
 }
 
-class FaintDecreasedIntensityOrDim : SelectGraphicRenditionParameter() {
+class FaintDecreasedIntensityOrDim : SelectGraphicRenditionParameter(), Attribute {
     override val type = SelectGraphicRenditionParameterType.FaintDecreasedIntensityOrDim
     override fun toString(): String = withoutArg()
 }
 
-class Italic : SelectGraphicRenditionParameter() {
+class Italic : SelectGraphicRenditionParameter(), Attribute {
     override val type = SelectGraphicRenditionParameterType.Italic
     override fun toString(): String = withoutArg()
 }
 
-class Underline : SelectGraphicRenditionParameter() {
+class Underline : SelectGraphicRenditionParameter(), Attribute {
     override val type = SelectGraphicRenditionParameterType.Underline
     override fun toString(): String = withoutArg()
 }
 
-class SlowBlink : SelectGraphicRenditionParameter() {
+class SlowBlink : SelectGraphicRenditionParameter(), Attribute {
     override val type = SelectGraphicRenditionParameterType.SlowBlink
     override fun toString(): String = withoutArg()
 }
 
-class RapidBlink : SelectGraphicRenditionParameter() {
+class RapidBlink : SelectGraphicRenditionParameter(), Attribute {
     override val type = SelectGraphicRenditionParameterType.RapidBlink
     override fun toString(): String = withoutArg()
 }
 
-class ReverseVideoOrInvert : SelectGraphicRenditionParameter() {
+class ReverseVideoOrInvert : SelectGraphicRenditionParameter(), Attribute {
     override val type = SelectGraphicRenditionParameterType.ReverseVideoOrInvert
     override fun toString(): String = withoutArg()
 }
 
-class ConcealOrHide : SelectGraphicRenditionParameter() {
+class ConcealOrHide : SelectGraphicRenditionParameter(), Attribute {
     override val type = SelectGraphicRenditionParameterType.ConcealOrHide
     override fun toString(): String = withoutArg()
 }
 
-class CrossedOutOrStrike : SelectGraphicRenditionParameter() {
+class CrossedOutOrStrike : SelectGraphicRenditionParameter(), Attribute {
     override val type = SelectGraphicRenditionParameterType.CrossedOutOrStrike
     override fun toString(): String = withoutArg()
 }
