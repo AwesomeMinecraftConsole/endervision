@@ -23,5 +23,3 @@ sealed class EscapeSequenceParameter {
     abstract val type: EscapeSequenceParameterType
     abstract fun build(): String
 }
-
-operator fun EscapeSequence.plus(string: String): String = this.toString() + string
