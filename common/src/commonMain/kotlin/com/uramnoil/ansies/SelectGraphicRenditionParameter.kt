@@ -435,7 +435,7 @@ object IdeogramStressMarking : Ideogram() {
 }
 
 object NoIdeogramSelectGraphicRenditionParameters : Ideogram() {
-    override val type = SelectGraphicRenditionParameterType.NoIdeogramSelectGraphicRenditionParameters
+    override val type = SelectGraphicRenditionParameterType.NoIdeogramAttributes
     override fun toString(): String = withoutArg()
 }
 
