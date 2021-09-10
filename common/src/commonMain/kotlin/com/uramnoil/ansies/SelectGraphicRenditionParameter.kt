@@ -150,7 +150,9 @@ object Concealed : Conceal() {
     override fun toString(): String = withoutArg()
 }
 
-object CrossedOutOrStrike : SelectGraphicRenditionParameter(), Attribute {
+sealed class Strikethrough : Attribute()
+
+object CrossedOut : Strikethrough() {
     override val type = SelectGraphicRenditionParameterType.CrossedOutOrStrike
     override fun toString(): String = withoutArg()
 }
@@ -250,7 +252,7 @@ object Reveal : Conceal() {
     override fun toString(): String = withoutArg()
 }
 
-object NotCrossedOut : SelectGraphicRenditionParameter() {
+object NotCrossedOut : Strikethrough() {
     override val type = SelectGraphicRenditionParameterType.NotCrossedOut
     override fun toString(): String = withoutArg()
 }
