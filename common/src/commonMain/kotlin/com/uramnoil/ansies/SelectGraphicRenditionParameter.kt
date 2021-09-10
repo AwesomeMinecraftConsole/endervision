@@ -530,15 +530,15 @@ enum class ColorMode(val mode: Int) {
 
 sealed class ColorParameter {
     abstract val mode: ColorMode
-    abstract override fun toString(): String
+    abstract fun build(): String
 }
 
 class ColorPaletteParameter(val color: UByte) : ColorParameter() {
     override val mode = ColorMode.ColorPalette
-    override fun toString(): String = "$mode;$color"
+    override fun build(): String = "$mode;$color"
 }
 
 class RgbParameter(val red: UByte, val green: UByte, val blue: UByte) : ColorParameter() {
     override val mode = ColorMode.Rgb
-    override fun toString(): String = "$mode;$red;$green;$blue"
+    override fun build(): String = "$mode;$red;$green;$blue"
 }
