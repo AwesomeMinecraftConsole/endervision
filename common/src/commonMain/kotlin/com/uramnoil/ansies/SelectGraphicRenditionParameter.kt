@@ -297,52 +297,54 @@ class DefaultForegroundColor : SelectGraphicRenditionParameter() {
     override fun toString(): String = withoutArg()
 }
 
-class SetBackgroundColorBlack : SelectGraphicRenditionParameter() {
+interface BackgroundColor
+
+class SetBackgroundColorBlack : SelectGraphicRenditionParameter(), BackgroundColor {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorBlack
     override fun toString(): String = withoutArg()
 }
 
-class SetBackgroundColorRed : SelectGraphicRenditionParameter() {
+class SetBackgroundColorRed : SelectGraphicRenditionParameter(), BackgroundColor {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorRed
     override fun toString(): String = withoutArg()
 }
 
-class SetBackgroundColorGreen : SelectGraphicRenditionParameter() {
+class SetBackgroundColorGreen : SelectGraphicRenditionParameter(), BackgroundColor {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorGreen
     override fun toString(): String = withoutArg()
 }
 
-class SetBackgroundColorYellow : SelectGraphicRenditionParameter() {
+class SetBackgroundColorYellow : SelectGraphicRenditionParameter(), BackgroundColor {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorYellow
     override fun toString(): String = withoutArg()
 }
 
-class SetBackgroundColorBlue : SelectGraphicRenditionParameter() {
+class SetBackgroundColorBlue : SelectGraphicRenditionParameter(), BackgroundColor {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorBlue
     override fun toString(): String = withoutArg()
 }
 
-class SetBackgroundColorMagenta : SelectGraphicRenditionParameter() {
+class SetBackgroundColorMagenta : SelectGraphicRenditionParameter(), BackgroundColor {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorMagenta
     override fun toString(): String = withoutArg()
 }
 
-class SetBackgroundColorCyan : SelectGraphicRenditionParameter() {
+class SetBackgroundColorCyan : SelectGraphicRenditionParameter(), BackgroundColor {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorCyan
     override fun toString(): String = withoutArg()
 }
 
-class SetBackgroundColorWhite : SelectGraphicRenditionParameter() {
+class SetBackgroundColorWhite : SelectGraphicRenditionParameter(), BackgroundColor {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorWhite
     override fun toString(): String = withoutArg()
 }
 
-class SetBackgroundColor(val parameter: ColorParameter) : SelectGraphicRenditionParameter() {
+class SetBackgroundColor(val parameter: ColorParameter) : SelectGraphicRenditionParameter(), BackgroundColor {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColor
     override fun toString(): String = "$type;$parameter"
 }
 
-class DefaultBackgroundColor : SelectGraphicRenditionParameter() {
+class DefaultBackgroundColor : SelectGraphicRenditionParameter(), BackgroundColor {
     override val type = SelectGraphicRenditionParameterType.DefaultBackgroundColor
     override fun toString(): String = withoutArg()
 }
