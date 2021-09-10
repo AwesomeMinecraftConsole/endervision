@@ -18,7 +18,7 @@ class AnsiEscapeBuilder(val string: String, private val canOverrideForegroundCol
                     ).filterNotNull().toSet()
                 )
             )
-        ).build()
+        ).build() + string
 
     fun black(): AnsiEscapeBuilder = apply { foregroundColor = SetForegroundColorBlack }
 
