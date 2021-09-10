@@ -122,12 +122,14 @@ object Underline : SelectGraphicRenditionParameter(), Attribute {
     override fun toString(): String = withoutArg()
 }
 
-object SlowBlink : SelectGraphicRenditionParameter(), Attribute {
+sealed class Blink : SelectGraphicRenditionParameter()
+
+object SlowBlink : Blink() {
     override val type = SelectGraphicRenditionParameterType.SlowBlink
     override fun toString(): String = withoutArg()
 }
 
-object RapidBlink : SelectGraphicRenditionParameter(), Attribute {
+object RapidBlink : Blink() {
     override val type = SelectGraphicRenditionParameterType.RapidBlink
     override fun toString(): String = withoutArg()
 }
@@ -224,7 +226,7 @@ object NotUnderlined : SelectGraphicRenditionParameter() {
     override fun toString(): String = withoutArg()
 }
 
-object NotBlinking : SelectGraphicRenditionParameter() {
+object NotBlinking : Blink() {
     override val type = SelectGraphicRenditionParameterType.NotBlinking
     override fun toString(): String = withoutArg()
 }
