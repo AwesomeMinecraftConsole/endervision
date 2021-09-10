@@ -405,32 +405,34 @@ object DefaultUnderlineColor : UnderLineColor() {
     override fun toString(): String = withoutArg()
 }
 
-object IdeogramUnderlineOrRightSideLine : SelectGraphicRenditionParameter() {
+sealed class Ideogram : SelectGraphicRenditionParameter()
+
+object IdeogramUnderlineOrRightSideLine : Ideogram() {
     override val type = SelectGraphicRenditionParameterType.IdeogramUnderlineOrRightSideLine
     override fun toString(): String = withoutArg()
 }
 
-object IdeogramDoubleUnderlineOrDoubleLineOnTheRightSide : SelectGraphicRenditionParameter() {
+object IdeogramDoubleUnderlineOrDoubleLineOnTheRightSide : Ideogram() {
     override val type = SelectGraphicRenditionParameterType.IdeogramDoubleUnderlineOrDoubleLineOnTheRightSide
     override fun toString(): String = withoutArg()
 }
 
-object IdeogramOverlineOrLeftSideLine : SelectGraphicRenditionParameter() {
+object IdeogramOverlineOrLeftSideLine : Ideogram() {
     override val type = SelectGraphicRenditionParameterType.IdeogramOverlineOrLeftSideLine
     override fun toString(): String = withoutArg()
 }
 
-object IdeogramDoubleOverlineOrDoubleLineOnTheLeftSide : SelectGraphicRenditionParameter() {
+object IdeogramDoubleOverlineOrDoubleLineOnTheLeftSide : Ideogram() {
     override val type = SelectGraphicRenditionParameterType.IdeogramDoubleOverlineOrDoubleLineOnTheLeftSide
     override fun toString(): String = withoutArg()
 }
 
-object IdeogramStressMarking : SelectGraphicRenditionParameter() {
+object IdeogramStressMarking : Ideogram() {
     override val type = SelectGraphicRenditionParameterType.IdeogramStressMarking
     override fun toString(): String = withoutArg()
 }
 
-object NoIdeogramAttributes : SelectGraphicRenditionParameter() {
+object NoIdeogramAttributes : Ideogram() {
     override val type = SelectGraphicRenditionParameterType.NoIdeogramAttributes
     override fun toString(): String = withoutArg()
 }
