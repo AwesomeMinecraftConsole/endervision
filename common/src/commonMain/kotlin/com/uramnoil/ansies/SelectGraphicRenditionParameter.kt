@@ -153,8 +153,6 @@ object CrossedOutOrStrike : SelectGraphicRenditionParameter(), Attribute {
     override fun toString(): String = withoutArg()
 }
 
-sealed class Font : SelectGraphicRenditionParameter()
-
 object PrimaryFont : Font() {
     override val type = SelectGraphicRenditionParameterType.PrimaryFont
     override fun toString(): String = withoutArg()
