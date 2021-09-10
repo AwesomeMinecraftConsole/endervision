@@ -364,12 +364,14 @@ object DisableProportionalSpacing : SelectGraphicRenditionParameter() {
     override fun toString(): String = withoutArg()
 }
 
-object Framed : SelectGraphicRenditionParameter() {
+sealed class EmojiVariationSelector : SelectGraphicRenditionParameter()
+
+object Framed :EmojiVariationSelector() {
     override val type = SelectGraphicRenditionParameterType.Framed
     override fun toString(): String = withoutArg()
 }
 
-object Encircled : SelectGraphicRenditionParameter() {
+object Encircled : EmojiVariationSelector() {
     override val type = SelectGraphicRenditionParameterType.Encircled
     override fun toString(): String = withoutArg()
 }
@@ -381,7 +383,7 @@ object Overlined : Overline() {
     override fun toString(): String = withoutArg()
 }
 
-object NeitherFramedNorEncircled : SelectGraphicRenditionParameter() {
+object NeitherFramedNorEncircled : EmojiVariationSelector() {
     override val type = SelectGraphicRenditionParameterType.NeitherFramedNorEncircled
     override fun toString(): String = withoutArg()
 }
