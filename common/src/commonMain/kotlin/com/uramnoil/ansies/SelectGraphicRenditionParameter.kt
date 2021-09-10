@@ -119,7 +119,9 @@ object Italic : Font() {
     override fun toString(): String = withoutArg()
 }
 
-object Underline : SelectGraphicRenditionParameter(), Attribute {
+sealed class Underline : SelectGraphicRenditionParameter()
+
+object Underlined : Underline() {
     override val type = SelectGraphicRenditionParameterType.Underline
     override fun toString(): String = withoutArg()
 }
@@ -208,7 +210,7 @@ object BlackletterFont : Font() {
     override fun toString(): String = withoutArg()
 }
 
-object DoublyUnderlinedOrNotBold : SelectGraphicRenditionParameter() {
+object DoublyUnderlinedOrNotBold : Underline {
     override val type = SelectGraphicRenditionParameterType.DoublyUnderlinedOrNotBold
     override fun toString(): String = withoutArg()
 }
@@ -223,7 +225,7 @@ object NeitherItalicNorBlackletter : Font() {
     override fun toString(): String = withoutArg()
 }
 
-object NotUnderlined : SelectGraphicRenditionParameter() {
+object NotUnderlined : Underline() {
     override val type = SelectGraphicRenditionParameterType.NotUnderlined
     override fun toString(): String = withoutArg()
 }
