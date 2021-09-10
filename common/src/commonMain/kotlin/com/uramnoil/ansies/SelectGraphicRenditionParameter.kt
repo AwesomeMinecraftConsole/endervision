@@ -147,57 +147,59 @@ class CrossedOutOrStrike : SelectGraphicRenditionParameter(), Attribute {
     override fun toString(): String = withoutArg()
 }
 
-class PrimaryFont : SelectGraphicRenditionParameter() {
+interface Font
+
+class PrimaryFont : SelectGraphicRenditionParameter(), Font {
     override val type = SelectGraphicRenditionParameterType.PrimaryFont
     override fun toString(): String = withoutArg()
 }
 
-class AlternativeFont1 : SelectGraphicRenditionParameter() {
+class AlternativeFont1 : SelectGraphicRenditionParameter(), Font {
     override val type = SelectGraphicRenditionParameterType.AlternativeFont1
     override fun toString(): String = withoutArg()
 }
 
-class AlternativeFont2 : SelectGraphicRenditionParameter() {
+class AlternativeFont2 : SelectGraphicRenditionParameter(), Font {
     override val type = SelectGraphicRenditionParameterType.AlternativeFont2
     override fun toString(): String = withoutArg()
 }
 
-class AlternativeFont3 : SelectGraphicRenditionParameter() {
+class AlternativeFont3 : SelectGraphicRenditionParameter(), Font {
     override val type = SelectGraphicRenditionParameterType.AlternativeFont3
     override fun toString(): String = withoutArg()
 }
 
-class AlternativeFont4 : SelectGraphicRenditionParameter() {
+class AlternativeFont4 : SelectGraphicRenditionParameter(), Font {
     override val type = SelectGraphicRenditionParameterType.AlternativeFont4
     override fun toString(): String = withoutArg()
 }
 
-class AlternativeFont5 : SelectGraphicRenditionParameter() {
+class AlternativeFont5 : SelectGraphicRenditionParameter(), Font {
     override val type = SelectGraphicRenditionParameterType.AlternativeFont5
     override fun toString(): String = withoutArg()
 }
 
-class AlternativeFont6 : SelectGraphicRenditionParameter() {
+class AlternativeFont6 : SelectGraphicRenditionParameter(), Font {
     override val type = SelectGraphicRenditionParameterType.AlternativeFont6
     override fun toString(): String = withoutArg()
 }
 
-class AlternativeFont7 : SelectGraphicRenditionParameter() {
+class AlternativeFont7 : SelectGraphicRenditionParameter(), Font {
     override val type = SelectGraphicRenditionParameterType.AlternativeFont7
     override fun toString(): String = withoutArg()
 }
 
-class AlternativeFont8 : SelectGraphicRenditionParameter() {
+class AlternativeFont8 : SelectGraphicRenditionParameter(), Font {
     override val type = SelectGraphicRenditionParameterType.AlternativeFont8
     override fun toString(): String = withoutArg()
 }
 
-class AlternativeFont9 : SelectGraphicRenditionParameter() {
+class AlternativeFont9 : SelectGraphicRenditionParameter(), Font {
     override val type = SelectGraphicRenditionParameterType.AlternativeFont9
     override fun toString(): String = withoutArg()
 }
 
-class BlackletterFont : SelectGraphicRenditionParameter() {
+class BlackletterFont : SelectGraphicRenditionParameter(), Font {
     override val type = SelectGraphicRenditionParameterType.BlackletterFont
     override fun toString(): String = withoutArg()
 }
