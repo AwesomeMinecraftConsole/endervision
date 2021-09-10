@@ -210,7 +210,7 @@ object BlackletterFont : Font() {
     override fun toString(): String = withoutArg()
 }
 
-object DoublyUnderlinedOrNotBold : Underline {
+object DoublyUnderlinedOrNotBold : Underline() {
     override val type = SelectGraphicRenditionParameterType.DoublyUnderlinedOrNotBold
     override fun toString(): String = withoutArg()
 }
