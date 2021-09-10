@@ -97,10 +97,12 @@ class HorizontalVerticalPosition(val n: Int = 1) : ControlSequenceIntroducerPara
     override fun build(): String = withArgN(n)
 }
 
-class SelectGraphicRendition(val parameter: SelectGraphicRenditionParameter) : ControlSequenceIntroducerParameter() {
+class SelectGraphicRendition(val parameter: Set<SelectGraphicRenditionParameter>) : ControlSequenceIntroducerParameter() {
     override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.SelectGraphicRendition
-    override fun build(): String = "$parameter$type"
+    override fun build(): String = "${parameter.joinToString(";")}$type"
 }
+
+fun SelectGraphicRendition(parameter: SelectGraphicRenditionParameter) = SelectGraphicRendition(setOf(parameter))
 
 class AuxPortOn(val n: Int = 1) : ControlSequenceIntroducerParameter() {
     override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.AuxPortOn
