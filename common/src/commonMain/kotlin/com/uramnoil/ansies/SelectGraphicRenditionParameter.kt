@@ -292,7 +292,7 @@ class SetForegroundColor(val parameter: ColorParameter) : SelectGraphicRendition
     override fun toString(): String = "$type;$parameter"
 }
 
-class DefaultForegroundColor : SelectGraphicRenditionParameter() {
+class DefaultForegroundColor : SelectGraphicRenditionParameter(), ForegroundColor {
     override val type = SelectGraphicRenditionParameterType.DefaultForegroundColor
     override fun toString(): String = withoutArg()
 }
