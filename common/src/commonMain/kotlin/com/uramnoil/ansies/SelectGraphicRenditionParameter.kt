@@ -104,12 +104,14 @@ interface Attribute
 
 sealed class Font : SelectGraphicRenditionParameter()
 
-object BoldOrIncreasedIntensity : Font() {
+sealed class Intensity : SelectGraphicRenditionParameter()
+
+object BoldOrIncreasedIntensity : Intensity() {
     override val type = SelectGraphicRenditionParameterType.BoldOrIncreasedIntensity
     override fun toString(): String = withoutArg()
 }
 
-object FaintDecreasedIntensityOrDim : SelectGraphicRenditionParameter(), Attribute {
+object FaintDecreasedIntensityOrDim : Intensity() {
     override val type = SelectGraphicRenditionParameterType.FaintDecreasedIntensityOrDim
     override fun toString(): String = withoutArg()
 }
@@ -217,7 +219,7 @@ object DoublyUnderlinedOrNotBold : Underline() {
     override fun toString(): String = withoutArg()
 }
 
-object NormalIntensity : SelectGraphicRenditionParameter() {
+object NormalIntensity : Intensity() {
     override val type = SelectGraphicRenditionParameterType.NormalIntensity
     override fun toString(): String = withoutArg()
 }
