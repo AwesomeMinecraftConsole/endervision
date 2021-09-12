@@ -90,454 +90,496 @@ enum class SelectGraphicRenditionParameterType(val m: Int) {
 
 sealed class SelectGraphicRenditionParameter {
     abstract val type: SelectGraphicRenditionParameterType
-    abstract override fun toString(): String
+    abstract fun build(): String
+    abstract fun asBuilder(): SelectGraphicRenditionSequenceBuilder
 }
 
 fun SelectGraphicRenditionParameter.withoutArg() = type.toString()
 
 object ResetOrNormal : SelectGraphicRenditionParameter() {
     override val type = SelectGraphicRenditionParameterType.ResetOrNormal
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
+    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(startWithReset = this)
 }
 
-sealed class Font : SelectGraphicRenditionParameter()
-
-sealed class Intensity : SelectGraphicRenditionParameter()
+sealed class Intensity : SelectGraphicRenditionParameter() {
+    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(intensity = this)
+}
 
 object BoldOrIncreasedIntensity : Intensity() {
     override val type = SelectGraphicRenditionParameterType.BoldOrIncreasedIntensity
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object FaintDecreasedIntensityOrDim : Intensity() {
     override val type = SelectGraphicRenditionParameterType.FaintDecreasedIntensityOrDim
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
+}
+
+sealed class Font : SelectGraphicRenditionParameter() {
+    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(font = this)
 }
 
 object Italic : Font() {
     override val type = SelectGraphicRenditionParameterType.Italic
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
-sealed class Underline : SelectGraphicRenditionParameter()
+sealed class Underline : SelectGraphicRenditionParameter() {
+    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(underline = this)
+}
 
 object Underlined : Underline() {
     override val type = SelectGraphicRenditionParameterType.Underline
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
-sealed class Blink : SelectGraphicRenditionParameter()
+sealed class Blink : SelectGraphicRenditionParameter() {
+    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(blink = this)
+}
 
 object SlowBlink : Blink() {
     override val type = SelectGraphicRenditionParameterType.SlowBlink
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object RapidBlink : Blink() {
     override val type = SelectGraphicRenditionParameterType.RapidBlink
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
-object ReverseVideoOrInvert : SelectGraphicRenditionParameter() {
+sealed class Reverse : SelectGraphicRenditionParameter() {
+    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(reverse = this)
+}
+
+object Reversed : Reverse() {
     override val type = SelectGraphicRenditionParameterType.ReverseVideoOrInvert
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
-sealed class Conceal : SelectGraphicRenditionParameter()
+sealed class Conceal : SelectGraphicRenditionParameter() {
+    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(conceal = this)
+}
 
 object Concealed : Conceal() {
     override val type = SelectGraphicRenditionParameterType.ConcealOrHide
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
-sealed class Strikethrough : SelectGraphicRenditionParameter()
+sealed class Strikethrough : SelectGraphicRenditionParameter() {
+    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(crossedOut = this)
+}
 
 object CrossedOut : Strikethrough() {
     override val type = SelectGraphicRenditionParameterType.CrossedOutOrStrike
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object PrimaryFont : Font() {
     override val type = SelectGraphicRenditionParameterType.PrimaryFont
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object AlternativeFont1 : Font() {
     override val type = SelectGraphicRenditionParameterType.AlternativeFont1
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object AlternativeFont2 : Font() {
     override val type = SelectGraphicRenditionParameterType.AlternativeFont2
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object AlternativeFont3 : Font() {
     override val type = SelectGraphicRenditionParameterType.AlternativeFont3
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object AlternativeFont4 : Font() {
     override val type = SelectGraphicRenditionParameterType.AlternativeFont4
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object AlternativeFont5 : Font() {
     override val type = SelectGraphicRenditionParameterType.AlternativeFont5
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object AlternativeFont6 : Font() {
     override val type = SelectGraphicRenditionParameterType.AlternativeFont6
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object AlternativeFont7 : Font() {
     override val type = SelectGraphicRenditionParameterType.AlternativeFont7
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object AlternativeFont8 : Font() {
     override val type = SelectGraphicRenditionParameterType.AlternativeFont8
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object AlternativeFont9 : Font() {
     override val type = SelectGraphicRenditionParameterType.AlternativeFont9
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object BlackletterFont : Font() {
     override val type = SelectGraphicRenditionParameterType.BlackletterFont
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object DoublyUnderlinedOrNotBold : Underline() {
     override val type = SelectGraphicRenditionParameterType.DoublyUnderlinedOrNotBold
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object NormalIntensity : Intensity() {
     override val type = SelectGraphicRenditionParameterType.NormalIntensity
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object NeitherItalicNorBlackletter : Font() {
     override val type = SelectGraphicRenditionParameterType.NeitherItalicNorBlackletter
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object NotUnderlined : Underline() {
     override val type = SelectGraphicRenditionParameterType.NotUnderlined
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object NotBlinking : Blink() {
     override val type = SelectGraphicRenditionParameterType.NotBlinking
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object ProportionalSpacing : SelectGraphicRenditionParameter() {
     override val type = SelectGraphicRenditionParameterType.ProportionalSpacing
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
+    override fun asBuilder(): SelectGraphicRenditionSequenceBuilder {
+        TODO("Not yet implemented")
+    }
 }
 
-object NotReversed : SelectGraphicRenditionParameter() {
+object NotReversed : Reverse() {
     override val type = SelectGraphicRenditionParameterType.NotReversed
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object Reveal : Conceal() {
     override val type = SelectGraphicRenditionParameterType.Reveal
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object NotCrossedOut : Strikethrough() {
     override val type = SelectGraphicRenditionParameterType.NotCrossedOut
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
-sealed class ForegroundColor : SelectGraphicRenditionParameter()
+sealed class ForegroundColor : SelectGraphicRenditionParameter() {
+    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(foregroundColor = this)
+}
 
 object SetForegroundColorBlack : ForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColorBlack
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetForegroundColorRed : ForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColorRed
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetForegroundColorGreen : ForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColorGreen
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetForegroundColorYellow : ForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColorYellow
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetForegroundColorBlue : ForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColorBlue
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetForegroundColorMagenta : ForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColorMagenta
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetForegroundColorCyan : ForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColorCyan
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetForegroundColorWhite : ForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColorWhite
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 class SetForegroundColorWith(val parameter: ColorParameter) : ForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetForegroundColor
-    override fun toString(): String = "$type;${parameter.build()}"
+    override fun build(): String = "$type;${parameter.build()}"
 }
 
 object DefaultForegroundColor : ForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.DefaultForegroundColor
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
-sealed class BackgroundColor : SelectGraphicRenditionParameter()
+sealed class BackgroundColor : SelectGraphicRenditionParameter() {
+    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(backgroundColor = this)
+}
 
 object SetBackgroundColorBlack : BackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorBlack
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBackgroundColorRed : BackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorRed
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBackgroundColorGreen : BackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorGreen
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBackgroundColorYellow : BackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorYellow
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBackgroundColorBlue : BackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorBlue
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBackgroundColorMagenta : BackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorMagenta
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBackgroundColorCyan : BackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorCyan
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBackgroundColorWhite : BackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColorWhite
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 class SetBackgroundColorWith(val parameter: ColorParameter) : BackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBackgroundColor
-    override fun toString(): String = "$type;${parameter.build()}"
+    override fun build(): String = "$type;${parameter.build()}"
 }
 
 object DefaultBackgroundColor : BackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.DefaultBackgroundColor
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object DisableProportionalSpacing : SelectGraphicRenditionParameter() {
     override val type = SelectGraphicRenditionParameterType.DisableProportionalSpacing
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
+    override fun asBuilder(): SelectGraphicRenditionSequenceBuilder {
+        TODO("Not yet implemented")
+    }
 }
 
-sealed class EmojiVariationSelector : SelectGraphicRenditionParameter()
+sealed class EmojiVariationSelector : SelectGraphicRenditionParameter() {
+    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(emojiVariation = this)
+}
 
 object Framed :EmojiVariationSelector() {
     override val type = SelectGraphicRenditionParameterType.Framed
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object Encircled : EmojiVariationSelector() {
     override val type = SelectGraphicRenditionParameterType.Encircled
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
-sealed class Overline : SelectGraphicRenditionParameter()
+sealed class Overline : SelectGraphicRenditionParameter() {
+    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(overline = this)
+}
 
 object Overlined : Overline() {
     override val type = SelectGraphicRenditionParameterType.Overlined
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object NeitherFramedNorEncircled : EmojiVariationSelector() {
     override val type = SelectGraphicRenditionParameterType.NeitherFramedNorEncircled
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object NotOverlined : Overline() {
     override val type = SelectGraphicRenditionParameterType.NotOverlined
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
-sealed class UnderLineColor : SelectGraphicRenditionParameter()
+sealed class UnderLineColor : SelectGraphicRenditionParameter() {
+    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(underlineColor = this)
+}
 
-class SetUnderlineColor(val parameter: ColorParameter) : UnderLineColor() {
+class SetUnderlineColor(val parameter: ColorPaletteParameter) : UnderLineColor() {
     override val type = SelectGraphicRenditionParameterType.SetUnderlineColor
-    override fun toString(): String = type.toString() + parameter.build()
+    override fun build(): String = type.toString() + parameter.build()
 }
 
 object DefaultUnderlineColor : UnderLineColor() {
     override val type = SelectGraphicRenditionParameterType.DefaultUnderlineColor
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
-sealed class Ideogram : SelectGraphicRenditionParameter()
+sealed class Ideogram : SelectGraphicRenditionParameter() {
+    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(ideogram = this)
+}
 
 object IdeogramUnderlineOrRightSideLine : Ideogram() {
     override val type = SelectGraphicRenditionParameterType.IdeogramUnderlineOrRightSideLine
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object IdeogramDoubleUnderlineOrDoubleLineOnTheRightSide : Ideogram() {
     override val type = SelectGraphicRenditionParameterType.IdeogramDoubleUnderlineOrDoubleLineOnTheRightSide
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object IdeogramOverlineOrLeftSideLine : Ideogram() {
     override val type = SelectGraphicRenditionParameterType.IdeogramOverlineOrLeftSideLine
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object IdeogramDoubleOverlineOrDoubleLineOnTheLeftSide : Ideogram() {
     override val type = SelectGraphicRenditionParameterType.IdeogramDoubleOverlineOrDoubleLineOnTheLeftSide
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object IdeogramStressMarking : Ideogram() {
     override val type = SelectGraphicRenditionParameterType.IdeogramStressMarking
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
-object NoIdeogramSelectGraphicRenditionParameters : Ideogram() {
+object NoIdeogramSelectAttributes : Ideogram() {
     override val type = SelectGraphicRenditionParameterType.NoIdeogramAttributes
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
-sealed class Script : SelectGraphicRenditionParameter()
+sealed class Script : SelectGraphicRenditionParameter() {
+    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(script = this)
+}
 
 object Superscript : Script() {
     override val type = SelectGraphicRenditionParameterType.Superscript
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object Subscript : Script() {
     override val type = SelectGraphicRenditionParameterType.Subscript
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object NeitherSuperscriptNorSubscript : Script() {
     override val type = SelectGraphicRenditionParameterType.NeitherSuperscriptNorSubscript
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
-object SetBrightForegroundColorBlack : SelectGraphicRenditionParameter() {
+sealed class BrightForegroundColor : SelectGraphicRenditionParameter() {
+    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(brightForegroundColor = this)
+}
+
+object SetBrightForegroundColorBlack : BrightForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBrightForegroundColorBlack
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
-
-sealed class BrightForegroundColor : SelectGraphicRenditionParameter()
 
 object SetBrightForegroundColorRed : BrightForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBrightForegroundColorRed
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBrightForegroundColorGreen : BrightForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBrightForegroundColorGreen
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBrightForegroundColorYellow : BrightForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBrightForegroundColorYellow
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBrightForegroundColorBlue : BrightForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBrightForegroundColorBlue
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBrightForegroundColorMagenta : BrightForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBrightForegroundColorMagenta
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBrightForegroundColorCyan : BrightForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBrightForegroundColorCyan
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBrightForegroundColorWhite : BrightForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBrightForegroundColorWhite
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
-sealed class BrightBackgroundColor : SelectGraphicRenditionParameter()
+sealed class BrightBackgroundColor : SelectGraphicRenditionParameter() {
+    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(brightBackgroundColor = this)
+}
 
 object SetBrightBackgroundColorBlack : BrightBackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBrightBackgroundColorBlack
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBrightBackgroundColorRed : BrightBackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBrightBackgroundColorRed
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBrightBackgroundColorGreen : BrightBackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBrightBackgroundColorGreen
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBrightBackgroundColorYellow : BrightBackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBrightBackgroundColorYellow
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBrightBackgroundColorBlue : BrightBackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBrightBackgroundColorBlue
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBrightBackgroundColorMagenta : BrightBackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBrightBackgroundColorMagenta
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBrightBackgroundColorCyan : BrightBackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBrightBackgroundColorCyan
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 object SetBrightBackgroundColorWhite : BrightBackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.SetBrightBackgroundColorWhite
-    override fun toString(): String = withoutArg()
+    override fun build(): String = withoutArg()
 }
 
 
