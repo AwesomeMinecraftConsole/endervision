@@ -1,4 +1,6 @@
-package com.uramnoil.ansies
+package com.uramnoil.ansies.parameter
+
+import com.uramnoil.ansies.SelectGraphicRenditionSequence
 
 enum class SelectGraphicRenditionParameterType(val m: Int) {
     ResetOrNormal(0),
@@ -91,7 +93,7 @@ enum class SelectGraphicRenditionParameterType(val m: Int) {
 sealed class SelectGraphicRenditionParameter {
     abstract val type: SelectGraphicRenditionParameterType
     abstract fun build(): String
-    abstract fun asBuilder(): SelectGraphicRenditionSequenceBuilder
+    abstract fun asSequence(): SelectGraphicRenditionSequence
 }
 
 fun SelectGraphicRenditionParameter.withoutArg() = type.toString()
@@ -99,11 +101,11 @@ fun SelectGraphicRenditionParameter.withoutArg() = type.toString()
 object ResetOrNormal : SelectGraphicRenditionParameter() {
     override val type = SelectGraphicRenditionParameterType.ResetOrNormal
     override fun build(): String = withoutArg()
-    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(startWithReset = this)
+    override fun asSequence() = SelectGraphicRenditionSequence(startWithReset = this)
 }
 
 sealed class Intensity : SelectGraphicRenditionParameter() {
-    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(intensity = this)
+    override fun asSequence() = SelectGraphicRenditionSequence(intensity = this)
 }
 
 object BoldOrIncreasedIntensity : Intensity() {
@@ -117,7 +119,7 @@ object FaintDecreasedIntensityOrDim : Intensity() {
 }
 
 sealed class Font : SelectGraphicRenditionParameter() {
-    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(font = this)
+    override fun asSequence() = SelectGraphicRenditionSequence(font = this)
 }
 
 object Italic : Font() {
@@ -126,7 +128,7 @@ object Italic : Font() {
 }
 
 sealed class Underline : SelectGraphicRenditionParameter() {
-    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(underline = this)
+    override fun asSequence() = SelectGraphicRenditionSequence(underline = this)
 }
 
 object Underlined : Underline() {
@@ -135,7 +137,7 @@ object Underlined : Underline() {
 }
 
 sealed class Blink : SelectGraphicRenditionParameter() {
-    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(blink = this)
+    override fun asSequence() = SelectGraphicRenditionSequence(blink = this)
 }
 
 object SlowBlink : Blink() {
@@ -149,7 +151,7 @@ object RapidBlink : Blink() {
 }
 
 sealed class Reverse : SelectGraphicRenditionParameter() {
-    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(reverse = this)
+    override fun asSequence() = SelectGraphicRenditionSequence(reverse = this)
 }
 
 object Reversed : Reverse() {
@@ -158,7 +160,7 @@ object Reversed : Reverse() {
 }
 
 sealed class Conceal : SelectGraphicRenditionParameter() {
-    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(conceal = this)
+    override fun asSequence() = SelectGraphicRenditionSequence(conceal = this)
 }
 
 object Concealed : Conceal() {
@@ -167,7 +169,7 @@ object Concealed : Conceal() {
 }
 
 sealed class Strikethrough : SelectGraphicRenditionParameter() {
-    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(crossedOut = this)
+    override fun asSequence() = SelectGraphicRenditionSequence(crossedOut = this)
 }
 
 object CrossedOut : Strikethrough() {
@@ -258,7 +260,7 @@ object NotBlinking : Blink() {
 object ProportionalSpacing : SelectGraphicRenditionParameter() {
     override val type = SelectGraphicRenditionParameterType.ProportionalSpacing
     override fun build(): String = withoutArg()
-    override fun asBuilder(): SelectGraphicRenditionSequenceBuilder {
+    override fun asSequence(): SelectGraphicRenditionSequence {
         TODO("Not yet implemented")
     }
 }
@@ -279,7 +281,7 @@ object NotCrossedOut : Strikethrough() {
 }
 
 sealed class ForegroundColor : SelectGraphicRenditionParameter() {
-    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(foregroundColor = this)
+    override fun asSequence() = SelectGraphicRenditionSequence(foregroundColor = this)
 }
 
 object SetForegroundColorBlack : ForegroundColor() {
@@ -327,13 +329,19 @@ class SetForegroundColorWith(val parameter: ColorParameter) : ForegroundColor() 
     override fun build(): String = "$type;${parameter.build()}"
 }
 
+fun SetForegroundColorWith(color: UByte) = SetForegroundColorWith(ColorPaletteParameter(color))
+
+fun SetForegroundColorWith(red: UByte, green: UByte, blue: UByte) =
+    SetForegroundColorWith(RgbParameter(red, green, blue))
+
+
 object DefaultForegroundColor : ForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.DefaultForegroundColor
     override fun build(): String = withoutArg()
 }
 
 sealed class BackgroundColor : SelectGraphicRenditionParameter() {
-    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(backgroundColor = this)
+    override fun asSequence() = SelectGraphicRenditionSequence(backgroundColor = this)
 }
 
 object SetBackgroundColorBlack : BackgroundColor() {
@@ -381,6 +389,11 @@ class SetBackgroundColorWith(val parameter: ColorParameter) : BackgroundColor() 
     override fun build(): String = "$type;${parameter.build()}"
 }
 
+fun SetBackgroundColorWith(color: UByte) = SetBackgroundColorWith(ColorPaletteParameter(color))
+
+fun SetBackgroundColorWith(red: UByte, green: UByte, blue: UByte) =
+    SetBackgroundColorWith(RgbParameter(red, green, blue))
+
 object DefaultBackgroundColor : BackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.DefaultBackgroundColor
     override fun build(): String = withoutArg()
@@ -389,16 +402,16 @@ object DefaultBackgroundColor : BackgroundColor() {
 object DisableProportionalSpacing : SelectGraphicRenditionParameter() {
     override val type = SelectGraphicRenditionParameterType.DisableProportionalSpacing
     override fun build(): String = withoutArg()
-    override fun asBuilder(): SelectGraphicRenditionSequenceBuilder {
+    override fun asSequence(): SelectGraphicRenditionSequence {
         TODO("Not yet implemented")
     }
 }
 
 sealed class EmojiVariationSelector : SelectGraphicRenditionParameter() {
-    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(emojiVariation = this)
+    override fun asSequence() = SelectGraphicRenditionSequence(emojiVariation = this)
 }
 
-object Framed :EmojiVariationSelector() {
+object Framed : EmojiVariationSelector() {
     override val type = SelectGraphicRenditionParameterType.Framed
     override fun build(): String = withoutArg()
 }
@@ -409,7 +422,7 @@ object Encircled : EmojiVariationSelector() {
 }
 
 sealed class Overline : SelectGraphicRenditionParameter() {
-    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(overline = this)
+    override fun asSequence() = SelectGraphicRenditionSequence(overline = this)
 }
 
 object Overlined : Overline() {
@@ -428,7 +441,7 @@ object NotOverlined : Overline() {
 }
 
 sealed class UnderLineColor : SelectGraphicRenditionParameter() {
-    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(underlineColor = this)
+    override fun asSequence() = SelectGraphicRenditionSequence(underlineColor = this)
 }
 
 class SetUnderlineColor(val parameter: ColorPaletteParameter) : UnderLineColor() {
@@ -442,7 +455,7 @@ object DefaultUnderlineColor : UnderLineColor() {
 }
 
 sealed class Ideogram : SelectGraphicRenditionParameter() {
-    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(ideogram = this)
+    override fun asSequence() = SelectGraphicRenditionSequence(ideogram = this)
 }
 
 object IdeogramUnderlineOrRightSideLine : Ideogram() {
@@ -476,7 +489,7 @@ object NoIdeogramSelectAttributes : Ideogram() {
 }
 
 sealed class Script : SelectGraphicRenditionParameter() {
-    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(script = this)
+    override fun asSequence() = SelectGraphicRenditionSequence(script = this)
 }
 
 object Superscript : Script() {
@@ -495,7 +508,7 @@ object NeitherSuperscriptNorSubscript : Script() {
 }
 
 sealed class BrightForegroundColor : SelectGraphicRenditionParameter() {
-    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(brightForegroundColor = this)
+    override fun asSequence() = SelectGraphicRenditionSequence(brightForegroundColor = this)
 }
 
 object SetBrightForegroundColorBlack : BrightForegroundColor() {
@@ -539,7 +552,7 @@ object SetBrightForegroundColorWhite : BrightForegroundColor() {
 }
 
 sealed class BrightBackgroundColor : SelectGraphicRenditionParameter() {
-    override fun asBuilder() = SelectGraphicRenditionSequenceBuilder(brightBackgroundColor = this)
+    override fun asSequence() = SelectGraphicRenditionSequence(brightBackgroundColor = this)
 }
 
 object SetBrightBackgroundColorBlack : BrightBackgroundColor() {

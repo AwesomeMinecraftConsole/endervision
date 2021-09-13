@@ -1,6 +1,6 @@
-package com.uramnoil.ansies
+package com.uramnoil.ansies.parameter
 
-enum class ControlSequenceIntroducerType(val abbr: String, val c2: String) {
+enum class ControlSequenceIntroducerType(val abbr: String, val suffix: String) {
     CursorUp("CUU", "A"),
     CursorDown("CUD", "B"),
     CursorForward("CUF", "C"),
@@ -18,12 +18,12 @@ enum class ControlSequenceIntroducerType(val abbr: String, val c2: String) {
     AuxPortOff("", "4i"),
     DeviceStatusReport("DSR", "6n"), ;
 
-    override fun toString(): String = c2
+    override fun toString(): String = suffix
 }
 
 class ControlSequenceIntroducer(val parameter: ControlSequenceIntroducerParameter) : EscapeSequenceParameter() {
     override val type: EscapeSequenceParameterType = EscapeSequenceParameterType.ControlSequenceIntroducer
-    override fun build(): String = type.toString() + parameter.build()
+    override fun build(): String = type.build() + parameter.build()
 }
 
 sealed class ControlSequenceIntroducerParameter {
@@ -99,7 +99,7 @@ class HorizontalVerticalPosition(val n: Int = 1) : ControlSequenceIntroducerPara
 
 class SelectGraphicRendition(val parameter: Set<SelectGraphicRenditionParameter>) : ControlSequenceIntroducerParameter() {
     override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.SelectGraphicRendition
-    override fun build(): String = "${parameter.joinToString(";")}$type"
+    override fun build(): String = "${parameter.map { it.build() }.joinToString(";")}$type"
 }
 
 fun SelectGraphicRendition(parameter: SelectGraphicRenditionParameter) = SelectGraphicRendition(setOf(parameter))

@@ -1,6 +1,8 @@
-package com.uramnoil.ansies
+package com.uramnoil.ansies.parameter
 
-enum class ControlCharacter(val abbr: String, val c0: Int) {
+import kotlinx.coroutines.CoroutineScope
+
+enum class AsciiControlCharacter(val abbr: String, val c0: Int) {
     Null("Nul", 0x00),
     Bell("BEL", 0x07),
     Backspace("BS", 0x08),
@@ -12,10 +14,10 @@ enum class ControlCharacter(val abbr: String, val c0: Int) {
     ControlZ("SUB", 0x1A),
     Escape("ESC", 0x1B),
     DEL("DEL", 0x7F), ;
-    override fun toString(): String = Char(c0).toString()
+    fun build(): String = Char(c0).toString()
 }
 
 sealed class Control {
-    abstract val controlCharacter: ControlCharacter
-    abstract override fun toString(): String
+    abstract val asciiControlCharacter: AsciiControlCharacter
+    abstract fun build(): String
 }

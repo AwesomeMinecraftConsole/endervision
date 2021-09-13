@@ -1,4 +1,4 @@
-package com.uramnoil.ansies
+package com.uramnoil.ansies.parameter
 
 enum class EscapeSequenceParameterType(val abbr: String, val gl: Int, val c1: Int) {
     PaddingCharacter("PAD", 64, 128),
@@ -33,13 +33,12 @@ enum class EscapeSequenceParameterType(val abbr: String, val gl: Int, val c1: In
     OperatingSystemCommand("OSC", 93, 157),
     PrivacyMessage("PM", 94, 158),
     ApplicationProgramCommand("APC", 95, 159), ;
-
-    override fun toString(): String = Char(c1).toString()
+    fun build(): String = Char(gl).toString()
 }
 
-class EscapeSequence(val parameter: EscapeSequenceParameter) {
-    val controlCharacter: ControlCharacter = ControlCharacter.Escape
-    fun build() = controlCharacter.toString() + parameter.build()
+class Escape(val parameter: EscapeSequenceParameter) : Control() {
+    override val asciiControlCharacter: AsciiControlCharacter = AsciiControlCharacter.Escape
+    override fun build() = asciiControlCharacter.build() + parameter.build()
 }
 
 sealed class EscapeSequenceParameter {
