@@ -455,14 +455,14 @@ class SelectForegroundColor(val parameter: ColorParameter) : ForegroundColor() {
     override fun build(): String = "$type;${parameter.build()}"
 }
 
-fun SelectForegroundColor(color: UByte) = SelectForegroundColor(IndexedColorParameter(color))
+fun SelectForegroundColor(color: UByte) = SelectForegroundColor(IndexedColor(color))
 
 /**
  * The reason for class name with 'Rgb' at the end is there is CYM in addition to RGB,
  * and overloading is impossible.
  */
 fun SelectForegroundColorRgb(red: UByte, green: UByte, blue: UByte) =
-    SelectForegroundColor(RgbParameter(red, green, blue))
+    SelectForegroundColor(Rgb(red, green, blue))
 
 /**
  * 39
@@ -551,13 +551,13 @@ class SelectBackgroundColor(val parameter: ColorParameter) : BackgroundColor() {
 /**
  * Indexed color
  */
-fun SelectBackgroundColor(color: UByte) = SelectBackgroundColor(IndexedColorParameter(color))
+fun SelectBackgroundColor(color: UByte) = SelectBackgroundColor(IndexedColor(color))
 
 /**
  * RGB
  */
 fun SelectBackgroundColor(red: UByte, green: UByte, blue: UByte) =
-    SelectBackgroundColor(RgbParameter(red, green, blue))
+    SelectBackgroundColor(Rgb(red, green, blue))
 
 /**
  * 49
@@ -633,7 +633,7 @@ sealed class UnderLineColor : SelectGraphicRenditionParameter() {
 /**
  * 58
  */
-class UnderlineColor(val parameter: IndexedColorParameter) : UnderLineColor() {
+class UnderlineColor(val parameter: IndexedColor) : UnderLineColor() {
     override val type = SelectGraphicRenditionParameterType.UnderlineColor
     override fun build(): String = type.toString() + parameter.build()
 }
@@ -879,12 +879,12 @@ sealed class ColorParameter {
     abstract fun build(): String
 }
 
-class IndexedColorParameter(val index: UByte) : ColorParameter() {
+data class IndexedColor(val index: UByte) : ColorParameter() {
     override val mode = ColorMode.IndexedColor
     override fun build(): String = "$mode;$index"
 }
 
-class RgbParameter(val red: UByte, val green: UByte, val blue: UByte) : ColorParameter() {
+data class Rgb(val red: UByte, val green: UByte, val blue: UByte) : ColorParameter() {
     override val mode = ColorMode.Rgb
     override fun build(): String = "$mode;$red;$green;$blue"
 }
