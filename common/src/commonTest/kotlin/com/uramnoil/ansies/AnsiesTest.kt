@@ -11,7 +11,7 @@ class AnsiesTest {
     }
 
     @Test
-    fun testBlack() {
+    fun testSgrOfBlack() {
         assertEquals(
             csiWithReset("30"),
              (sgrOf(SetForegroundColorBlack) + reset).build()
@@ -19,7 +19,7 @@ class AnsiesTest {
     }
 
     @Test
-    fun testRed() {
+    fun testSgrOfRed() {
         assertEquals(
             csiWithReset("31"),
              (sgrOf(SetForegroundColorRed) + reset).build()
@@ -27,7 +27,7 @@ class AnsiesTest {
     }
 
     @Test
-    fun testGreen() {
+    fun testSgrOfGreen() {
         assertEquals(
             csiWithReset("32"),
              (sgrOf(SetForegroundColorGreen) + reset).build()
@@ -35,7 +35,7 @@ class AnsiesTest {
     }
 
     @Test
-    fun testYellow() {
+    fun testSgrOfYellow() {
         assertEquals(
             csiWithReset("33"),
              (sgrOf(SetForegroundColorYellow) + reset).build()
@@ -43,7 +43,7 @@ class AnsiesTest {
     }
 
     @Test
-    fun testBlue() {
+    fun testSgrOfBlue() {
         assertEquals(
             csiWithReset("34"),
              (sgrOf(SetForegroundColorBlue) + reset).build()
@@ -51,7 +51,7 @@ class AnsiesTest {
     }
 
     @Test
-    fun testMagenta() {
+    fun testSgrOfMagenta() {
         assertEquals(
             csiWithReset("35"),
              (sgrOf(SetForegroundColorMagenta) + reset).build()
@@ -59,7 +59,7 @@ class AnsiesTest {
     }
 
     @Test
-    fun testCyan() {
+    fun testSgrOfCyan() {
         assertEquals(
             csiWithReset("36"),
              (sgrOf(SetForegroundColorCyan) + reset).build()
@@ -67,7 +67,7 @@ class AnsiesTest {
     }
 
     @Test
-    fun testWhite() {
+    fun testSgrOfWhite() {
         assertEquals(
             csiWithReset("37"),
              (sgrOf(SetForegroundColorWhite) + reset).build()
@@ -75,7 +75,7 @@ class AnsiesTest {
     }
 
     @Test
-    fun testColorPalette() {
+    fun testSgrOfColorPalette() {
         assertEquals(
             csiWithReset("38;5;0"),
             (sgrOf(SetForegroundColorWith(0u)) + reset).build()
@@ -83,7 +83,7 @@ class AnsiesTest {
     }
 
     @Test
-    fun testRgb() {
+    fun testSgrOfRgb() {
         assertEquals(
             csiWithReset("38;2;0;100;200"),
             (sgrOf(SetForegroundColorWith(0u, 100u, 200u)) + reset).build()
@@ -91,7 +91,7 @@ class AnsiesTest {
     }
 
     @Test
-    fun testAnsiEscapeBuilderPlus() {
+    fun testSgrOfAnsiEscapeBuilderPlus() {
         assertEquals(
             csi("30", "hoge") + csiWithReset("37", "fuga"),
             (sgrOf(SetForegroundColorBlack) + "hoge" + sgrOf(SetForegroundColorWhite) + "fuga" + reset).build()
@@ -99,10 +99,10 @@ class AnsiesTest {
     }
 
     @Test
-    fun testMultipleSgr() {
+    fun testSgrOfMultipleSgr() {
     }
 
     @Test
-    fun testParseAnsi() {
+    fun testSgrOfParseAnsi() {
     }
 }
