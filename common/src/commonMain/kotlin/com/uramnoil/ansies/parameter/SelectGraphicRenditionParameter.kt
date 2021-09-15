@@ -863,7 +863,7 @@ object WhiteBrightBackground : BrightBackgroundColor() {
 }
 
 
-enum class ColorMode(val mode: Int) {
+enum class ColorParameterMode(val mode: Int) {
     Defined(0),
     Transparent(1),
     Rgb(2),
@@ -875,16 +875,16 @@ enum class ColorMode(val mode: Int) {
 }
 
 sealed class ColorParameter {
-    abstract val mode: ColorMode
+    abstract val mode: ColorParameterMode
     abstract fun build(): String
 }
 
 data class IndexedColor(val index: UByte) : ColorParameter() {
-    override val mode = ColorMode.IndexedColor
+    override val mode = ColorParameterMode.IndexedColor
     override fun build(): String = "$mode;$index"
 }
 
 data class Rgb(val red: UByte, val green: UByte, val blue: UByte) : ColorParameter() {
-    override val mode = ColorMode.Rgb
+    override val mode = ColorParameterMode.Rgb
     override fun build(): String = "$mode;$red;$green;$blue"
 }
