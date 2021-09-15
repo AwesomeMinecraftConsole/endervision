@@ -10,9 +10,9 @@ enum class SelectGraphicRenditionParameterType(val m: Int) {
     Underline(4),
     SlowBlink(5),
     RapidBlink(6),
-    ReverseVideoOrInvert(7),
+    Reversed(7),
     ConcealOrHide(8),
-    CrossedOutOrStrike(9),
+    CrossedOut(9),
     PrimaryFont(10),
     AlternativeFont1(11),
     AlternativeFont2(12),
@@ -57,9 +57,9 @@ enum class SelectGraphicRenditionParameterType(val m: Int) {
     Framed(51),
     Encircled(52),
     Overlined(53),
-    NeitherFramedNorEncircled(54),
+    ResetEmojiVariation(54),
     NotOverlined(55),
-    UnderlineColor(58),
+    SelectUnderlineColor(58),
     DefaultUnderlineColor(59),
     IdeogramUnderlineOrRightSideLine(60),
     IdeogramDoubleUnderlineOrDoubleLineOnTheRightSide(61),
@@ -182,7 +182,7 @@ sealed class Reverse : SelectGraphicRenditionParameter() {
  * 7
  */
 object Reversed : Reverse() {
-    override val type = SelectGraphicRenditionParameterType.ReverseVideoOrInvert
+    override val type = SelectGraphicRenditionParameterType.Reversed
     override fun build(): String = withoutArg()
 }
 
@@ -206,7 +206,7 @@ sealed class CrossOut : SelectGraphicRenditionParameter() {
  * 9
  */
 object CrossedOut : CrossOut() {
-    override val type = SelectGraphicRenditionParameterType.CrossedOutOrStrike
+    override val type = SelectGraphicRenditionParameterType.CrossedOut
     override fun build(): String = withoutArg()
 }
 
@@ -321,7 +321,7 @@ object NormalIntensity : Intensity() {
 /**
  * 23
  */
-object NeitherItalicNorFraktur : Font() {
+object ResetPenmanship : Penmanship() {
     override val type = SelectGraphicRenditionParameterType.NeitherItalicNorBlackletter
     override fun build(): String = withoutArg()
 }
@@ -339,7 +339,7 @@ object NotUnderlined : Underline() {
  * 25
  * Disable blinking
  */
-object Steady : Blink() {
+object NotBlinking : Blink() {
     override val type = SelectGraphicRenditionParameterType.NotBlinking
     override fun build(): String = withoutArg()
 }
@@ -580,14 +580,14 @@ object NotVariableSpacing : SelectGraphicRenditionParameter() {
     }
 }
 
-sealed class EmojiStyle : SelectGraphicRenditionParameter() {
+sealed class EmojiVariation : SelectGraphicRenditionParameter() {
     override fun asSequence() = SelectGraphicRenditionSequence(emojiVariation = this)
 }
 
 /**
  * 51
  */
-object Framed : EmojiStyle() {
+object Framed : EmojiVariation() {
     override val type = SelectGraphicRenditionParameterType.Framed
     override fun build(): String = withoutArg()
 }
@@ -595,7 +595,7 @@ object Framed : EmojiStyle() {
 /**
  * 52
  */
-object Encircled : EmojiStyle() {
+object Encircled : EmojiVariation() {
     override val type = SelectGraphicRenditionParameterType.Encircled
     override fun build(): String = withoutArg()
 }
@@ -615,8 +615,8 @@ object Overlined : Overline() {
 /**
  * 54
  */
-object NeitherFramedNorEncircled : EmojiStyle() {
-    override val type = SelectGraphicRenditionParameterType.NeitherFramedNorEncircled
+object ResetEmojiVariation : EmojiVariation() {
+    override val type = SelectGraphicRenditionParameterType.ResetEmojiVariation
     override fun build(): String = withoutArg()
 }
 
@@ -635,8 +635,8 @@ sealed class UnderLineColor : SelectGraphicRenditionParameter() {
 /**
  * 58
  */
-class UnderlineColor(val parameter: IndexedColor) : UnderLineColor() {
-    override val type = SelectGraphicRenditionParameterType.UnderlineColor
+class SelectUnderlineColor(val parameter: IndexedColor) : UnderLineColor() {
+    override val type = SelectGraphicRenditionParameterType.SelectUnderlineColor
     override fun build(): String = type.toString() + parameter.build()
 }
 
@@ -695,7 +695,7 @@ object IdeogramStressMarking : Ideogram() {
 /**
  * 65
  */
-object NoIdeogramAttributes : Ideogram() {
+object No : Ideogram() {
     override val type = SelectGraphicRenditionParameterType.NoIdeogramAttributes
     override fun build(): String = withoutArg()
 }
@@ -723,7 +723,7 @@ object Subscript : Script() {
 /**
  * 75
  */
-object NeitherSuperscriptNorSubscript : Script() {
+object NoScriptAttribute : Script() {
     override val type = SelectGraphicRenditionParameterType.NeitherSuperscriptNorSubscript
     override fun build(): String = withoutArg()
 }
