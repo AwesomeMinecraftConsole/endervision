@@ -66,7 +66,7 @@ enum class SelectGraphicRenditionParameterType(val m: Int) {
     IdeogramOverlineOrLeftSideLine(62),
     IdeogramDoubleOverlineOrDoubleLineOnTheLeftSide(63),
     IdeogramStressMarking(64),
-    NoIdeogramAttributes(65),
+    NoIdeogramAttribute(65),
     Superscript(73),
     Subscript(74),
     NeitherSuperscriptNorSubscript(75),
@@ -695,8 +695,8 @@ object IdeogramStressMarking : Ideogram() {
 /**
  * 65
  */
-object No : Ideogram() {
-    override val type = SelectGraphicRenditionParameterType.NoIdeogramAttributes
+object NoIdeogramAttribute : Ideogram() {
+    override val type = SelectGraphicRenditionParameterType.NoIdeogramAttribute
     override fun build(): String = withoutArg()
 }
 
