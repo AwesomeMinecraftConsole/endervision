@@ -140,6 +140,8 @@ object Italicized : Penmanship() {
     override fun build(): String = withoutArg()
 }
 
+typealias Gothic = Italicized
+
 sealed class Underline : SelectGraphicRenditionParameter() {
     override fun asSequence() = SelectGraphicRenditionSequence(underline = this)
 }
