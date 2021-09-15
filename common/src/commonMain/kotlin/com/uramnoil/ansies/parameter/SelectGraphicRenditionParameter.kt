@@ -6,7 +6,7 @@ enum class SelectGraphicRenditionParameterType(val m: Int) {
     ResetOrNormal(0),
     BoldOrIncreasedIntensity(1),
     FaintDecreasedIntensityOrDim(2),
-    Italic(3),
+    Italicized(3),
     Underline(4),
     SlowBlink(5),
     RapidBlink(6),
@@ -136,7 +136,7 @@ sealed class Penmanship : SelectGraphicRenditionParameter() {
  * 3
  */
 object Italicized : Penmanship() {
-    override val type = SelectGraphicRenditionParameterType.Italic
+    override val type = SelectGraphicRenditionParameterType.Italicized
     override fun build(): String = withoutArg()
 }
 
