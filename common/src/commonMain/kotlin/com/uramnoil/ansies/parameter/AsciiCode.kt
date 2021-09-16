@@ -17,7 +17,7 @@ enum class AsciiControlCharacter(val abbr: String, val c0: Int) {
     fun build(): String = Char(c0).toString()
 }
 
-sealed class Control {
+sealed class AsciiCode {
     abstract val asciiControlCharacter: AsciiControlCharacter
     abstract fun build(): String
 }

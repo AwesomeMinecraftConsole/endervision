@@ -36,7 +36,7 @@ enum class EscapeSequenceParameterType(val abbr: String, val gl: Int, val c1: In
     fun build(): String = Char(gl).toString()
 }
 
-class Escape(val parameter: EscapeSequenceParameter) : Control() {
+class Escape(val parameter: EscapeSequenceParameter) : AsciiCode() {
     override val asciiControlCharacter: AsciiControlCharacter = AsciiControlCharacter.Escape
     override fun build() = asciiControlCharacter.build() + parameter.build()
 }
