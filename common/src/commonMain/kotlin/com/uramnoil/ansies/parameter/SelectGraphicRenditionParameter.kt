@@ -94,6 +94,7 @@ sealed class SelectGraphicRenditionParameter {
     abstract val type: SelectGraphicRenditionParameterType
     abstract fun build(): String
     abstract fun asSequence(): SelectGraphicRenditionSequence
+    var string: String = ""
 }
 
 fun SelectGraphicRenditionParameter.withoutArg() = type.toString()
