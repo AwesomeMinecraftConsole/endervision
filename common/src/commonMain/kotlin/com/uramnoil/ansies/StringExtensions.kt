@@ -2,149 +2,149 @@ package com.uramnoil.ansies
 
 import com.uramnoil.ansies.parameter.*
 
-fun SelectGraphicRenditionSequence.startWithReset(): SelectGraphicRenditionSequence =
+fun SelectGraphicRendition.startWithReset(): SelectGraphicRendition =
     apply { startWithReset = ResetOrNormal }
 
-fun SelectGraphicRenditionSequence.black(): SelectGraphicRenditionSequence =
+fun SelectGraphicRendition.black(): SelectGraphicRendition =
     apply { foregroundColor = BlackForeground }
 
-fun SelectGraphicRenditionSequence.red(): SelectGraphicRenditionSequence =
+fun SelectGraphicRendition.red(): SelectGraphicRendition =
     apply { foregroundColor = RedForeground }
 
-fun SelectGraphicRenditionSequence.green(): SelectGraphicRenditionSequence =
+fun SelectGraphicRendition.green(): SelectGraphicRendition =
     apply { foregroundColor = GreenForeground }
 
-fun SelectGraphicRenditionSequence.yellow(): SelectGraphicRenditionSequence =
+fun SelectGraphicRendition.yellow(): SelectGraphicRendition =
     apply { foregroundColor = YellowForeground }
 
-fun SelectGraphicRenditionSequence.blue(): SelectGraphicRenditionSequence =
+fun SelectGraphicRendition.blue(): SelectGraphicRendition =
     apply { foregroundColor = BlueForeground }
 
-fun SelectGraphicRenditionSequence.magenta(): SelectGraphicRenditionSequence =
+fun SelectGraphicRendition.magenta(): SelectGraphicRendition =
     apply { foregroundColor = MagentaForeground }
 
-fun SelectGraphicRenditionSequence.cyan(): SelectGraphicRenditionSequence =
+fun SelectGraphicRendition.cyan(): SelectGraphicRendition =
     apply { foregroundColor = CyanForeground }
 
-fun SelectGraphicRenditionSequence.white(): SelectGraphicRenditionSequence =
+fun SelectGraphicRendition.white(): SelectGraphicRendition =
     apply { foregroundColor = WhiteForeground }
 
-fun SelectGraphicRenditionSequence.colorPalette(color: UByte): SelectGraphicRenditionSequence =
+fun SelectGraphicRendition.colorPalette(color: UByte): SelectGraphicRendition =
     apply { foregroundColor = SelectForegroundColor(IndexedColor(color)) }
 
-fun SelectGraphicRenditionSequence.rgb(
+fun SelectGraphicRendition.rgb(
     red: UByte,
     green: UByte,
     blue: UByte
-): SelectGraphicRenditionSequence =
+): SelectGraphicRendition =
     apply { foregroundColor = SelectForegroundColor(Rgb(red, green, blue)) }
 
-fun SelectGraphicRenditionSequence.defaultColor(): SelectGraphicRenditionSequence =
+fun SelectGraphicRendition.defaultColor(): SelectGraphicRendition =
     apply { foregroundColor = DefaultForegroundColor }
 
-fun SelectGraphicRenditionSequence.blinking(): SelectGraphicRenditionSequence =
+fun SelectGraphicRendition.blinking(): SelectGraphicRendition =
     apply { blink = SlowlyBlinking }
 
-fun SelectGraphicRenditionSequence.rapidBlinking(): SelectGraphicRenditionSequence =
+fun SelectGraphicRendition.rapidBlinking(): SelectGraphicRendition =
     apply { blink = RapidlyBlinking }
 
-fun SelectGraphicRenditionSequence.notBlinking(): SelectGraphicRenditionSequence =
+fun SelectGraphicRendition.notBlinking(): SelectGraphicRendition =
     apply { blink = NotBlinking }
 
-fun SelectGraphicRenditionSequence.concealed() = apply { conceal = Concealed }
+fun SelectGraphicRendition.concealed() = apply { conceal = Concealed }
 
-fun SelectGraphicRenditionSequence.revealed() = apply { conceal = Revealed }
+fun SelectGraphicRendition.revealed() = apply { conceal = Revealed }
 
-fun SelectGraphicRenditionSequence.underlined() = apply { underline = Underlined }
+fun SelectGraphicRendition.underlined() = apply { underline = Underlined }
 
-fun SelectGraphicRenditionSequence.notUnderlined() = apply { underline = NotUnderlined }
+fun SelectGraphicRendition.notUnderlined() = apply { underline = NotUnderlined }
 
-fun SelectGraphicRenditionSequence.underlineColor(color: UByte) = apply {
+fun SelectGraphicRendition.underlineColor(color: UByte) = apply {
     underlineColor = SelectUnderlineColor(
         IndexedColor(color)
     )
 }
 
-fun SelectGraphicRenditionSequence.defaultUnderlineColor() = apply { underlineColor = DefaultUnderlineColor }
+fun SelectGraphicRendition.defaultUnderlineColor() = apply { underlineColor = DefaultUnderlineColor }
 
-fun SelectGraphicRenditionSequence.framed() = apply { emojiVariation = Framed }
+fun SelectGraphicRendition.framed() = apply { emojiVariation = Framed }
 
-fun SelectGraphicRenditionSequence.encircled() = apply { emojiVariation = Encircled }
+fun SelectGraphicRendition.encircled() = apply { emojiVariation = Encircled }
 
-fun SelectGraphicRenditionSequence.resetEmojiVariation() =
+fun SelectGraphicRendition.resetEmojiVariation() =
     apply { emojiVariation = ResetEmojiVariation }
 
-fun SelectGraphicRenditionSequence.overlined() = apply { overline = Overlined }
+fun SelectGraphicRendition.overlined() = apply { overline = Overlined }
 
-fun SelectGraphicRenditionSequence.notOverlined() = apply { overline = NotOverlined }
+fun SelectGraphicRendition.notOverlined() = apply { overline = NotOverlined }
 
-fun SelectGraphicRenditionSequence.rightSideLine() = apply { ideogram = IdeogramUnderlineOrRightSideLine }
+fun SelectGraphicRendition.rightSideLine() = apply { ideogram = IdeogramUnderlineOrRightSideLine }
 
-fun SelectGraphicRenditionSequence.doubleRightSideLine() =
+fun SelectGraphicRendition.doubleRightSideLine() =
     apply { ideogram = IdeogramDoubleUnderlineOrDoubleLineOnTheRightSide }
 
-fun SelectGraphicRenditionSequence.leftSideLine() = apply { ideogram = IdeogramOverlineOrLeftSideLine }
+fun SelectGraphicRendition.leftSideLine() = apply { ideogram = IdeogramOverlineOrLeftSideLine }
 
-fun SelectGraphicRenditionSequence.doubleLeftSideLine() =
+fun SelectGraphicRendition.doubleLeftSideLine() =
     apply { ideogram = IdeogramDoubleOverlineOrDoubleLineOnTheLeftSide }
 
-fun SelectGraphicRenditionSequence.stressMarking() = apply { ideogram = IdeogramStressMarking }
+fun SelectGraphicRendition.stressMarking() = apply { ideogram = IdeogramStressMarking }
 
-fun SelectGraphicRenditionSequence.noIdeogram() = apply { ideogram = NoIdeogramAttribute }
+fun SelectGraphicRendition.noIdeogram() = apply { ideogram = NoIdeogramAttribute }
 
-fun SelectGraphicRenditionSequence.superscript() = apply { script = Superscript }
+fun SelectGraphicRendition.superscript() = apply { script = Superscript }
 
-fun SelectGraphicRenditionSequence.subscript() = apply { script = Subscript }
+fun SelectGraphicRendition.subscript() = apply { script = Subscript }
 
-fun SelectGraphicRenditionSequence.noscript() = apply { script = NoScriptAttribute }
+fun SelectGraphicRendition.noscript() = apply { script = NoScriptAttribute }
 
-operator fun SelectGraphicRenditionSequence.plus(intensity: Intensity) = apply { this.intensity = intensity }
+operator fun SelectGraphicRendition.plus(intensity: Intensity) = apply { this.intensity = intensity }
 
-operator fun SelectGraphicRenditionSequence.plus(font: Font) = apply { this.font = font }
+operator fun SelectGraphicRendition.plus(font: Font) = apply { this.font = font }
 
-operator fun SelectGraphicRenditionSequence.plus(underline: Underline) = apply { this.underline = underline }
+operator fun SelectGraphicRendition.plus(underline: Underline) = apply { this.underline = underline }
 
-operator fun SelectGraphicRenditionSequence.plus(blink: Blink) = apply { this.blink = blink }
+operator fun SelectGraphicRendition.plus(blink: Blink) = apply { this.blink = blink }
 
-operator fun SelectGraphicRenditionSequence.plus(reverse: Reverse) = apply { this.reverse = reverse }
+operator fun SelectGraphicRendition.plus(reverse: Reverse) = apply { this.reverse = reverse }
 
-operator fun SelectGraphicRenditionSequence.plus(conceal: Conceal) = apply { this.conceal = conceal }
+operator fun SelectGraphicRendition.plus(conceal: Conceal) = apply { this.conceal = conceal }
 
-operator fun SelectGraphicRenditionSequence.plus(crossedOut: CrossOut) = apply { this.crossedOut = crossedOut }
+operator fun SelectGraphicRendition.plus(crossedOut: CrossOut) = apply { this.crossedOut = crossedOut }
 
-operator fun SelectGraphicRenditionSequence.plus(foregroundColor: ForegroundColor) =
+operator fun SelectGraphicRendition.plus(foregroundColor: ForegroundColor) =
     apply { this.foregroundColor = foregroundColor }
 
-operator fun SelectGraphicRenditionSequence.plus(backgroundColor: BackgroundColor?) =
+operator fun SelectGraphicRendition.plus(backgroundColor: BackgroundColor?) =
     apply { this.backgroundColor = backgroundColor }
 
 operator fun SelectGraphicRenditionParameter.plus(other: SelectGraphicRenditionParameter) =
     other.asSequence().basedOn(asSequence())
 
-operator fun SelectGraphicRenditionSequence.plus(parameter: SelectGraphicRenditionParameter) =
+operator fun SelectGraphicRendition.plus(parameter: SelectGraphicRenditionParameter) =
     parameter.asSequence().basedOn(this)
 
-fun String.startWithReset(): SelectGraphicRenditionSequence =
-    SelectGraphicRenditionSequence(startWithReset = ResetOrNormal)
+fun String.startWithReset(): SelectGraphicRendition =
+    SelectGraphicRendition(startWithReset = ResetOrNormal)
 
-fun String.black(): SelectGraphicRenditionSequence = SelectGraphicRenditionSequence(foregroundColor = BlackForeground)
+fun String.black(): SelectGraphicRendition = SelectGraphicRendition(foregroundColor = BlackForeground)
 
-fun String.red(): SelectGraphicRenditionSequence = SelectGraphicRenditionSequence(foregroundColor = RedForeground)
+fun String.red(): SelectGraphicRendition = SelectGraphicRendition(foregroundColor = RedForeground)
 
-fun String.green(): SelectGraphicRenditionSequence = SelectGraphicRenditionSequence(foregroundColor = GreenForeground)
+fun String.green(): SelectGraphicRendition = SelectGraphicRendition(foregroundColor = GreenForeground)
 
-fun String.yellow(): SelectGraphicRenditionSequence = SelectGraphicRenditionSequence(foregroundColor = YellowForeground)
+fun String.yellow(): SelectGraphicRendition = SelectGraphicRendition(foregroundColor = YellowForeground)
 
-fun String.blue(): SelectGraphicRenditionSequence = SelectGraphicRenditionSequence(foregroundColor = BlueForeground)
+fun String.blue(): SelectGraphicRendition = SelectGraphicRendition(foregroundColor = BlueForeground)
 
-fun String.magenta(): SelectGraphicRenditionSequence =
-    SelectGraphicRenditionSequence(foregroundColor = MagentaForeground)
+fun String.magenta(): SelectGraphicRendition =
+    SelectGraphicRendition(foregroundColor = MagentaForeground)
 
-fun String.cyan(): SelectGraphicRenditionSequence = SelectGraphicRenditionSequence(foregroundColor = CyanForeground)
+fun String.cyan(): SelectGraphicRendition = SelectGraphicRendition(foregroundColor = CyanForeground)
 
-fun String.white(): SelectGraphicRenditionSequence = SelectGraphicRenditionSequence(foregroundColor = WhiteForeground)
+fun String.white(): SelectGraphicRendition = SelectGraphicRendition(foregroundColor = WhiteForeground)
 
-fun String.colorPalette(color: UByte): SelectGraphicRenditionSequence = SelectGraphicRenditionSequence(
+fun String.colorPalette(color: UByte): SelectGraphicRendition = SelectGraphicRendition(
     foregroundColor = SelectForegroundColor(
         IndexedColor(color)
     )
@@ -154,81 +154,81 @@ fun String.rgb(
     red: UByte,
     green: UByte,
     blue: UByte
-): SelectGraphicRenditionSequence =
-    SelectGraphicRenditionSequence(foregroundColor = SelectForegroundColor(Rgb(red, green, blue)))
+): SelectGraphicRendition =
+    SelectGraphicRendition(foregroundColor = SelectForegroundColor(Rgb(red, green, blue)))
 
-fun String.defaultColor(): SelectGraphicRenditionSequence =
-    SelectGraphicRenditionSequence(foregroundColor = DefaultForegroundColor)
+fun String.defaultColor(): SelectGraphicRendition =
+    SelectGraphicRendition(foregroundColor = DefaultForegroundColor)
 
-fun String.blinking(): SelectGraphicRenditionSequence = SelectGraphicRenditionSequence(blink = SlowlyBlinking)
+fun String.blinking(): SelectGraphicRendition = SelectGraphicRendition(blink = SlowlyBlinking)
 
-fun String.rapidBlinking(): SelectGraphicRenditionSequence = SelectGraphicRenditionSequence(blink = RapidlyBlinking)
+fun String.rapidBlinking(): SelectGraphicRendition = SelectGraphicRendition(blink = RapidlyBlinking)
 
-fun String.notBlinking(): SelectGraphicRenditionSequence = SelectGraphicRenditionSequence(blink = NotBlinking)
+fun String.notBlinking(): SelectGraphicRendition = SelectGraphicRendition(blink = NotBlinking)
 
-fun String.concealed() = SelectGraphicRenditionSequence(conceal = Concealed)
+fun String.concealed() = SelectGraphicRendition(conceal = Concealed)
 
-fun String.revealed() = SelectGraphicRenditionSequence(conceal = Revealed)
+fun String.revealed() = SelectGraphicRendition(conceal = Revealed)
 
-fun String.underlined() = SelectGraphicRenditionSequence(underline = Underlined)
+fun String.underlined() = SelectGraphicRendition(underline = Underlined)
 
-fun String.notUnderlined() = SelectGraphicRenditionSequence(underline = NotUnderlined)
+fun String.notUnderlined() = SelectGraphicRendition(underline = NotUnderlined)
 
-fun String.underlineColor(color: UByte) = SelectGraphicRenditionSequence(
+fun String.underlineColor(color: UByte) = SelectGraphicRendition(
     underlineColor = SelectUnderlineColor(
         IndexedColor(color)
     )
 )
 
-fun String.defaultUnderlineColor() = SelectGraphicRenditionSequence(underlineColor = DefaultUnderlineColor)
+fun String.defaultUnderlineColor() = SelectGraphicRendition(underlineColor = DefaultUnderlineColor)
 
-fun String.framed() = SelectGraphicRenditionSequence(emojiVariation = Framed)
+fun String.framed() = SelectGraphicRendition(emojiVariation = Framed)
 
-fun String.encircled() = SelectGraphicRenditionSequence(emojiVariation = Encircled)
+fun String.encircled() = SelectGraphicRendition(emojiVariation = Encircled)
 
 fun String.resetEmojiVariation() =
-    SelectGraphicRenditionSequence(emojiVariation = ResetEmojiVariation)
+    SelectGraphicRendition(emojiVariation = ResetEmojiVariation)
 
-fun String.overlined() = SelectGraphicRenditionSequence(overline = Overlined)
+fun String.overlined() = SelectGraphicRendition(overline = Overlined)
 
-fun String.notOverlined() = SelectGraphicRenditionSequence(overline = NotOverlined)
+fun String.notOverlined() = SelectGraphicRendition(overline = NotOverlined)
 
-fun String.rightSideLine() = SelectGraphicRenditionSequence(ideogram = IdeogramUnderlineOrRightSideLine)
+fun String.rightSideLine() = SelectGraphicRendition(ideogram = IdeogramUnderlineOrRightSideLine)
 
 fun String.doubleRightSideLine() =
-    SelectGraphicRenditionSequence(ideogram = IdeogramDoubleUnderlineOrDoubleLineOnTheRightSide)
+    SelectGraphicRendition(ideogram = IdeogramDoubleUnderlineOrDoubleLineOnTheRightSide)
 
-fun String.leftSideLine() = SelectGraphicRenditionSequence(ideogram = IdeogramOverlineOrLeftSideLine)
+fun String.leftSideLine() = SelectGraphicRendition(ideogram = IdeogramOverlineOrLeftSideLine)
 
 fun String.doubleLeftSideLine() =
-    SelectGraphicRenditionSequence(ideogram = IdeogramDoubleOverlineOrDoubleLineOnTheLeftSide)
+    SelectGraphicRendition(ideogram = IdeogramDoubleOverlineOrDoubleLineOnTheLeftSide)
 
-fun String.stressMarking() = SelectGraphicRenditionSequence(ideogram = IdeogramStressMarking)
+fun String.stressMarking() = SelectGraphicRendition(ideogram = IdeogramStressMarking)
 
-fun String.noIdeogram() = SelectGraphicRenditionSequence(ideogram = NoIdeogramAttribute)
+fun String.noIdeogram() = SelectGraphicRendition(ideogram = NoIdeogramAttribute)
 
-fun String.superscript() = SelectGraphicRenditionSequence(script = Superscript)
+fun String.superscript() = SelectGraphicRendition(script = Superscript)
 
-fun String.subscript() = SelectGraphicRenditionSequence(script = Subscript)
+fun String.subscript() = SelectGraphicRendition(script = Subscript)
 
-fun String.noscript() = SelectGraphicRenditionSequence(script = NoScriptAttribute)
+fun String.noscript() = SelectGraphicRendition(script = NoScriptAttribute)
 
-operator fun String.plus(intensity: Intensity) = SelectGraphicRenditionSequence(intensity = intensity)
+operator fun String.plus(intensity: Intensity) = SelectGraphicRendition(intensity = intensity)
 
-operator fun String.plus(font: Font) = SelectGraphicRenditionSequence(font = font)
+operator fun String.plus(font: Font) = SelectGraphicRendition(font = font)
 
-operator fun String.plus(underline: Underline) = SelectGraphicRenditionSequence(underline = underline)
+operator fun String.plus(underline: Underline) = SelectGraphicRendition(underline = underline)
 
-operator fun String.plus(blink: Blink) = SelectGraphicRenditionSequence(blink = blink)
+operator fun String.plus(blink: Blink) = SelectGraphicRendition(blink = blink)
 
-operator fun String.plus(reverse: Reverse) = SelectGraphicRenditionSequence(reverse = reverse)
+operator fun String.plus(reverse: Reverse) = SelectGraphicRendition(reverse = reverse)
 
-operator fun String.plus(conceal: Conceal) = SelectGraphicRenditionSequence(conceal = conceal)
+operator fun String.plus(conceal: Conceal) = SelectGraphicRendition(conceal = conceal)
 
-operator fun String.plus(crossedOut: CrossOut) = SelectGraphicRenditionSequence(crossedOut = crossedOut)
+operator fun String.plus(crossedOut: CrossOut) = SelectGraphicRendition(crossedOut = crossedOut)
 
 operator fun String.plus(foregroundColor: ForegroundColor) =
-    SelectGraphicRenditionSequence(foregroundColor = foregroundColor)
+    SelectGraphicRendition(foregroundColor = foregroundColor)
 
 operator fun String.plus(backgroundColor: BackgroundColor?) =
-    SelectGraphicRenditionSequence(backgroundColor = backgroundColor)
+    SelectGraphicRendition(backgroundColor = backgroundColor)
