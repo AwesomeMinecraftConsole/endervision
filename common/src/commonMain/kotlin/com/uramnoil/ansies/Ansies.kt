@@ -210,7 +210,10 @@ fun SelectGraphicRenditionSequence.basedOn(base: SelectGraphicRenditionSequence)
     }
 }
 
-
+/**
+ * AsciiCode的に普通の文字列はSGRシーケンスの一部と考える。
+ * AsciiCodeと文字列で分けることはしない。
+ */
 data class SelectGraphicRenditionSequenceAndString(
     val builder: SelectGraphicRenditionSequence? = null,
     var string: String = ""
