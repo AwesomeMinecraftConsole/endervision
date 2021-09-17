@@ -97,63 +97,26 @@ class HorizontalVerticalPosition(val n: Int = 1) : ControlSequenceIntroducerPara
     override fun build(): String = withArgN(n)
 }
 
-class SelectGraphicRendition(
-    startWithReset: ResetOrNormal? = null,
-    intensity: Intensity? = null,
-    penmanship: Penmanship? = null,
-    font: Font? = null,
-    blink: Blink? = null,
-    conceal: Conceal? = null,
-    crossedOut: CrossOut? = null,
-    foregroundColor: ForegroundColor? = null,
-    backgroundColor: BackgroundColor? = null,
-    underline: Underline? = null,
-    reverse: Reverse? = null,
-    emojiVariation: EmojiVariation? = null,
-    overline: Overline? = null,
-    underlineColor: UnderLineColor? = null,
-    ideogram: Ideogram? = null,
-    script: Script? = null,
-    brightForegroundColor: BrightForegroundColor? = null,
-    brightBackgroundColor: BrightBackgroundColor? = null,
+data class SelectGraphicRendition(
+    var startWithReset: ResetOrNormal? = null,
+    var intensity: Intensity? = null,
+    var penmanship: Penmanship? = null,
+    var font: Font? = null,
+    var blink: Blink? = null,
+    var conceal: Conceal? = null,
+    var crossedOut: CrossOut? = null,
+    var foregroundColor: ForegroundColor? = null,
+    var backgroundColor: BackgroundColor? = null,
+    var underline: Underline? = null,
+    var reverse: Reverse? = null,
+    var emojiVariation: EmojiVariation? = null,
+    var overline: Overline? = null,
+    var underlineColor: UnderLineColor? = null,
+    var ideogram: Ideogram? = null,
+    var script: Script? = null,
+    var brightForegroundColor: BrightForegroundColor? = null,
+    var brightBackgroundColor: BrightBackgroundColor? = null,
 ) : ControlSequenceIntroducerParameter() {
-    var startWithReset = startWithReset
-        internal set
-    var intensity = intensity
-        internal set
-    var penmanship = penmanship
-        internal set
-    var blink = blink
-        internal set
-    var conceal = conceal
-        internal set
-    var crossedOut = crossedOut
-        internal set
-    var font = font
-        internal set
-    var foregroundColor = foregroundColor
-        internal set
-    var backgroundColor = backgroundColor
-        internal set
-    var underline = underline
-        internal set
-    var underlineColor = underlineColor
-        internal set
-    var reverse = reverse
-        internal set
-    var emojiVariation = emojiVariation
-        internal set
-    var overline = overline
-        internal set
-    var ideogram = ideogram
-        internal set
-    var script = script
-        internal set
-    var brightForegroundColor = brightForegroundColor
-        internal set
-    var brightBackgroundColor = brightBackgroundColor
-        internal set
-
     override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.SelectGraphicRendition
 
     /**
