@@ -451,7 +451,7 @@ object WhiteForeground : ForegroundColor() {
 /**
  * 38
  */
-class SelectForegroundColor(val parameter: ColorParameter) : ForegroundColor() {
+data class SelectForegroundColor(val parameter: ColorParameter) : ForegroundColor() {
     override val type = SelectGraphicRenditionParameterType.ForegroundColor
     override fun build(): String = "$type;${parameter.build()}"
 }
@@ -544,7 +544,7 @@ object WhiteBackground : BackgroundColor() {
 /**
  * 48
  */
-class SelectBackgroundColor(val parameter: ColorParameter) : BackgroundColor() {
+data class SelectBackgroundColor(val parameter: ColorParameter) : BackgroundColor() {
     override val type = SelectGraphicRenditionParameterType.BackgroundColor
     override fun build(): String = "$type;${parameter.build()}"
 }
@@ -634,7 +634,7 @@ sealed class UnderLineColor : SelectGraphicRenditionParameter() {
 /**
  * 58
  */
-class SelectUnderlineColor(val parameter: IndexedColor) : UnderLineColor() {
+data class SelectUnderlineColor(val parameter: IndexedColor) : UnderLineColor() {
     override val type = SelectGraphicRenditionParameterType.SelectUnderlineColor
     override fun build(): String = type.toString() + parameter.build()
 }
