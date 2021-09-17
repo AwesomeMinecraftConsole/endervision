@@ -56,3 +56,32 @@ operator fun List<AsciiCodeOrStringContainer>.plus(asciiCode: AsciiCode): List<A
 operator fun String.plus(list: List<AsciiCodeOrStringContainer>): List<AsciiCodeOrStringContainer> =
     listOf<AsciiCodeOrStringContainer>(AsciiCodeOrStringContainer.StringContainer(this), *list.toTypedArray())
 
+data class Span(val sgr: SelectGraphicRendition, var string: String = "")
+
+fun List<AsciiCodeOrStringContainer>.toSpans() {
+    val mutableList = mutableListOf<Span>()
+
+    forEach {
+        when (it) {
+            is AsciiCodeOrStringContainer.AsciiCodeContainer -> {
+                if (
+                    it.asciiCode is Escape
+                    && it.asciiCode.parameter is ControlSequenceIntroducer
+                    && it.asciiCode.parameter.parameter is SelectGraphicRendition
+                ) {
+                    mutableList.add(Span(it.asciiCode.parameter.parameter))
+                }
+            }
+            is AsciiCodeOrStringContainer.StringContainer -> {
+                mutableList.lastOrNull()?.let{ last -> last.string += it.string }
+                    ?: mutableList.add(Span(SelectGraphicRendition(), it.string))
+            }
+        }
+    }
+
+    // The SGR of each span inherits attributes of SRG of previous span.
+    mutableList.fold(SelectGraphicRendition()) { acc, span ->
+        span.sgr.basedOn(acc)
+        span.sgr.copy()
+    }
+}
