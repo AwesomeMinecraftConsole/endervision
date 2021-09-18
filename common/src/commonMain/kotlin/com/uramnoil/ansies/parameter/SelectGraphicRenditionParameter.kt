@@ -1,91 +1,426 @@
 package com.uramnoil.ansies.parameter
 
+import androidx.compose.ui.graphics.Color
+
 enum class SelectGraphicRenditionParameterType(val m: Int) {
-    ResetOrNormal(0),
-    BoldOrIncreasedIntensity(1),
-    FaintDecreasedIntensityOrDim(2),
-    Italicized(3),
-    Underline(4),
-    SlowBlink(5),
-    RapidBlink(6),
-    Reversed(7),
-    ConcealOrHide(8),
-    CrossedOut(9),
-    PrimaryFont(10),
-    AlternativeFont1(11),
-    AlternativeFont2(12),
-    AlternativeFont3(13),
-    AlternativeFont4(14),
-    AlternativeFont5(15),
-    AlternativeFont6(16),
-    AlternativeFont7(17),
-    AlternativeFont8(18),
-    AlternativeFont9(19),
-    BlackletterFont(20),
-    DoublyUnderlinedOrNotBold(21),
-    NormalIntensity(22),
-    NeitherItalicNorBlackletter(23),
-    NotUnderlined(24),
-    NotBlinking(25),
-    ProportionalSpacing(26),
-    NotReversed(27),
-    Reveal(28),
-    NotCrossedOut(29),
-    ForegroundColorBlack(30),
-    ForegroundColorRed(31),
-    ForegroundColorGreen(32),
-    ForegroundColorYellow(33),
-    ForegroundColorBlue(34),
-    ForegroundColorMagenta(35),
-    ForegroundColorCyan(36),
-    ForegroundColorWhite(37),
-    ForegroundColor(38),
-    DefaultForegroundColor(39),
-    BackgroundColorBlack(40),
-    BackgroundColorRed(41),
-    BackgroundColorGreen(42),
-    BackgroundColorYellow(43),
-    BackgroundColorBlue(44),
-    BackgroundColorMagenta(45),
-    BackgroundColorCyan(46),
-    BackgroundColorWhite(47),
-    BackgroundColor(48),
-    DefaultBackgroundColor(49),
-    DisableProportionalSpacing(50),
-    Framed(51),
-    Encircled(52),
-    Overlined(53),
-    ResetEmojiVariation(54),
-    NotOverlined(55),
-    SelectUnderlineColor(58),
-    DefaultUnderlineColor(59),
-    IdeogramUnderlineOrRightSideLine(60),
-    IdeogramDoubleUnderlineOrDoubleLineOnTheRightSide(61),
-    IdeogramOverlineOrLeftSideLine(62),
-    IdeogramDoubleOverlineOrDoubleLineOnTheLeftSide(63),
-    IdeogramStressMarking(64),
-    NoIdeogramAttribute(65),
-    Superscript(73),
-    Subscript(74),
-    NeitherSuperscriptNorSubscript(75),
-    BrightForegroundColorBlack(90),
-    BrightForegroundColorRed(91),
-    BrightForegroundColorGreen(92),
-    BrightForegroundColorYellow(93),
-    BrightForegroundColorBlue(94),
-    BrightForegroundColorMagenta(95),
-    BrightForegroundColorCyan(96),
-    BrightForegroundColorWhite(97),
-    BrightBackgroundColorBlack(100),
-    BrightBackgroundColorRed(101),
-    BrightBackgroundColorGreen(102),
-    BrightBackgroundColorYellow(103),
-    BrightBackgroundColorBlue(104),
-    BrightBackgroundColorMagenta(105),
-    BrightBackgroundColorCyan(106),
-    BrightBackgroundColorWhite(107), ;
+    ResetOrNormal(0) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BoldOrIncreasedIntensity(1) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    FaintDecreasedIntensityOrDim(2) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    Italicized(3) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    Underline(4) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    SlowBlink(5) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    RapidBlink(6) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    Reversed(7) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    ConcealOrHide(8) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    CrossedOut(9) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    PrimaryFont(10) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    AlternativeFont1(11) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    AlternativeFont2(12) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    AlternativeFont3(13) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    AlternativeFont4(14) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    AlternativeFont5(15) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    AlternativeFont6(16) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    AlternativeFont7(17) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    AlternativeFont8(18) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    AlternativeFont9(19) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BlackletterFont(20) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    DoublyUnderlinedOrNotBold(21) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    NormalIntensity(22) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    NeitherItalicNorBlackletter(23) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    NotUnderlined(24) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    NotBlinking(25) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    ProportionalSpacing(26) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    NotReversed(27) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    Reveal(28) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    NotCrossedOut(29) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    ForegroundColorBlack(30) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    ForegroundColorRed(31) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    ForegroundColorGreen(32) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    ForegroundColorYellow(33) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    ForegroundColorBlue(34) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    ForegroundColorMagenta(35) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    ForegroundColorCyan(36) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    ForegroundColorWhite(37) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    ForegroundColor(38) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    DefaultForegroundColor(39) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BackgroundColorBlack(40) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BackgroundColorRed(41) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BackgroundColorGreen(42) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BackgroundColorYellow(43) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BackgroundColorBlue(44) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BackgroundColorMagenta(45) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BackgroundColorCyan(46) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BackgroundColorWhite(47) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BackgroundColor(48) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    DefaultBackgroundColor(49) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    DisableProportionalSpacing(50) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    Framed(51) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    Encircled(52) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    Overlined(53) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    ResetEmojiVariation(54) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    NotOverlined(55) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    SelectUnderlineColor(58) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    DefaultUnderlineColor(59) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    IdeogramUnderlineOrRightSideLine(60) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    IdeogramDoubleUnderlineOrDoubleLineOnTheRightSide(61) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    IdeogramOverlineOrLeftSideLine(62) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    IdeogramDoubleOverlineOrDoubleLineOnTheLeftSide(63) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    IdeogramStressMarking(64) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    NoIdeogramAttribute(65) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    Superscript(73) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    Subscript(74) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    NeitherSuperscriptNorSubscript(75) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BrightForegroundColorBlack(90) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BrightForegroundColorRed(91) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BrightForegroundColorGreen(92) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BrightForegroundColorYellow(93) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BrightForegroundColorBlue(94) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BrightForegroundColorMagenta(95) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BrightForegroundColorCyan(96) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BrightForegroundColorWhite(97) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BrightBackgroundColorBlack(100) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BrightBackgroundColorRed(101) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BrightBackgroundColorGreen(102) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BrightBackgroundColorYellow(103) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BrightBackgroundColorBlue(104) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BrightBackgroundColorMagenta(105) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BrightBackgroundColorCyan(106) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    BrightBackgroundColorWhite(107) {
+        override fun parse(string: String): SelectGraphicRenditionParameter {
+            TODO("Not yet implemented")
+        }
+    }, ;
 
     override fun toString(): String = m.toString()
+    abstract fun parse(string: String): SelectGraphicRenditionParameter
 }
 
 sealed class SelectGraphicRenditionParameter {
@@ -865,14 +1200,39 @@ object WhiteBrightBackground : BrightBackgroundColor() {
 
 
 enum class ColorParameterMode(val mode: Int) {
-    Defined(0),
-    Transparent(1),
-    Rgb(2),
-    Cmy(3),
-    Cmyk(4),
-    IndexedColor(5), ;
+    Defined(0) {
+        override fun parse(string: String): ColorParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    Transparent(1) {
+        override fun parse(string: String): ColorParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    Rgb(2) {
+        override fun parse(string: String): ColorParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    Cmy(3) {
+        override fun parse(string: String): ColorParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    Cmyk(4) {
+        override fun parse(string: String): ColorParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    IndexedColor(5) {
+        override fun parse(string: String): ColorParameter {
+            TODO("Not yet implemented")
+        }
+    }, ;
 
     override fun toString(): String = mode.toString()
+    abstract fun parse(string: String): ColorParameter
 }
 
 sealed class ColorParameter {

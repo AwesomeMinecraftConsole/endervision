@@ -1,33 +1,98 @@
 package com.uramnoil.ansies.parameter
 
-enum class ControlSequenceIntroducerType(val abbr: String, val suffix: String) {
-    CursorUp("CUU", "A"),
-    CursorDown("CUD", "B"),
-    CursorForward("CUF", "C"),
-    CursorBack("CSB", "E"),
-    CursorNextLine("CNL", "F"),
-    CursorPreviousLine("CPL", "G"),
-    CursorPosition("CUP", "H"),
-    EraseDisplay("ED", "J"),
-    EraseInLine("EL", "K"),
-    ScrollUp("SU", "S"),
-    ScrollDown("SD", "T"),
-    HorizontalVerticalPosition("HVP", "f"),
-    SelectGraphicRendition("SGR", "m"),
-    AuxPortOn("", "5i"),
-    AuxPortOff("", "4i"),
-    DeviceStatusReport("DSR", "6n"), ;
+enum class ControlSequenceIntroducerParameterType(val abbr: String, val suffix: String) {
+    CursorUp("CUU", "A" ) {
+        override fun parse(string: String): ControlSequenceIntroducerParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    CursorDown("CUD", "B" ) {
+        override fun parse(string: String): ControlSequenceIntroducerParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    CursorForward("CUF", "C" ) {
+        override fun parse(string: String): ControlSequenceIntroducerParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    CursorBack("CSB", "E" ) {
+        override fun parse(string: String): ControlSequenceIntroducerParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    CursorNextLine("CNL", "F" ) {
+        override fun parse(string: String): ControlSequenceIntroducerParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    CursorPreviousLine("CPL", "G" ) {
+        override fun parse(string: String): ControlSequenceIntroducerParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    CursorPosition("CUP", "H" ) {
+        override fun parse(string: String): ControlSequenceIntroducerParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    EraseDisplay("ED", "J" ) {
+        override fun parse(string: String): ControlSequenceIntroducerParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    EraseInLine("EL", "K" ) {
+        override fun parse(string: String): ControlSequenceIntroducerParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    ScrollUp("SU", "S" ) {
+        override fun parse(string: String): ControlSequenceIntroducerParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    ScrollDown("SD", "T" ) {
+        override fun parse(string: String): ControlSequenceIntroducerParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    HorizontalVerticalPosition("HVP", "f" ) {
+        override fun parse(string: String): ControlSequenceIntroducerParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    SelectGraphicRendition("SGR", "m" ) {
+        override fun parse(string: String): ControlSequenceIntroducerParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    AuxPortOn("", "5i" ) {
+        override fun parse(string: String): ControlSequenceIntroducerParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    AuxPortOff("", "4i" ) {
+        override fun parse(string: String): ControlSequenceIntroducerParameter {
+            TODO("Not yet implemented")
+        }
+    },
+    DeviceStatusReport("DSR", "6n") {
+        override fun parse(string: String): ControlSequenceIntroducerParameter {
+            TODO("Not yet implemented")
+        }
+    }, ;
 
     override fun toString(): String = suffix
+    abstract fun parse(string: String): ControlSequenceIntroducerParameter
 }
 
 class ControlSequenceIntroducer(val parameter: ControlSequenceIntroducerParameter) : EscapeSequenceParameter() {
-    override val type: EscapeSequenceParameterType = EscapeSequenceParameterType.ControlSequenceIntroducer
+    override val type: EscapeParameterType = EscapeParameterType.ControlSequenceIntroducer
     override fun build(): String = type.build() + parameter.build()
 }
 
 sealed class ControlSequenceIntroducerParameter {
-    abstract val type: ControlSequenceIntroducerType
+    abstract val type: ControlSequenceIntroducerParameterType
     abstract fun build(): String
 }
 
@@ -38,62 +103,62 @@ fun ControlSequenceIntroducerParameter.withArgN(n: Int) = "$n$type"
 fun ControlSequenceIntroducerParameter.withArgNM(n: Int, m: Int) = "$n:$m$type"
 
 class CursorUp(val n: Int = 1) : ControlSequenceIntroducerParameter() {
-    override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.CursorUp
+    override val type: ControlSequenceIntroducerParameterType = ControlSequenceIntroducerParameterType.CursorUp
     override fun build(): String = withArgN(n)
 }
 
 class CursorDown(val n: Int = 1) : ControlSequenceIntroducerParameter() {
-    override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.CursorDown
+    override val type: ControlSequenceIntroducerParameterType = ControlSequenceIntroducerParameterType.CursorDown
     override fun build(): String = withArgN(n)
 }
 
 class CursorForward(val n: Int = 1) : ControlSequenceIntroducerParameter() {
-    override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.CursorForward
+    override val type: ControlSequenceIntroducerParameterType = ControlSequenceIntroducerParameterType.CursorForward
     override fun build(): String = withArgN(n)
 }
 
 class CursorCursorBack(val n: Int = 1) : ControlSequenceIntroducerParameter() {
-    override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.CursorBack
+    override val type: ControlSequenceIntroducerParameterType = ControlSequenceIntroducerParameterType.CursorBack
     override fun build(): String = withArgN(n)
 }
 
 class CursorNextLine(val n: Int = 1) : ControlSequenceIntroducerParameter() {
-    override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.CursorNextLine
+    override val type: ControlSequenceIntroducerParameterType = ControlSequenceIntroducerParameterType.CursorNextLine
     override fun build(): String = withArgN(n)
 }
 
 class CursorPreviousLine(val n: Int = 1) : ControlSequenceIntroducerParameter() {
-    override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.CursorPreviousLine
+    override val type: ControlSequenceIntroducerParameterType = ControlSequenceIntroducerParameterType.CursorPreviousLine
     override fun build(): String = withArgN(n)
 }
 
 class CursorPosition(val n: Int = 1, val m: Int = 1) : ControlSequenceIntroducerParameter() {
-    override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.CursorPosition
+    override val type: ControlSequenceIntroducerParameterType = ControlSequenceIntroducerParameterType.CursorPosition
     override fun build(): String = withArgN(n)
 }
 
 class EraseDisplay(val n: Int = 1) : ControlSequenceIntroducerParameter() {
-    override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.EraseDisplay
+    override val type: ControlSequenceIntroducerParameterType = ControlSequenceIntroducerParameterType.EraseDisplay
     override fun build(): String = withArgN(n)
 }
 
 class EraseInLine(val n: Int = 1) : ControlSequenceIntroducerParameter() {
-    override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.EraseInLine
+    override val type: ControlSequenceIntroducerParameterType = ControlSequenceIntroducerParameterType.EraseInLine
     override fun build(): String = withArgN(n)
 }
 
 class ScrollUp(val n: Int = 1) : ControlSequenceIntroducerParameter() {
-    override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.ScrollUp
+    override val type: ControlSequenceIntroducerParameterType = ControlSequenceIntroducerParameterType.ScrollUp
     override fun build(): String = withArgN(n)
 }
 
 class ScrollDown(val n: Int = 1, val m: Int) : ControlSequenceIntroducerParameter() {
-    override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.ScrollDown
+    override val type: ControlSequenceIntroducerParameterType = ControlSequenceIntroducerParameterType.ScrollDown
     override fun build(): String = withArgNM(n, m)
 }
 
 class HorizontalVerticalPosition(val n: Int = 1) : ControlSequenceIntroducerParameter() {
-    override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.HorizontalVerticalPosition
+    override val type: ControlSequenceIntroducerParameterType = ControlSequenceIntroducerParameterType.HorizontalVerticalPosition
     override fun build(): String = withArgN(n)
 }
 
@@ -117,7 +182,7 @@ data class SelectGraphicRendition(
     var brightForegroundColor: BrightForegroundColor? = null,
     var brightBackgroundColor: BrightBackgroundColor? = null,
 ) : ControlSequenceIntroducerParameter() {
-    override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.SelectGraphicRendition
+    override val type: ControlSequenceIntroducerParameterType = ControlSequenceIntroducerParameterType.SelectGraphicRendition
 
     /**
      * Construct a SelectGraphicRenditionSequence and change it to a String.
@@ -256,16 +321,16 @@ fun SelectGraphicRendition.basedOn(base: SelectGraphicRendition) = apply {
 }
 
 class AuxPortOn(val n: Int = 1) : ControlSequenceIntroducerParameter() {
-    override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.AuxPortOn
+    override val type: ControlSequenceIntroducerParameterType = ControlSequenceIntroducerParameterType.AuxPortOn
     override fun build(): String = withoutArg()
 }
 
 class AuxPortOff(val n: Int = 1) : ControlSequenceIntroducerParameter() {
-    override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.AuxPortOff
+    override val type: ControlSequenceIntroducerParameterType = ControlSequenceIntroducerParameterType.AuxPortOff
     override fun build(): String = withoutArg()
 }
 
 class DeviceStatusReport(val n: Int = 1) : ControlSequenceIntroducerParameter() {
-    override val type: ControlSequenceIntroducerType = ControlSequenceIntroducerType.DeviceStatusReport
+    override val type: ControlSequenceIntroducerParameterType = ControlSequenceIntroducerParameterType.DeviceStatusReport
     override fun build(): String = withoutArg()
 }
