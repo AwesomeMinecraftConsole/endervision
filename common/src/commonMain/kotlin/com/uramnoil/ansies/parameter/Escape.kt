@@ -173,11 +173,12 @@ class Escape(val parameter: EscapeParameter) : AsciiCode() {
 
 sealed class EscapeParameter {
     companion object {
-        private val escapeParameterMap = EscapeParameterType.values().associateBy { Char(it.gl) }
-        fun parse(ansi: String): EscapeParameter {
-            val type = ansi.first()
-            val argument = ansi.drop(1)
-            return escapeParameterMap[type]?.parse(argument) ?: throw IllegalArgumentException("doesn't match any parameter")
+        private val map = EscapeParameterType.values().associateBy { Char(it.gl) }
+
+        fun parse(string: String): EscapeParameter {
+            val type = string.first()
+            val argument = string.drop(1)
+            return map[type]?.parse(argument) ?: throw IllegalArgumentException("doesn't match any parameter")
         }
     }
     abstract val type: EscapeParameterType

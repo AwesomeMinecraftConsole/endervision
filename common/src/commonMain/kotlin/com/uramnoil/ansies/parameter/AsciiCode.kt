@@ -62,12 +62,27 @@ enum class AsciiControlCharacter(val abbr: String, val c0: Int) {
 
 sealed class AsciiCode {
     companion object {
-        private val map = AsciiControlCharacter.values().associateBy { Char(it.c0) }
+        private val c0Map = AsciiControlCharacter.values().associateBy { Char(it.c0) }
+        private val c1Map = EscapeParameterType.values().associateBy { Char(it.c1) }
 
         fun parse(string: String): AsciiCode {
             val controlType = string.first()
-            val argument = string.drop(1)
-            return map[controlType]?.parse(argument) ?: throw IllegalArgumentException("doesn't match ant parameters")
+            val c0 = c0Map[controlType]
+            val c1 = c1Map[controlType]
+            var asciiCode: AsciiCode? = null
+            if (c0 != null) {
+                val argument = string.drop(1)
+                asciiCode = c0.parse(argument)
+            } else if (c1 != null) {
+                val argument = string.drop(1)
+                asciiCode = Escape(c1.parse(argument))
+            } else if (string.startsWith("""\e""")) {
+                asciiCode = Escape(EscapeParameter.parse(string.drop(2)))
+            }
+
+            if (asciiCode == null) throw IllegalArgumentException("Doesn't match any ascii control character")
+
+            return asciiCode
         }
     }
     abstract val asciiControlCharacter: AsciiControlCharacter
