@@ -20,6 +20,12 @@ kotlin {
     jvm("desktop") {
         compilations.all {
             kotlinOptions.jvmTarget = "11"
+
+            tasks.withType<Test> {
+                this.testLogging {
+                    this.showStandardStreams = true
+                }
+            }
         }
     }
     sourceSets {

@@ -124,9 +124,30 @@ operator fun SelectGraphicRenditionParameter.plus(other: SelectGraphicRenditionP
 operator fun SelectGraphicRendition.plus(parameter: SelectGraphicRenditionParameter) =
     parameter.asSequence().basedOn(this)
 
-fun sgrOf(parameter: SelectGraphicRenditionParameter) = parameter.asSequence()
+fun ansiOf(parameter: SelectGraphicRenditionParameter) =
+    AsciiCodeOrStringSequence(listOf(AsciiCodeOrString.AsciiCode(Escape(ControlSequenceIntroducer(parameter.asSequence())))))
 
-fun sgrOf(parameters: Collection<SelectGraphicRenditionParameter>) =
-    parameters.fold(SelectGraphicRendition()) { acc, selectGraphicRenditionParameter ->
-        acc + selectGraphicRenditionParameter
-    }
+fun ansiOf(sgr: SelectGraphicRendition) =
+    AsciiCodeOrStringSequence(listOf(AsciiCodeOrString.AsciiCode(Escape(ControlSequenceIntroducer(sgr)))))
+
+operator fun SelectGraphicRendition.plus(string: String): AsciiCodeOrStringSequence {
+    return AsciiCodeOrStringSequence(
+        listOf(
+            AsciiCodeOrString.AsciiCode(
+                Escape(
+                    ControlSequenceIntroducer(this)
+                )
+            ),
+            AsciiCodeOrString.String(string)
+        )
+    )
+}
+
+operator fun SelectGraphicRendition.plus(sgr: SelectGraphicRendition): AsciiCodeOrStringSequence {
+    return AsciiCodeOrStringSequence(
+        listOf(
+            AsciiCodeOrString.AsciiCode(Escape(ControlSequenceIntroducer(this))),
+            AsciiCodeOrString.AsciiCode(Escape(ControlSequenceIntroducer(sgr)))
+        )
+    )
+}

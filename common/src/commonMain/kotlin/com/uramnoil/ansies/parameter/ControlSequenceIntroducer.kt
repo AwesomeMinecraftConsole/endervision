@@ -65,7 +65,7 @@ enum class ControlSequenceIntroducerParameterType(val abbr: String, val suffix: 
     },
     SelectGraphicRendition("SGR", 'm') {
         override fun parse(argument: String): ControlSequenceIntroducerParameter {
-            return SelectGraphicRendition(SelectGraphicRenditionParameter.parse(argument.drop(1)))
+            return SelectGraphicRendition(SelectGraphicRenditionParameter.parse(argument))
         }
     },
     AuxPortOn("", 'i') {

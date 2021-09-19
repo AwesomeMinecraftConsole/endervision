@@ -31,8 +31,6 @@ class AsciiCodeOrStringSequence(asciiCodeOrStringList: List<AsciiCodeOrString>) 
 
     fun build(): String = asciiCodeOrStringList.map { it.build() }.joinToString("")
 
-    operator fun plus(sgr: SelectGraphicRendition) = mutableAsciiCodeOrStringList.add(AsciiCodeOrString.AsciiCode(Escape(ControlSequenceIntroducer(sgr))))
-
     operator fun plus(string: String) = apply {
         val lastContainer = asciiCodeOrStringList.last()
         if (lastContainer is AsciiCodeOrString.String) {
@@ -42,7 +40,11 @@ class AsciiCodeOrStringSequence(asciiCodeOrStringList: List<AsciiCodeOrString>) 
         }
     }
 
-    operator fun plus(asciiCode: AsciiCode) = apply { mutableAsciiCodeOrStringList.add(AsciiCodeOrString.AsciiCode(asciiCode)) }
+    operator fun plus(asciiCode: AsciiCode) =
+        apply { mutableAsciiCodeOrStringList.add(AsciiCodeOrString.AsciiCode(asciiCode)) }
+
+    operator fun plus(sequence: AsciiCodeOrStringSequence) =
+        apply { mutableAsciiCodeOrStringList.addAll(sequence.asciiCodeOrStringList) }
 }
 
 operator fun String.plus(sequence: AsciiCodeOrStringSequence): AsciiCodeOrStringSequence =
