@@ -2,418 +2,421 @@ package com.uramnoil.ansies.parameter
 
 enum class SelectGraphicRenditionParameterType(val m: Int) {
     ResetOrNormal(0) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.ResetOrNormal to parameters
         }
     },
     BoldOrIncreasedIntensity(1) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BoldOrIncreasedIntensity to parameters
         }
     },
     FaintDecreasedIntensityOrDim(2) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.FaintDecreasedIntensityOrDim to parameters
         }
     },
     Italicized(3) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.Italicized to parameters
         }
     },
     Underline(4) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.Underlined to parameters
         }
     },
     SlowBlink(5) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.SlowlyBlinking to parameters
         }
     },
     RapidBlink(6) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.RapidlyBlinking to parameters
         }
     },
     Reversed(7) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.Reversed to parameters
         }
     },
     ConcealOrHide(8) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.Concealed to parameters
         }
     },
     CrossedOut(9) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.CrossedOut to parameters
         }
     },
     PrimaryFont(10) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.PrimaryFont to parameters
         }
     },
     AlternativeFont1(11) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.AlternativeFont1 to parameters
         }
     },
     AlternativeFont2(12) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.AlternativeFont2 to parameters
         }
     },
     AlternativeFont3(13) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.AlternativeFont3 to parameters
         }
     },
     AlternativeFont4(14) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.AlternativeFont4 to parameters
         }
     },
     AlternativeFont5(15) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.AlternativeFont5 to parameters
         }
     },
     AlternativeFont6(16) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.AlternativeFont6 to parameters
         }
     },
     AlternativeFont7(17) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.AlternativeFont7 to parameters
         }
     },
     AlternativeFont8(18) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.AlternativeFont8 to parameters
         }
     },
     AlternativeFont9(19) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.AlternativeFont9 to parameters
         }
     },
-    BlackletterFont(20) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    Fraktur(20) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.Fraktur to parameters
         }
     },
     DoublyUnderlinedOrNotBold(21) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.DoublyUnderlined to parameters
         }
     },
     NormalIntensity(22) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.NormalIntensity to parameters
         }
     },
     NeitherItalicNorBlackletter(23) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.ResetPenmanship to parameters
         }
     },
     NotUnderlined(24) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.NotUnderlined to parameters
         }
     },
     NotBlinking(25) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.NotBlinking to parameters
         }
     },
     ProportionalSpacing(26) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.ProportionalSpacing to parameters
         }
     },
     NotReversed(27) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.NotReversed to parameters
         }
     },
     Reveal(28) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.Revealed to parameters
         }
     },
     NotCrossedOut(29) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.NotCrossedOut to parameters
         }
     },
-    ForegroundColorBlack(30) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BlackForeground(30) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BlackForeground to parameters
         }
     },
-    ForegroundColorRed(31) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    RedForeground(31) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.RedForeground to parameters
         }
     },
-    ForegroundColorGreen(32) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    GreenForeground(32) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.GreenForeground to parameters
         }
     },
-    ForegroundColorYellow(33) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    YellowForeground(33) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.YellowForeground to parameters
         }
     },
-    ForegroundColorBlue(34) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BlueForeground(34) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BlueForeground to parameters
         }
     },
-    ForegroundColorMagenta(35) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    MagentaForeground(35) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.MagentaForeground to parameters
         }
     },
-    ForegroundColorCyan(36) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    CyanForeground(36) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.CyanForeground to parameters
         }
     },
-    ForegroundColorWhite(37) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    WhiteForeground(37) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.WhiteForeground to parameters
         }
     },
     ForegroundColor(38) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            val (parameter, left) = ColorParameter.parse(parameters)
+            return com.uramnoil.ansies.parameter.SelectBackgroundColor(parameter) to left
         }
     },
     DefaultForegroundColor(39) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.DefaultForegroundColor to parameters
         }
     },
-    BackgroundColorBlack(40) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BlackBackground(40) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BlackBackground to parameters
         }
     },
-    BackgroundColorRed(41) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    RedBackground(41) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.RedBackground to parameters
         }
     },
-    BackgroundColorGreen(42) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    GreenBackground(42) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.GreenBackground to parameters
         }
     },
-    BackgroundColorYellow(43) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    YellowBackground(43) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.YellowBackground to parameters
         }
     },
-    BackgroundColorBlue(44) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BlueBackground(44) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BlueBackground to parameters
         }
     },
-    BackgroundColorMagenta(45) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    MagentaBackground(45) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.MagentaBackground to parameters
         }
     },
-    BackgroundColorCyan(46) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    CyanBackground(46) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.CyanBackground to parameters
         }
     },
-    BackgroundColorWhite(47) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    WhiteBackground(47) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.WhiteBackground to parameters
         }
     },
     BackgroundColor(48) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            val (parameter, left) = ColorParameter.parse(parameters)
+            return com.uramnoil.ansies.parameter.SelectBackgroundColor(parameter) to left
         }
     },
     DefaultBackgroundColor(49) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.DefaultBackgroundColor to parameters
         }
     },
     DisableProportionalSpacing(50) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
             TODO("Not yet implemented")
         }
     },
     Framed(51) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.Framed to parameters
         }
     },
     Encircled(52) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.Encircled to parameters
         }
     },
     Overlined(53) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.Overlined to parameters
         }
     },
     ResetEmojiVariation(54) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.ResetEmojiVariation to parameters
         }
     },
     NotOverlined(55) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.NotOverlined to parameters
         }
     },
     SelectUnderlineColor(58) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            val (parameter, left) = ColorParameterMode.IndexedColor.parse(parameters) as Pair<IndexedColor, List<Int>>
+            return com.uramnoil.ansies.parameter.SelectUnderlineColor(parameter) to left
         }
     },
     DefaultUnderlineColor(59) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.DefaultUnderlineColor to parameters
         }
     },
     IdeogramUnderlineOrRightSideLine(60) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.IdeogramUnderlineOrRightSideLine to parameters
         }
     },
     IdeogramDoubleUnderlineOrDoubleLineOnTheRightSide(61) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.IdeogramDoubleUnderlineOrDoubleLineOnTheRightSide to parameters
         }
     },
     IdeogramOverlineOrLeftSideLine(62) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.IdeogramOverlineOrLeftSideLine to parameters
         }
     },
     IdeogramDoubleOverlineOrDoubleLineOnTheLeftSide(63) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.IdeogramDoubleOverlineOrDoubleLineOnTheLeftSide to parameters
         }
     },
     IdeogramStressMarking(64) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.IdeogramStressMarking to parameters
         }
     },
     NoIdeogramAttribute(65) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.NoIdeogramAttribute to parameters
         }
     },
     Superscript(73) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.Superscript to parameters
         }
     },
     Subscript(74) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.Subscript to parameters
         }
     },
     NeitherSuperscriptNorSubscript(75) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.NoScriptAttribute to parameters
         }
     },
-    BrightForegroundColorBlack(90) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BrightBlackForeground(90) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BrightBlackForeground to parameters
         }
     },
-    BrightForegroundColorRed(91) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BrightRedForeground(91) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BrightRedForeground to parameters
         }
     },
-    BrightForegroundColorGreen(92) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BrightGreenForeground(92) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BrightGreenForeground to parameters
         }
     },
-    BrightForegroundColorYellow(93) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BrightYellowForeground(93) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BrightYellowForeground to parameters
         }
     },
-    BrightForegroundColorBlue(94) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BrightBlueForeground(94) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BrightBlueForeground to parameters
         }
     },
-    BrightForegroundColorMagenta(95) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BrightMagentaForeground(95) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BrightMagentaForeground to parameters
         }
     },
-    BrightForegroundColorCyan(96) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BrightCyanForeground(96) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BrightCyanForeground to parameters
         }
     },
-    BrightForegroundColorWhite(97) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BrightWhiteForeground(97) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BrightWhiteForeground to parameters
         }
     },
-    BrightBackgroundColorBlack(100) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BrightBlackBackground(100) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BrightBlackBackground to parameters
         }
     },
-    BrightBackgroundColorRed(101) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BrightRedBackground(101) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BrightRedBackground to parameters
         }
     },
-    BrightBackgroundColorGreen(102) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BrightGreenBackground(102) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BrightGreenBackground to parameters
         }
     },
-    BrightBackgroundColorYellow(103) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BrightYellowBackground(103) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BrightYellowBackground to parameters
         }
     },
-    BrightBackgroundColorBlue(104) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BrightBlueBackground(104) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BrightBlueBackground to parameters
         }
     },
-    BrightBackgroundColorMagenta(105) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BrightMagentaBackground(105) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BrightMagentaBackground to parameters
         }
     },
-    BrightBackgroundColorCyan(106) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BrightCyanBackground(106) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BrightCyanBackground to parameters
         }
     },
-    BrightBackgroundColorWhite(107) {
-        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
-            TODO("Not yet implemented")
+    BrightWhiteBackground(107) {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
+            return com.uramnoil.ansies.parameter.BrightWhiteBackground to parameters
         }
     }, ;
 
@@ -422,7 +425,7 @@ enum class SelectGraphicRenditionParameterType(val m: Int) {
     /**
      * @return the second value of the pair explains how many parameters consumed.
      */
-    abstract fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int>
+    abstract fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>>
 }
 
 sealed class SelectGraphicRenditionParameter {
@@ -430,15 +433,13 @@ sealed class SelectGraphicRenditionParameter {
         val map = SelectGraphicRenditionParameterType.values().associateBy { it.m }
 
         fun parse(string: String): Set<SelectGraphicRenditionParameter> {
-            val parameters = string.split(';').map { if (it == "") 0 else it.toInt() }
+            var parameters = string.split(';').map { if (it == "") 0 else it.toInt() }
             val selectGraphicRenditionParameters = mutableSetOf<SelectGraphicRenditionParameter>()
-            var index = 0
-            while (index >= parameters.size) {
-                index++
-                val (selectGraphicRenditionParameter, occupancy) = map[parameters[0]]?.parse(parameters.slice(index until parameters.size))
+            while (parameters.isNotEmpty()) {
+                val (selectGraphicRenditionParameter, left) = map[parameters[0]]?.parse(parameters.slice(1 until parameters.size))
                     ?: throw IllegalArgumentException("doesn't match eny codes")
                 selectGraphicRenditionParameters.add(selectGraphicRenditionParameter)
-                index += occupancy
+                parameters = left
             }
             return selectGraphicRenditionParameters
         }
@@ -652,7 +653,7 @@ object AlternativeFont9 : Font() {
  * 20
  */
 object Fraktur : Penmanship() {
-    override val type = SelectGraphicRenditionParameterType.BlackletterFont
+    override val type = SelectGraphicRenditionParameterType.Fraktur
     override fun build(): String = withoutArg()
 }
 
@@ -743,7 +744,7 @@ sealed class ForegroundColor : SelectGraphicRenditionParameter() {
  * 30
  */
 object BlackForeground : ForegroundColor() {
-    override val type = SelectGraphicRenditionParameterType.ForegroundColorBlack
+    override val type = SelectGraphicRenditionParameterType.BlackForeground
     override fun build(): String = withoutArg()
 }
 
@@ -751,7 +752,7 @@ object BlackForeground : ForegroundColor() {
  * 31
  */
 object RedForeground : ForegroundColor() {
-    override val type = SelectGraphicRenditionParameterType.ForegroundColorRed
+    override val type = SelectGraphicRenditionParameterType.RedForeground
     override fun build(): String = withoutArg()
 }
 
@@ -759,7 +760,7 @@ object RedForeground : ForegroundColor() {
  * 32
  */
 object GreenForeground : ForegroundColor() {
-    override val type = SelectGraphicRenditionParameterType.ForegroundColorGreen
+    override val type = SelectGraphicRenditionParameterType.GreenForeground
     override fun build(): String = withoutArg()
 }
 
@@ -767,7 +768,7 @@ object GreenForeground : ForegroundColor() {
  * 33
  */
 object YellowForeground : ForegroundColor() {
-    override val type = SelectGraphicRenditionParameterType.ForegroundColorYellow
+    override val type = SelectGraphicRenditionParameterType.YellowForeground
     override fun build(): String = withoutArg()
 }
 
@@ -775,7 +776,7 @@ object YellowForeground : ForegroundColor() {
  * 34
  */
 object BlueForeground : ForegroundColor() {
-    override val type = SelectGraphicRenditionParameterType.ForegroundColorBlue
+    override val type = SelectGraphicRenditionParameterType.BlueForeground
     override fun build(): String = withoutArg()
 }
 
@@ -783,7 +784,7 @@ object BlueForeground : ForegroundColor() {
  * 35
  */
 object MagentaForeground : ForegroundColor() {
-    override val type = SelectGraphicRenditionParameterType.ForegroundColorMagenta
+    override val type = SelectGraphicRenditionParameterType.MagentaForeground
     override fun build(): String = withoutArg()
 }
 
@@ -791,7 +792,7 @@ object MagentaForeground : ForegroundColor() {
  * 36
  */
 object CyanForeground : ForegroundColor() {
-    override val type = SelectGraphicRenditionParameterType.ForegroundColorCyan
+    override val type = SelectGraphicRenditionParameterType.CyanForeground
     override fun build(): String = withoutArg()
 }
 
@@ -799,7 +800,7 @@ object CyanForeground : ForegroundColor() {
  * 37
  */
 object WhiteForeground : ForegroundColor() {
-    override val type = SelectGraphicRenditionParameterType.ForegroundColorWhite
+    override val type = SelectGraphicRenditionParameterType.WhiteForeground
     override fun build(): String = withoutArg()
 }
 
@@ -836,7 +837,7 @@ sealed class BackgroundColor : SelectGraphicRenditionParameter() {
  * 40
  */
 object BlackBackground : BackgroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BackgroundColorBlack
+    override val type = SelectGraphicRenditionParameterType.BlackBackground
     override fun build(): String = withoutArg()
 }
 
@@ -844,7 +845,7 @@ object BlackBackground : BackgroundColor() {
  * 41
  */
 object RedBackground : BackgroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BackgroundColorRed
+    override val type = SelectGraphicRenditionParameterType.RedBackground
     override fun build(): String = withoutArg()
 }
 
@@ -852,7 +853,7 @@ object RedBackground : BackgroundColor() {
  * 42
  */
 object GreenBackground : BackgroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BackgroundColorGreen
+    override val type = SelectGraphicRenditionParameterType.GreenBackground
     override fun build(): String = withoutArg()
 }
 
@@ -860,7 +861,7 @@ object GreenBackground : BackgroundColor() {
  * 43
  */
 object YellowBackground : BackgroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BackgroundColorYellow
+    override val type = SelectGraphicRenditionParameterType.YellowBackground
     override fun build(): String = withoutArg()
 }
 
@@ -868,7 +869,7 @@ object YellowBackground : BackgroundColor() {
  * 44
  */
 object BlueBackground : BackgroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BackgroundColorBlue
+    override val type = SelectGraphicRenditionParameterType.BlueBackground
     override fun build(): String = withoutArg()
 }
 
@@ -876,7 +877,7 @@ object BlueBackground : BackgroundColor() {
  * 45
  */
 object MagentaBackground : BackgroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BackgroundColorMagenta
+    override val type = SelectGraphicRenditionParameterType.MagentaBackground
     override fun build(): String = withoutArg()
 }
 
@@ -884,7 +885,7 @@ object MagentaBackground : BackgroundColor() {
  * 46
  */
 object CyanBackground : BackgroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BackgroundColorCyan
+    override val type = SelectGraphicRenditionParameterType.CyanBackground
     override fun build(): String = withoutArg()
 }
 
@@ -892,7 +893,7 @@ object CyanBackground : BackgroundColor() {
  * 47
  */
 object WhiteBackground : BackgroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BackgroundColorWhite
+    override val type = SelectGraphicRenditionParameterType.WhiteBackground
     override fun build(): String = withoutArg()
 }
 
@@ -1089,64 +1090,64 @@ sealed class BrightForegroundColor : SelectGraphicRenditionParameter() {
 /**
  * 90
  */
-object BlackBrightForeground : BrightForegroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BrightForegroundColorBlack
+object BrightBlackForeground : BrightForegroundColor() {
+    override val type = SelectGraphicRenditionParameterType.BrightBlackForeground
     override fun build(): String = withoutArg()
 }
 
 /**
  * 91
  */
-object RedBrightForeground : BrightForegroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BrightForegroundColorRed
+object BrightRedForeground : BrightForegroundColor() {
+    override val type = SelectGraphicRenditionParameterType.BrightRedForeground
     override fun build(): String = withoutArg()
 }
 
 /**
  * 92
  */
-object GreenBrightForeground : BrightForegroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BrightForegroundColorGreen
+object BrightGreenForeground : BrightForegroundColor() {
+    override val type = SelectGraphicRenditionParameterType.BrightGreenForeground
     override fun build(): String = withoutArg()
 }
 
 /**
  * 93
  */
-object YellowBrightForeground : BrightForegroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BrightForegroundColorYellow
+object BrightYellowForeground : BrightForegroundColor() {
+    override val type = SelectGraphicRenditionParameterType.BrightYellowForeground
     override fun build(): String = withoutArg()
 }
 
 /**
  * 94
  */
-object BlueBrightForeground : BrightForegroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BrightForegroundColorBlue
+object BrightBlueForeground : BrightForegroundColor() {
+    override val type = SelectGraphicRenditionParameterType.BrightBlueForeground
     override fun build(): String = withoutArg()
 }
 
 /**
  * 95
  */
-object MagentaBrightForeground : BrightForegroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BrightForegroundColorMagenta
+object BrightMagentaForeground : BrightForegroundColor() {
+    override val type = SelectGraphicRenditionParameterType.BrightMagentaForeground
     override fun build(): String = withoutArg()
 }
 
 /**
  * 96
  */
-object CyanBrightForeground : BrightForegroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BrightForegroundColorCyan
+object BrightCyanForeground : BrightForegroundColor() {
+    override val type = SelectGraphicRenditionParameterType.BrightCyanForeground
     override fun build(): String = withoutArg()
 }
 
 /**
  * 97
  */
-object WhiteBrightForeground : BrightForegroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BrightForegroundColorWhite
+object BrightWhiteForeground : BrightForegroundColor() {
+    override val type = SelectGraphicRenditionParameterType.BrightWhiteForeground
     override fun build(): String = withoutArg()
 }
 
@@ -1157,105 +1158,116 @@ sealed class BrightBackgroundColor : SelectGraphicRenditionParameter() {
 /**
  * 100
  */
-object BlackBrightBackground : BrightBackgroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BrightBackgroundColorBlack
+object BrightBlackBackground : BrightBackgroundColor() {
+    override val type = SelectGraphicRenditionParameterType.BrightBlackBackground
     override fun build(): String = withoutArg()
 }
 
 /**
  * 101
  */
-object RedBrightBackground : BrightBackgroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BrightBackgroundColorRed
+object BrightRedBackground : BrightBackgroundColor() {
+    override val type = SelectGraphicRenditionParameterType.BrightRedBackground
     override fun build(): String = withoutArg()
 }
 
 /**
  * 102
  */
-object GreenBrightBackground : BrightBackgroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BrightBackgroundColorGreen
+object BrightGreenBackground : BrightBackgroundColor() {
+    override val type = SelectGraphicRenditionParameterType.BrightGreenBackground
     override fun build(): String = withoutArg()
 }
 
 /**
  * 103
  */
-object YellowBrightBackground : BrightBackgroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BrightBackgroundColorYellow
+object BrightYellowBackground : BrightBackgroundColor() {
+    override val type = SelectGraphicRenditionParameterType.BrightYellowBackground
     override fun build(): String = withoutArg()
 }
 
 /**
  * 104
  */
-object BlueBrightBackground : BrightBackgroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BrightBackgroundColorBlue
+object BrightBlueBackground : BrightBackgroundColor() {
+    override val type = SelectGraphicRenditionParameterType.BrightBlueBackground
     override fun build(): String = withoutArg()
 }
 
 /**
  * 105
  */
-object MagentaBrightBackground : BrightBackgroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BrightBackgroundColorMagenta
+object BrightMagentaBackground : BrightBackgroundColor() {
+    override val type = SelectGraphicRenditionParameterType.BrightMagentaBackground
     override fun build(): String = withoutArg()
 }
 
 /**
  * 106
  */
-object CyanBrightBackground : BrightBackgroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BrightBackgroundColorCyan
+object BrightCyanBackground : BrightBackgroundColor() {
+    override val type = SelectGraphicRenditionParameterType.BrightCyanBackground
     override fun build(): String = withoutArg()
 }
 
 /**
  * 107
  */
-object WhiteBrightBackground : BrightBackgroundColor() {
-    override val type = SelectGraphicRenditionParameterType.BrightBackgroundColorWhite
+object BrightWhiteBackground : BrightBackgroundColor() {
+    override val type = SelectGraphicRenditionParameterType.BrightWhiteBackground
     override fun build(): String = withoutArg()
 }
 
 
 enum class ColorParameterMode(val mode: Int) {
     Defined(0) {
-        override fun parse(string: String): ColorParameter {
+        override fun parse(arguments: List<Int>): Pair<ColorParameter, List<Int>> {
             TODO("Not yet implemented")
         }
     },
     Transparent(1) {
-        override fun parse(string: String): ColorParameter {
+        override fun parse(arguments: List<Int>): Pair<ColorParameter, List<Int>> {
             TODO("Not yet implemented")
         }
     },
     Rgb(2) {
-        override fun parse(string: String): ColorParameter {
-            TODO("Not yet implemented")
+        override fun parse(arguments: List<Int>): Pair<com.uramnoil.ansies.parameter.Rgb, List<Int>> {
+            val (r, g, b) = arguments.take(3).map { it.toUByte() }
+            return com.uramnoil.ansies.parameter.Rgb(r, g, b) to arguments.drop(3)
         }
     },
     Cmy(3) {
-        override fun parse(string: String): ColorParameter {
+        override fun parse(arguments: List<Int>): Pair<ColorParameter, List<Int>> {
             TODO("Not yet implemented")
         }
     },
     Cmyk(4) {
-        override fun parse(string: String): ColorParameter {
+        override fun parse(arguments: List<Int>): Pair<ColorParameter, List<Int>> {
             TODO("Not yet implemented")
         }
     },
     IndexedColor(5) {
-        override fun parse(string: String): ColorParameter {
-            TODO("Not yet implemented")
+        override fun parse(arguments: List<Int>): Pair<com.uramnoil.ansies.parameter.IndexedColor, List<Int>> {
+            val indexedColor = arguments.first().toUByte()
+            return com.uramnoil.ansies.parameter.IndexedColor(indexedColor) to arguments.drop(1)
         }
     }, ;
 
     override fun toString(): String = mode.toString()
-    abstract fun parse(string: String): ColorParameter
+    abstract fun parse(arguments: List<Int>): Pair<out ColorParameter, List<Int>>
 }
 
 sealed class ColorParameter {
+    companion object {
+        val map = ColorParameterMode.values().associateBy { it.mode }
+        fun parse(arguments: List<Int>): Pair<ColorParameter, List<Int>> {
+            val mode = arguments.first()
+            return map[mode]?.parse(arguments.drop(1))?.run { copy(second = second + 1) }
+                ?: throw IllegalArgumentException("Doesn't match any color modes")
+        }
+    }
+
     abstract val mode: ColorParameterMode
     abstract fun build(): String
 }
