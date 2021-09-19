@@ -1,6 +1,5 @@
 package com.uramnoil.ansies.parameter
 
-import com.uramnoil.ansies.plus
 import com.uramnoil.ansies.sgrOf
 
 enum class ControlSequenceIntroducerParameterType(val abbr: String, val suffix: Char) {
@@ -94,11 +93,10 @@ class ControlSequenceIntroducer(val parameter: ControlSequenceIntroducerParamete
     override fun build(): String = type.build() + parameter.build()
 }
 
-val map = ControlSequenceIntroducerParameterType.values().associateBy { it.suffix }
-
-
 sealed class ControlSequenceIntroducerParameter {
     companion object {
+        val map = ControlSequenceIntroducerParameterType.values().associateBy { it.suffix }
+
         fun parse(string: String): ControlSequenceIntroducerParameter {
             val argument = string.dropLast(1)
             val type = string.last()
