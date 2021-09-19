@@ -1,7 +1,5 @@
 package com.uramnoil.ansies.parameter
 
-import com.uramnoil.ansies.parameter.EscapeParameter
-
 enum class AsciiControlCharacter(val abbr: String, val c0: Int) {
     Null("Nul", 0x00) {
         override fun parse(argument: String): AsciiCode {
@@ -63,14 +61,15 @@ enum class AsciiControlCharacter(val abbr: String, val c0: Int) {
 }
 
 sealed class AsciiCode {
+    companion object {
+        private val map = AsciiControlCharacter.values().associateBy { Char(it.c0) }
+
+        fun parse(string: String): AsciiCode {
+            val controlType = string.first()
+            val argument = string.drop(1)
+            return map[controlType]?.parse(argument) ?: throw IllegalArgumentException("doesn't match ant parameters")
+        }
+    }
     abstract val asciiControlCharacter: AsciiControlCharacter
     abstract fun build(): String
-}
-
-val asciiControlCharacterMap = AsciiControlCharacter.values().associateBy { Char(it.c0) }
-
-fun AsciiCode.parse(string: String): AsciiCode {
-    val controlType = string.first()
-    val argument = string.drop(1)
-    return asciiControlCharacterMap[controlType]?.parse(string) ?: throw IllegalArgumentException("doesn't match ant parameters")
 }
