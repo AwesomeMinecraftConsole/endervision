@@ -1,6 +1,6 @@
 package com.uramnoil.ansies.parameter
 
-import com.uramnoil.ansies.sgrOf
+import com.uramnoil.ansies.plus
 
 enum class ControlSequenceIntroducerParameterType(val abbr: String, val suffix: Char) {
     CursorUp("CUU", 'A') {
@@ -65,7 +65,7 @@ enum class ControlSequenceIntroducerParameterType(val abbr: String, val suffix: 
     },
     SelectGraphicRendition("SGR", 'm') {
         override fun parse(argument: String): ControlSequenceIntroducerParameter {
-            return sgrOf(SelectGraphicRenditionParameter.parse(argument.drop(1)))
+            return SelectGraphicRendition(SelectGraphicRenditionParameter.parse(argument.drop(1)))
         }
     },
     AuxPortOn("", 'i') {
@@ -286,6 +286,12 @@ data class SelectGraphicRendition(
         .filterNotNull()
         .map { it.build() }
         .joinToString(";") + "$type"
+}
+
+fun SelectGraphicRendition(parameters: Set<SelectGraphicRenditionParameter>): SelectGraphicRendition {
+    return parameters.fold(SelectGraphicRendition()) { acc, selectGraphicRenditionParameter ->
+        acc + selectGraphicRenditionParameter
+    }
 }
 
 fun SelectGraphicRendition.basedOn(base: SelectGraphicRendition) = apply {
