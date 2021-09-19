@@ -6,64 +6,56 @@ package com.uramnoil.ansies
 
 import com.uramnoil.ansies.parameter.*
 
-val reset: SelectGraphicRendition
-    get() = SelectGraphicRendition(startWithReset = ResetOrNormal)
+val reset: AsciiCode
+    get() = Escape(ControlSequenceIntroducer(SelectGraphicRendition(startWithReset = ResetOrNormal)))
 
-sealed class AsciiCodeOrStringContainer {
-    abstract fun build(): String
+/**
+ * Container to mix ANSI sequence and String.
+ */
+sealed class AsciiCodeOrString {
+    abstract fun build(): kotlin.String
 
-    data class AsciiCodeContainer(val asciiCode: AsciiCode) : AsciiCodeOrStringContainer() {
+    data class AsciiCode(val asciiCode: com.uramnoil.ansies.parameter.AsciiCode) : AsciiCodeOrString() {
         override fun build() = asciiCode.build()
     }
 
-    data class StringContainer(var string: String) : AsciiCodeOrStringContainer() {
+    data class String(var string: kotlin.String) : AsciiCodeOrString() {
         override fun build() = string
     }
 }
 
-fun List<AsciiCodeOrStringContainer>.build(): String = map { it.build() }.joinToString("")
+class AsciiCodeOrStringSequence(asciiCodeOrStringList: List<AsciiCodeOrString>) {
+    private val mutableAsciiCodeOrStringList: MutableList<AsciiCodeOrString> = asciiCodeOrStringList.toMutableList()
+    val asciiCodeOrStringList: List<AsciiCodeOrString>
+        get() = mutableAsciiCodeOrStringList
 
-fun sgrOf(sgr: SelectGraphicRendition): List<AsciiCodeOrStringContainer> =
-    listOf(
-        AsciiCodeOrStringContainer.AsciiCodeContainer(
-            Escape(
-                ControlSequenceIntroducer(
-                    sgr
-                )
-            )
-        )
-    )
+    fun build(): String = asciiCodeOrStringList.map { it.build() }.joinToString("")
 
-fun sgrOf(parameter: SelectGraphicRenditionParameter): List<AsciiCodeOrStringContainer> = sgrOf(parameter.asSequence())
+    operator fun plus(sgr: SelectGraphicRendition) = mutableAsciiCodeOrStringList.add(AsciiCodeOrString.AsciiCode(Escape(ControlSequenceIntroducer(sgr))))
 
-fun sgrOf(vararg parameters: SelectGraphicRenditionParameter): List<AsciiCodeOrStringContainer> =
-    sgrOf(parameters.fold(SelectGraphicRendition()) { acc, selectGraphicRenditionParameter ->
-        acc + selectGraphicRenditionParameter
-    })
-
-operator fun List<AsciiCodeOrStringContainer>.plus(string: String): List<AsciiCodeOrStringContainer> = apply {
-    val lastContainer = last()
-    if (lastContainer is AsciiCodeOrStringContainer.StringContainer) {
-        lastContainer.string += string
-    } else {
-        this.toMutableList().add(AsciiCodeOrStringContainer.StringContainer(string))
+    operator fun plus(string: String) = apply {
+        val lastContainer = asciiCodeOrStringList.last()
+        if (lastContainer is AsciiCodeOrString.String) {
+            lastContainer.string += string
+        } else {
+            mutableAsciiCodeOrStringList.add(AsciiCodeOrString.String(string))
+        }
     }
+
+    operator fun plus(asciiCode: AsciiCode) = apply { mutableAsciiCodeOrStringList.add(AsciiCodeOrString.AsciiCode(asciiCode)) }
 }
 
-operator fun List<AsciiCodeOrStringContainer>.plus(asciiCode: AsciiCode): List<AsciiCodeOrStringContainer> =
-    toMutableList().apply { add(AsciiCodeOrStringContainer.AsciiCodeContainer(asciiCode)) }
-
-operator fun String.plus(list: List<AsciiCodeOrStringContainer>): List<AsciiCodeOrStringContainer> =
-    listOf<AsciiCodeOrStringContainer>(AsciiCodeOrStringContainer.StringContainer(this), *list.toTypedArray())
+operator fun String.plus(sequence: AsciiCodeOrStringSequence): AsciiCodeOrStringSequence =
+    AsciiCodeOrStringSequence(listOf(AsciiCodeOrString.String(this), *sequence.asciiCodeOrStringList.toTypedArray()))
 
 data class Span(val sgr: SelectGraphicRendition, var string: String = "")
 
-fun List<AsciiCodeOrStringContainer>.toSpans() {
+fun List<AsciiCodeOrString>.toSpans(): List<Span> {
     val mutableList = mutableListOf<Span>()
 
     forEach {
         when (it) {
-            is AsciiCodeOrStringContainer.AsciiCodeContainer -> {
+            is AsciiCodeOrString.AsciiCode -> {
                 if (
                     it.asciiCode is Escape
                     && it.asciiCode.parameter is ControlSequenceIntroducer
@@ -72,8 +64,8 @@ fun List<AsciiCodeOrStringContainer>.toSpans() {
                     mutableList.add(Span(it.asciiCode.parameter.parameter))
                 }
             }
-            is AsciiCodeOrStringContainer.StringContainer -> {
-                mutableList.lastOrNull()?.let{ last -> last.string += it.string }
+            is AsciiCodeOrString.String -> {
+                mutableList.lastOrNull()?.let { last -> last.string += it.string }
                     ?: mutableList.add(Span(SelectGraphicRendition(), it.string))
             }
         }
@@ -84,4 +76,6 @@ fun List<AsciiCodeOrStringContainer>.toSpans() {
         span.sgr.basedOn(acc)
         span.sgr.copy()
     }
+
+    return mutableList
 }

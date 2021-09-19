@@ -1,429 +1,449 @@
 package com.uramnoil.ansies.parameter
 
-import androidx.compose.ui.graphics.Color
-
 enum class SelectGraphicRenditionParameterType(val m: Int) {
     ResetOrNormal(0) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BoldOrIncreasedIntensity(1) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     FaintDecreasedIntensityOrDim(2) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     Italicized(3) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     Underline(4) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     SlowBlink(5) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     RapidBlink(6) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     Reversed(7) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     ConcealOrHide(8) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     CrossedOut(9) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     PrimaryFont(10) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     AlternativeFont1(11) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     AlternativeFont2(12) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     AlternativeFont3(13) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     AlternativeFont4(14) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     AlternativeFont5(15) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     AlternativeFont6(16) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     AlternativeFont7(17) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     AlternativeFont8(18) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     AlternativeFont9(19) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BlackletterFont(20) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     DoublyUnderlinedOrNotBold(21) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     NormalIntensity(22) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     NeitherItalicNorBlackletter(23) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     NotUnderlined(24) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     NotBlinking(25) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     ProportionalSpacing(26) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     NotReversed(27) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     Reveal(28) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     NotCrossedOut(29) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     ForegroundColorBlack(30) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     ForegroundColorRed(31) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     ForegroundColorGreen(32) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     ForegroundColorYellow(33) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     ForegroundColorBlue(34) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     ForegroundColorMagenta(35) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     ForegroundColorCyan(36) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     ForegroundColorWhite(37) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     ForegroundColor(38) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     DefaultForegroundColor(39) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BackgroundColorBlack(40) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BackgroundColorRed(41) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BackgroundColorGreen(42) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BackgroundColorYellow(43) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BackgroundColorBlue(44) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BackgroundColorMagenta(45) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BackgroundColorCyan(46) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BackgroundColorWhite(47) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BackgroundColor(48) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     DefaultBackgroundColor(49) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     DisableProportionalSpacing(50) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     Framed(51) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     Encircled(52) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     Overlined(53) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     ResetEmojiVariation(54) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     NotOverlined(55) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     SelectUnderlineColor(58) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     DefaultUnderlineColor(59) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     IdeogramUnderlineOrRightSideLine(60) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     IdeogramDoubleUnderlineOrDoubleLineOnTheRightSide(61) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     IdeogramOverlineOrLeftSideLine(62) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     IdeogramDoubleOverlineOrDoubleLineOnTheLeftSide(63) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     IdeogramStressMarking(64) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     NoIdeogramAttribute(65) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     Superscript(73) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     Subscript(74) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     NeitherSuperscriptNorSubscript(75) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BrightForegroundColorBlack(90) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BrightForegroundColorRed(91) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BrightForegroundColorGreen(92) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BrightForegroundColorYellow(93) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BrightForegroundColorBlue(94) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BrightForegroundColorMagenta(95) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BrightForegroundColorCyan(96) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BrightForegroundColorWhite(97) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BrightBackgroundColorBlack(100) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BrightBackgroundColorRed(101) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BrightBackgroundColorGreen(102) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BrightBackgroundColorYellow(103) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BrightBackgroundColorBlue(104) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BrightBackgroundColorMagenta(105) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BrightBackgroundColorCyan(106) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     },
     BrightBackgroundColorWhite(107) {
-        override fun parse(string: String): SelectGraphicRenditionParameter {
+        override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int> {
             TODO("Not yet implemented")
         }
     }, ;
 
     override fun toString(): String = m.toString()
-    abstract fun parse(string: String): SelectGraphicRenditionParameter
+
+    /**
+     * @return the second value of the pair explains how many parameters consumed.
+     */
+    abstract fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, Int>
 }
 
 sealed class SelectGraphicRenditionParameter {
+    companion object {
+        val map = SelectGraphicRenditionParameterType.values().associateBy { it.m }
+
+        fun parse(string: String): Set<SelectGraphicRenditionParameter> {
+            val parameters = string.split(';').map { if (it == "") 0 else it.toInt() }
+            val selectGraphicRenditionParameters = mutableSetOf<SelectGraphicRenditionParameter>()
+            var index = 0
+            while (index >= parameters.size) {
+                index++
+                val (selectGraphicRenditionParameter, occupancy) = map[parameters[0]]?.parse(parameters.slice(index until parameters.size))
+                    ?: throw IllegalArgumentException("doesn't match eny codes")
+                selectGraphicRenditionParameters.add(selectGraphicRenditionParameter)
+                index += occupancy
+            }
+            return selectGraphicRenditionParameters
+        }
+    }
+
     abstract val type: SelectGraphicRenditionParameterType
     abstract fun build(): String
     abstract fun asSequence(): SelectGraphicRendition
