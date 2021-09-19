@@ -8,9 +8,9 @@ val asciiControlCharacterMap = AsciiControlCharacter.values().map {
     Char(it.c0) to it
 }
 
-sealed class RowAsciiCodeOrString {
-    data class AsciiCode(val asciiCode: kotlin.String) : RowAsciiCodeOrString()
-    data class String(val string: kotlin.String) : RowAsciiCodeOrString()
+sealed class RawAsciiCodeOrString {
+    data class AsciiCode(val asciiCode: kotlin.String) : RawAsciiCodeOrString()
+    data class String(val string: kotlin.String) : RawAsciiCodeOrString()
 }
 
 val regex
@@ -20,42 +20,42 @@ fun removeAnsi(string: String): String {
     return regex.replace(string, "")
 }
 
-class RowAsciiCodeOrStringSequence(val sequence: List<RowAsciiCodeOrString>)
+class RawAsciiCodeOrStringSequence(val sequence: List<RawAsciiCodeOrString>)
 
-fun toRowAsciiCodeStringOrStringSequence(string: String): RowAsciiCodeOrStringSequence {
-    val mutableList = mutableListOf<RowAsciiCodeOrString>()
-    val asciiCodes = regex.find(string) ?: return RowAsciiCodeOrStringSequence(listOf(RowAsciiCodeOrString.String(string)))
+fun toRawAsciiCodeStringOrStringSequence(string: String): RawAsciiCodeOrStringSequence {
+    val mutableList = mutableListOf<RawAsciiCodeOrString>()
+    val asciiCodes = regex.find(string) ?: return RawAsciiCodeOrStringSequence(listOf(RawAsciiCodeOrString.String(string)))
     var index = 0
     asciiCodes.groupValues.forEach {
         val codeIndex = string.indexOf(it, startIndex = index)
         val sliced = string.slice(index..codeIndex)
         if (sliced != "") {
-            mutableList.add(RowAsciiCodeOrString.String(sliced))
+            mutableList.add(RawAsciiCodeOrString.String(sliced))
         }
-        mutableList.add(RowAsciiCodeOrString.AsciiCode(it))
+        mutableList.add(RawAsciiCodeOrString.AsciiCode(it))
         index = codeIndex + it.length
     }
     val sliced = string.slice(index..string.lastIndex)
     if (sliced != "") {
-        mutableList.add(RowAsciiCodeOrString.String(sliced))
+        mutableList.add(RawAsciiCodeOrString.String(sliced))
     }
 
-    return RowAsciiCodeOrStringSequence(mutableList)
+    return RawAsciiCodeOrStringSequence(mutableList)
 }
 
-fun RowAsciiCodeOrStringSequence.toAsciiCodeOrString(): AsciiCodeOrStringSequence {
+fun RawAsciiCodeOrStringSequence.toAsciiCodeOrString(): AsciiCodeOrStringSequence {
     return AsciiCodeOrStringSequence(sequence.map {
         when (it) {
-            is RowAsciiCodeOrString.String -> {
+            is RawAsciiCodeOrString.String -> {
                 com.uramnoil.ansies.AsciiCodeOrString.String(it.string)
             }
-            is RowAsciiCodeOrString.AsciiCode -> {
+            is RawAsciiCodeOrString.AsciiCode -> {
                 com.uramnoil.ansies.AsciiCodeOrString.AsciiCode(AsciiCode.parse(it.asciiCode))
             }
         }
     })
 }
 
-fun parseToAnsi(string: String): AsciiCodeOrStringSequence = toRowAsciiCodeStringOrStringSequence(string).toAsciiCodeOrString()
+fun parseToAnsi(string: String): AsciiCodeOrStringSequence = toRawAsciiCodeStringOrStringSequence(string).toAsciiCodeOrString()
 
 fun String.ansi() = parseToAnsi(this)
