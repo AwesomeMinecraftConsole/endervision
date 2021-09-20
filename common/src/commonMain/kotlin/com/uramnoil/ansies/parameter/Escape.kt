@@ -1,6 +1,6 @@
 package com.uramnoil.ansies.parameter
 
-enum class EscapeParameterType(val abbr: String, val gl: Int, val c1: Int) {
+enum class EscapeParameters(val abbr: String, val gl: Int, val c1: Int) {
     PaddingCharacter("PAD", 64, 128) {
         override fun parse(argument: String): EscapeParameter {
             TODO("Not yet implemented")
@@ -173,7 +173,7 @@ class Escape(val parameter: EscapeParameter) : AsciiControlCharacter() {
 
 sealed class EscapeParameter {
     companion object {
-        private val map = EscapeParameterType.values().associateBy { Char(it.gl) }
+        private val map = EscapeParameters.values().associateBy { Char(it.gl) }
 
         fun parse(string: String): EscapeParameter {
             val type = string.first()
@@ -181,6 +181,7 @@ sealed class EscapeParameter {
             return map[type]?.parse(argument) ?: throw IllegalArgumentException("doesn't match any parameter")
         }
     }
-    abstract val type: EscapeParameterType
+
+    abstract val type: EscapeParameters
     abstract fun build(): String
 }

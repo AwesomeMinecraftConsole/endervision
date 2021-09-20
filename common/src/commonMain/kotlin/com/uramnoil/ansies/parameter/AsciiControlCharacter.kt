@@ -64,7 +64,7 @@ enum class AsciiControlCharacterType(val abbr: String, val c0: Int) {
 sealed class AsciiControlCharacter {
     companion object {
         private val c0Map = AsciiControlCharacterType.values().associateBy { Char(it.c0) }
-        private val c1Map = EscapeParameterType.values().associateBy { Char(it.c1) }
+        private val c1Map = EscapeParameters.values().associateBy { Char(it.c1) }
 
         fun parse(string: String): AsciiControlCharacter {
             val controlType = string.first()
