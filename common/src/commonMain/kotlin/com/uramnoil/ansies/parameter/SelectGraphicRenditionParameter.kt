@@ -194,7 +194,7 @@ enum class SelectGraphicRenditionParameterType(val m: Int) {
     ForegroundColor(38) {
         override fun parse(parameters: List<Int>): Pair<SelectGraphicRenditionParameter, List<Int>> {
             val (parameter, left) = ColorParameter.parse(parameters)
-            return com.uramnoil.ansies.parameter.SelectBackgroundColor(parameter) to left
+            return com.uramnoil.ansies.parameter.SelectForegroundColor(parameter) to left
         }
     },
     DefaultForegroundColor(39) {
@@ -433,13 +433,16 @@ sealed class SelectGraphicRenditionParameter {
         val map = SelectGraphicRenditionParameterType.values().associateBy { it.m }
 
         fun parse(string: String): Set<SelectGraphicRenditionParameter> {
-            var parameters = string.split(';').map { if (it == "") 0 else it.toInt() }
+            val parameters = string.split(';').map { if (it == "") 0 else it.toInt() }
+            var left = parameters
             val selectGraphicRenditionParameters = mutableSetOf<SelectGraphicRenditionParameter>()
-            while (parameters.isNotEmpty()) {
-                val (selectGraphicRenditionParameter, left) = map[parameters[0]]?.parse(parameters.slice(1 until parameters.size))
+            while (left.isNotEmpty()) {
+                val type = left.first()
+                left = left.drop(1)
+                val (selectGraphicRenditionParameter, resultLeft) = map[type]?.parse(left)
                     ?: throw IllegalArgumentException("doesn't match eny codes")
                 selectGraphicRenditionParameters.add(selectGraphicRenditionParameter)
-                parameters = left
+                left = resultLeft
             }
             return selectGraphicRenditionParameters
         }
@@ -1234,7 +1237,7 @@ enum class ColorParameterMode(val mode: Int) {
     Rgb(2) {
         override fun parse(arguments: List<Int>): Pair<com.uramnoil.ansies.parameter.Rgb, List<Int>> {
             val (r, g, b) = arguments.take(3).map { it.toUByte() }
-            return com.uramnoil.ansies.parameter.Rgb(r, g, b) to arguments.drop(3)
+            return Rgb(r, g, b) to arguments.drop(3)
         }
     },
     Cmy(3) {
@@ -1262,9 +1265,10 @@ sealed class ColorParameter {
     companion object {
         val map = ColorParameterMode.values().associateBy { it.mode }
         fun parse(arguments: List<Int>): Pair<ColorParameter, List<Int>> {
-            val mode = arguments.first()
-            return map[mode]?.parse(arguments.drop(1))?.run { copy(second = second + 1) }
-                ?: throw IllegalArgumentException("Doesn't match any color modes")
+            var left = arguments
+            val mode = left.first()
+            left = left.drop(1)
+            return map[mode]?.parse(left) ?: throw IllegalArgumentException("Doesn't match any color modes")
         }
     }
 

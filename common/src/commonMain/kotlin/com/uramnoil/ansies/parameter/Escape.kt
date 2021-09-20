@@ -166,9 +166,9 @@ enum class EscapeParameterType(val abbr: String, val gl: Int, val c1: Int) {
     abstract fun parse(argument: String): EscapeParameter
 }
 
-class Escape(val parameter: EscapeParameter) : AsciiCode() {
-    override val asciiControlCharacter: AsciiControlCharacter = AsciiControlCharacter.Escape
-    override fun build() = asciiControlCharacter.build() + parameter.build()
+class Escape(val parameter: EscapeParameter) : AsciiControlCharacter() {
+    override val asciiControlCharacterType: AsciiControlCharacterType = AsciiControlCharacterType.Escape
+    override fun build() = asciiControlCharacterType.build() + parameter.build()
 }
 
 sealed class EscapeParameter {

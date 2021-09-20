@@ -125,20 +125,30 @@ operator fun SelectGraphicRendition.plus(parameter: SelectGraphicRenditionParame
     parameter.asSequence().basedOn(this)
 
 fun ansiOf(parameter: SelectGraphicRenditionParameter) =
-    AsciiCodeOrStringSequence(listOf(AsciiCodeOrString.AsciiCode(Escape(ControlSequenceIntroducer(parameter.asSequence())))))
+    AsciiCodeOrStringSequence(
+        listOf(
+            AnsiEscapeSequenceOrString.AnsiEscapeSequence(
+                Escape(
+                    ControlSequenceIntroducer(
+                        parameter.asSequence()
+                    )
+                )
+            )
+        )
+    )
 
 fun ansiOf(sgr: SelectGraphicRendition) =
-    AsciiCodeOrStringSequence(listOf(AsciiCodeOrString.AsciiCode(Escape(ControlSequenceIntroducer(sgr)))))
+    AsciiCodeOrStringSequence(listOf(AnsiEscapeSequenceOrString.AnsiEscapeSequence(Escape(ControlSequenceIntroducer(sgr)))))
 
 operator fun SelectGraphicRendition.plus(string: String): AsciiCodeOrStringSequence {
     return AsciiCodeOrStringSequence(
         listOf(
-            AsciiCodeOrString.AsciiCode(
+            AnsiEscapeSequenceOrString.AnsiEscapeSequence(
                 Escape(
                     ControlSequenceIntroducer(this)
                 )
             ),
-            AsciiCodeOrString.String(string)
+            AnsiEscapeSequenceOrString.String(string)
         )
     )
 }
@@ -146,8 +156,8 @@ operator fun SelectGraphicRendition.plus(string: String): AsciiCodeOrStringSeque
 operator fun SelectGraphicRendition.plus(sgr: SelectGraphicRendition): AsciiCodeOrStringSequence {
     return AsciiCodeOrStringSequence(
         listOf(
-            AsciiCodeOrString.AsciiCode(Escape(ControlSequenceIntroducer(this))),
-            AsciiCodeOrString.AsciiCode(Escape(ControlSequenceIntroducer(sgr)))
+            AnsiEscapeSequenceOrString.AnsiEscapeSequence(Escape(ControlSequenceIntroducer(this))),
+            AnsiEscapeSequenceOrString.AnsiEscapeSequence(Escape(ControlSequenceIntroducer(sgr)))
         )
     )
 }

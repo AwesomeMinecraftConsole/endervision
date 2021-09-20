@@ -1,63 +1,76 @@
 package com.uramnoil.ansies.parse
 
+import com.uramnoil.ansies.AnsiEscapeSequenceOrString
 import com.uramnoil.ansies.AsciiCodeOrStringSequence
-import com.uramnoil.ansies.parameter.AsciiCode
 import com.uramnoil.ansies.parameter.AsciiControlCharacter
+import com.uramnoil.ansies.parameter.AsciiControlCharacterType
 
-val asciiControlCharacterMap = AsciiControlCharacter.values().map {
+val asciiControlCharacterTypeMap = AsciiControlCharacterType.values().map {
     Char(it.c0) to it
 }
 
-sealed class RawAsciiCodeOrString {
+sealed class RawAnsiEscapeSequenceOrString {
     abstract val string: kotlin.String
 
-    data class AsciiCode(override val string: kotlin.String) : RawAsciiCodeOrString()
-    data class String(override val string: kotlin.String) : RawAsciiCodeOrString()
+    data class AsciiCode(override val string: kotlin.String) : RawAnsiEscapeSequenceOrString()
+    data class String(override val string: kotlin.String) : RawAnsiEscapeSequenceOrString()
 }
 
 val regex
     get() = """[\x00-\x1A\x1C-\x1F]|(?:\x1B|\\e)[@-Z\\-_]|(?:\\e\[|\x1B\[|\x9B)(?:[0-?]*[ -/]?)*[@-~]""".toRegex()
 
-fun removeAnsi(string: String): String {
+fun removeAnsiSequence(string: String): String {
     return regex.replace(string, "")
 }
 
-class RawAsciiCodeOrStringSequence(val sequence: List<RawAsciiCodeOrString>) {
+class RawAsciiEscapeSequenceOrStringSequence(val sequence: List<RawAnsiEscapeSequenceOrString>) {
     fun toAsciiCodeOrString(): AsciiCodeOrStringSequence {
         return AsciiCodeOrStringSequence(sequence.map {
             when (it) {
-                is RawAsciiCodeOrString.String -> {
-                    com.uramnoil.ansies.AsciiCodeOrString.String(it.string)
+                is RawAnsiEscapeSequenceOrString.String -> {
+                    AnsiEscapeSequenceOrString.String(it.string)
                 }
-                is RawAsciiCodeOrString.AsciiCode -> {
-                    com.uramnoil.ansies.AsciiCodeOrString.AsciiCode(AsciiCode.parse(it.string))
+                is RawAnsiEscapeSequenceOrString.AsciiCode -> {
+                    kotlin.runCatching { AsciiControlCharacter.parse(it.string) }.fold(
+                        onSuccess = { ansi -> AnsiEscapeSequenceOrString.AnsiEscapeSequence(ansi) },
+                        onFailure = { _ -> AnsiEscapeSequenceOrString.String(it.string) }
+                    )
                 }
             }
         })
     }
 }
 
-fun toRawAsciiCodeStringOrStringSequence(string: String): RawAsciiCodeOrStringSequence {
-    val mutableList = mutableListOf<RawAsciiCodeOrString>()
-    val asciiCodes = regex.findAll(string).map { it.value }.toList()
-    var index = 0
-    asciiCodes.forEach {
-        val codeIndex = string.indexOf(it, startIndex = index)
-        val sliced = string.slice(index until codeIndex)
-        if (sliced != "") {
-            mutableList.add(RawAsciiCodeOrString.String(sliced))
-        }
-        mutableList.add(RawAsciiCodeOrString.AsciiCode(it))
-        index = codeIndex + it.length
-    }
-    val sliced = string.slice(index..string.lastIndex)
-    if (sliced != "") {
-        mutableList.add(RawAsciiCodeOrString.String(sliced))
-    }
+fun findAnsiSequences(string: String): List<String> = regex.findAll(string).map { it.value }.toList()
 
-    return RawAsciiCodeOrStringSequence(mutableList)
+fun MutableList<RawAnsiEscapeSequenceOrString>.addStringIfNotEmpty(string: String) {
+    if (string.isNotEmpty()) {
+        add(RawAnsiEscapeSequenceOrString.String(string))
+    }
 }
 
-fun parseToAnsi(string: String): AsciiCodeOrStringSequence = toRawAsciiCodeStringOrStringSequence(string).toAsciiCodeOrString()
+fun MutableList<RawAnsiEscapeSequenceOrString>.addAnsi(string: String) {
+    add(RawAnsiEscapeSequenceOrString.AsciiCode(string))
+}
+
+fun toRawAsciiCodeStringOrStringSequence(string: String): RawAsciiEscapeSequenceOrStringSequence {
+    val mutableList = mutableListOf<RawAnsiEscapeSequenceOrString>()
+    val asciiCodes = findAnsiSequences(string)
+    var left = string
+    asciiCodes.forEach {
+        val stringBeforeAnsiCode = left.take(left.indexOf(it))
+        mutableList.addStringIfNotEmpty(stringBeforeAnsiCode)
+        mutableList.addAnsi(it)
+        left = left.drop(stringBeforeAnsiCode.count() + it.count())
+    }
+    mutableList.addStringIfNotEmpty(left)
+
+    return RawAsciiEscapeSequenceOrStringSequence(mutableList)
+}
+
+fun parseToAnsi(string: String): AsciiCodeOrStringSequence =
+    toRawAsciiCodeStringOrStringSequence(string).toAsciiCodeOrString()
 
 fun String.ansi() = parseToAnsi(this)
+
+fun String.removeAnsi() = removeAnsiSequence(this)

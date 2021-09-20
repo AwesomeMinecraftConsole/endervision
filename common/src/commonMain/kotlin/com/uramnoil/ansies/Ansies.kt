@@ -6,58 +6,65 @@ package com.uramnoil.ansies
 
 import com.uramnoil.ansies.parameter.*
 
-val reset: AsciiCode
+val reset: AsciiControlCharacter
     get() = Escape(ControlSequenceIntroducer(SelectGraphicRendition(startWithReset = ResetOrNormal)))
 
 /**
  * Container to mix ANSI sequence and String.
  */
-sealed class AsciiCodeOrString {
+sealed class AnsiEscapeSequenceOrString {
     abstract fun build(): kotlin.String
 
-    data class AsciiCode(val asciiCode: com.uramnoil.ansies.parameter.AsciiCode) : AsciiCodeOrString() {
+    data class AnsiEscapeSequence(val asciiCode: com.uramnoil.ansies.parameter.AsciiControlCharacter) :
+        AnsiEscapeSequenceOrString() {
         override fun build() = asciiCode.build()
     }
 
-    data class String(var string: kotlin.String) : AsciiCodeOrString() {
+    data class String(var string: kotlin.String) : AnsiEscapeSequenceOrString() {
         override fun build() = string
     }
 }
 
-class AsciiCodeOrStringSequence(asciiCodeOrStringList: List<AsciiCodeOrString>) {
-    private val mutableAsciiCodeOrStringList: MutableList<AsciiCodeOrString> = asciiCodeOrStringList.toMutableList()
-    val asciiCodeOrStringList: List<AsciiCodeOrString>
+class AsciiCodeOrStringSequence(asciiCodeOrStringList: List<AnsiEscapeSequenceOrString>) {
+    private val mutableAsciiCodeOrStringList: MutableList<AnsiEscapeSequenceOrString> =
+        asciiCodeOrStringList.toMutableList()
+    val asciiCodeOrStringList: List<AnsiEscapeSequenceOrString>
         get() = mutableAsciiCodeOrStringList
 
     fun build(): String = asciiCodeOrStringList.map { it.build() }.joinToString("")
 
     operator fun plus(string: String) = apply {
         val lastContainer = asciiCodeOrStringList.last()
-        if (lastContainer is AsciiCodeOrString.String) {
+        if (lastContainer is AnsiEscapeSequenceOrString.String) {
             lastContainer.string += string
         } else {
-            mutableAsciiCodeOrStringList.add(AsciiCodeOrString.String(string))
+            mutableAsciiCodeOrStringList.add(AnsiEscapeSequenceOrString.String(string))
         }
     }
 
-    operator fun plus(asciiCode: AsciiCode) =
-        apply { mutableAsciiCodeOrStringList.add(AsciiCodeOrString.AsciiCode(asciiCode)) }
+    operator fun plus(asciiCode: AsciiControlCharacter) =
+        apply { mutableAsciiCodeOrStringList.add(AnsiEscapeSequenceOrString.AnsiEscapeSequence(asciiCode)) }
 
     operator fun plus(sequence: AsciiCodeOrStringSequence) =
         apply { mutableAsciiCodeOrStringList.addAll(sequence.asciiCodeOrStringList) }
 }
 
 operator fun String.plus(sequence: AsciiCodeOrStringSequence): AsciiCodeOrStringSequence =
-    AsciiCodeOrStringSequence(listOf(AsciiCodeOrString.String(this), *sequence.asciiCodeOrStringList.toTypedArray()))
+    AsciiCodeOrStringSequence(
+        listOf(
+            AnsiEscapeSequenceOrString.String(this),
+            *sequence.asciiCodeOrStringList.toTypedArray()
+        )
+    )
 
 data class Span(val sgr: SelectGraphicRendition, var string: String = "")
 
-fun List<AsciiCodeOrString>.toSpans(): List<Span> {
+fun List<AnsiEscapeSequenceOrString>.toSpans(): List<Span> {
     val mutableList = mutableListOf<Span>()
 
     forEach {
         when (it) {
-            is AsciiCodeOrString.AsciiCode -> {
+            is AnsiEscapeSequenceOrString.AnsiEscapeSequence -> {
                 if (
                     it.asciiCode is Escape
                     && it.asciiCode.parameter is ControlSequenceIntroducer
@@ -66,7 +73,7 @@ fun List<AsciiCodeOrString>.toSpans(): List<Span> {
                     mutableList.add(Span(it.asciiCode.parameter.parameter))
                 }
             }
-            is AsciiCodeOrString.String -> {
+            is AnsiEscapeSequenceOrString.String -> {
                 mutableList.lastOrNull()?.let { last -> last.string += it.string }
                     ?: mutableList.add(Span(SelectGraphicRendition(), it.string))
             }
