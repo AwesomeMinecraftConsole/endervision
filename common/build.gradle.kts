@@ -34,6 +34,7 @@ kotlin {
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material)
+                implementation("com.github.ajalt.mordant:mordant:2.0.0-beta2")
             }
         }
         val commonTest by getting {

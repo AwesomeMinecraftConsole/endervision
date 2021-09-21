@@ -1,7 +1,7 @@
 package com.uramnoil.ansies.parse
 
 import com.uramnoil.ansies.AnsiEscapeSequenceOrString
-import com.uramnoil.ansies.AsciiCodeOrStringSequence
+import com.uramnoil.ansies.AnsiEscapeSequenceOrStringSequence
 import com.uramnoil.ansies.parameter.AsciiControlCharacter
 import com.uramnoil.ansies.parameter.AsciiControlCharacterType
 
@@ -24,8 +24,8 @@ fun removeAnsiSequence(string: String): String {
 }
 
 class RawAsciiEscapeSequenceOrStringSequence(val sequence: List<RawAnsiEscapeSequenceOrString>) {
-    fun toAsciiCodeOrString(): AsciiCodeOrStringSequence {
-        return AsciiCodeOrStringSequence(sequence.map {
+    fun toAsciiCodeOrString(): AnsiEscapeSequenceOrStringSequence {
+        return AnsiEscapeSequenceOrStringSequence(sequence.map {
             when (it) {
                 is RawAnsiEscapeSequenceOrString.String -> {
                     AnsiEscapeSequenceOrString.String(it.string)
@@ -68,7 +68,7 @@ fun toRawAsciiCodeStringOrStringSequence(string: String): RawAsciiEscapeSequence
     return RawAsciiEscapeSequenceOrStringSequence(mutableList)
 }
 
-fun parseToAnsi(string: String): AsciiCodeOrStringSequence =
+fun parseToAnsi(string: String): AnsiEscapeSequenceOrStringSequence =
     toRawAsciiCodeStringOrStringSequence(string).toAsciiCodeOrString()
 
 fun String.ansi() = parseToAnsi(this)

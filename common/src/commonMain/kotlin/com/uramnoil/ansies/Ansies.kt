@@ -15,7 +15,7 @@ val reset: AsciiControlCharacter
 sealed class AnsiEscapeSequenceOrString {
     abstract fun build(): kotlin.String
 
-    data class AnsiEscapeSequence(val asciiCode: com.uramnoil.ansies.parameter.AsciiControlCharacter) :
+    data class AnsiEscapeSequence(val asciiCode: AsciiControlCharacter) :
         AnsiEscapeSequenceOrString() {
         override fun build() = asciiCode.build()
     }
@@ -25,7 +25,35 @@ sealed class AnsiEscapeSequenceOrString {
     }
 }
 
-class AsciiCodeOrStringSequence(asciiCodeOrStringList: List<AnsiEscapeSequenceOrString>) {
+operator fun AnsiEscapeSequenceOrString.plus(right: AnsiEscapeSequenceOrString) =
+    AnsiEscapeSequenceOrStringSequence(listOf(this, right))
+
+operator fun AnsiEscapeSequenceOrString.plus(right: String) =
+    AnsiEscapeSequenceOrStringSequence(listOf(this, AnsiEscapeSequenceOrString.String(right)))
+
+operator fun AnsiEscapeSequenceOrString.plus(right: AsciiControlCharacter) =
+    AnsiEscapeSequenceOrStringSequence(listOf(this, AnsiEscapeSequenceOrString.AnsiEscapeSequence(right)))
+
+operator fun AsciiControlCharacter.plus(right: AnsiEscapeSequenceOrString) =
+    AnsiEscapeSequenceOrStringSequence(listOf(AnsiEscapeSequenceOrString.AnsiEscapeSequence(this), right))
+
+operator fun AsciiControlCharacter.plus(right: String) =
+    AnsiEscapeSequenceOrStringSequence(
+        listOf(
+            AnsiEscapeSequenceOrString.AnsiEscapeSequence(this),
+            AnsiEscapeSequenceOrString.String(right)
+        )
+    )
+
+operator fun AsciiControlCharacter.plus(right: AsciiControlCharacter) =
+    AnsiEscapeSequenceOrStringSequence(
+        listOf(
+            AnsiEscapeSequenceOrString.AnsiEscapeSequence(this),
+            AnsiEscapeSequenceOrString.AnsiEscapeSequence(right)
+        )
+    )
+
+class AnsiEscapeSequenceOrStringSequence(asciiCodeOrStringList: List<AnsiEscapeSequenceOrString>) {
     private val mutableAsciiCodeOrStringList: MutableList<AnsiEscapeSequenceOrString> =
         asciiCodeOrStringList.toMutableList()
     val asciiCodeOrStringList: List<AnsiEscapeSequenceOrString>
@@ -45,12 +73,16 @@ class AsciiCodeOrStringSequence(asciiCodeOrStringList: List<AnsiEscapeSequenceOr
     operator fun plus(asciiCode: AsciiControlCharacter) =
         apply { mutableAsciiCodeOrStringList.add(AnsiEscapeSequenceOrString.AnsiEscapeSequence(asciiCode)) }
 
-    operator fun plus(sequence: AsciiCodeOrStringSequence) =
+
+    operator fun plus(sequence: AnsiEscapeSequenceOrString) =
+        apply { mutableAsciiCodeOrStringList.add(sequence) }
+
+    operator fun plus(sequence: AnsiEscapeSequenceOrStringSequence) =
         apply { mutableAsciiCodeOrStringList.addAll(sequence.asciiCodeOrStringList) }
 }
 
-operator fun String.plus(sequence: AsciiCodeOrStringSequence): AsciiCodeOrStringSequence =
-    AsciiCodeOrStringSequence(
+operator fun String.plus(sequence: AnsiEscapeSequenceOrStringSequence): AnsiEscapeSequenceOrStringSequence =
+    AnsiEscapeSequenceOrStringSequence(
         listOf(
             AnsiEscapeSequenceOrString.String(this),
             *sequence.asciiCodeOrStringList.toTypedArray()
