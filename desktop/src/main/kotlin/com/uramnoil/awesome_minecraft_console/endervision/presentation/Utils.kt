@@ -6,7 +6,6 @@ import com.uramnoil.awesome_minecraft_console.endervision.common.presentation.On
 import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.Line
 import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.Notification
 import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.OnlinePlayer
-import com.uramnoil.awesome_minecraft_console.endervision.compose.viewmodel.CommandViewModel
 import com.uramnoil.awesome_minecraft_console.endervision.infrastructure.EnderVisionServiceImpl
 import com.uramnoil.awesome_minecraft_console.endervision.infrastructure.SendCommandUseCaseInteractor
 import com.uramnoil.awesome_minecraft_console.endervision.infrastructure.SendOperationUseCaseInteractor
@@ -30,13 +29,10 @@ fun createPresentationModule(host: String, port: Int, coroutineScope: CoroutineS
         bindSingleton {
             OnlinePlayersViewModel(mutableOnlinePlayersSharedFlow)
         }
-        bindSingleton {
-            CommandViewModel("")
-        }
         // Hack: Functional Interfaceをファイルに切り分ける
         val enderVisionServiceImplService = EnderVisionServiceImpl(
-            "127.0.0.1",
-            50051,
+            host,
+            port,
             mutableLineSharedFlow,
             mutableNotificationSharedFlow,
             mutableOnlinePlayersSharedFlow,
