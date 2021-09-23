@@ -5,7 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.uramnoil.awesome_minecraft_console.endervision.common.presentation.LineViewModel
@@ -30,11 +29,11 @@ fun Console() {
     }
 
     BoxWithConstraints {
-        Box {
-            Box(Modifier.fillMaxHeight().padding(0.dp, 0.dp, 0.dp, 50.dp)) {
+        Column {
+            Box(Modifier.weight(1f).fillMaxWidth()) {
                 ConsoleMonitor(lines)
             }
-            Box(Modifier.align(Alignment.BottomCenter).height(50.dp).fillMaxWidth()) {
+            Box(Modifier.height(50.dp).fillMaxWidth()) {
                 CommandController {
                     controller.sendCommand(it)
                 }
