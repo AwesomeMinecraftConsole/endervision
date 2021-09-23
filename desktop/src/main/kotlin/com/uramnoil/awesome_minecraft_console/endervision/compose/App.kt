@@ -1,16 +1,10 @@
 package com.uramnoil.awesome_minecraft_console.endervision.compose
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.awaitApplication
-import com.uramnoil.awesome_minecraft_console.endervision.compose.molecules.SideBar
-import com.uramnoil.awesome_minecraft_console.endervision.compose.organisms.Console
+import com.uramnoil.awesome_minecraft_console.endervision.compose.pages.ServerPage
 import com.uramnoil.awesome_minecraft_console.endervision.presentation.createPresentationModule
 import org.kodein.di.compose.withDI
 
@@ -26,14 +20,7 @@ suspend fun app() = awaitApplication {
         }
 
         withDI(module) {
-            BoxWithConstraints(Modifier.fillMaxSize().background(Color(0xFF464D49))) {
-                Box(Modifier.fillMaxSize().padding(0.dp, 0.dp, 200.dp, 0.dp)) {
-                    Console()
-                }
-                Box(Modifier.fillMaxSize().padding(200.dp, 0.dp, 0.dp, 0.dp)) {
-                    SideBar()
-                }
-            }
+            ServerPage()
         }
     }
 }
