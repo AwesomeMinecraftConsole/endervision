@@ -1,18 +1,21 @@
 package com.uramnoil.awesome_minecraft_console.endervision.compose.pages
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.uramnoil.awesome_minecraft_console.endervision.compose.organisms.ServerManager
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import com.uramnoil.awesome_minecraft_console.endervision.compose.organisms.Console
+import com.uramnoil.awesome_minecraft_console.endervision.compose.organisms.SideBar
 import com.uramnoil.awesome_minecraft_console.endervision.presentation.createPresentationModule
 import kotlinx.coroutines.launch
 import org.kodein.di.DI
+import org.kodein.di.compose.withDI
 
 @Composable
 fun ConnectionsPage() {
@@ -28,6 +31,20 @@ fun ConnectionsPage() {
 }
 
 data class Server(val serverModule: DI.Module)
+
+@Composable
+fun ServerManager(serverModule: DI.Module, onExit: () -> Unit = {}) {
+    withDI(serverModule) {
+        Row(Modifier.fillMaxSize().background(Color(0xFF464D49))) {
+            Box(Modifier.fillMaxHeight().weight(1f)) {
+                Console()
+            }
+            Box(Modifier.fillMaxHeight().width(200.dp)) {
+                SideBar(onExit)
+            }
+        }
+    }
+}
 
 @Composable
 fun EmptyConnections(onDidConnect: (Server) -> Unit) {
