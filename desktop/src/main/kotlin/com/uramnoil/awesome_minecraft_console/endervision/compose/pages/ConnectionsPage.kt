@@ -10,12 +10,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.uramnoil.awesome_minecraft_console.endervision.common.presentation.LineViewModel
+import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.EnderVisionService
+import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.Line
 import com.uramnoil.awesome_minecraft_console.endervision.compose.organisms.Console
 import com.uramnoil.awesome_minecraft_console.endervision.compose.organisms.SideBar
+import com.uramnoil.awesome_minecraft_console.endervision.presentation.CommandController
 import com.uramnoil.awesome_minecraft_console.endervision.presentation.createPresentationModule
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import org.kodein.di.DI
+import kotlinx.coroutines.plus
+import org.kodein.di.compose.LocalDI
 import org.kodein.di.compose.withDI
+import org.kodein.di.instance
 
 @Composable
 fun ConnectionsPage() {
@@ -23,24 +31,46 @@ fun ConnectionsPage() {
 
     Box(Modifier.fillMaxSize()) {
         if (server != null) {
-            ServerManager(server!!.serverModule) { server = null }
+            ServerManager(server!!) { server = null }
         } else {
             EmptyConnections { server = it }
         }
     }
 }
 
-data class Server(val serverModule: DI.Module)
+data class Server(val host: String, val port: UShort)
 
 @Composable
-fun ServerManager(serverModule: DI.Module, onExit: () -> Unit = {}) {
-    withDI(serverModule) {
+fun ServerManager(server: Server, onExit: () -> Unit = {}) {
+    val scope = rememberCoroutineScope()
+    val module = remember { createPresentationModule(server.host, server.port, scope.coroutineContext) }
+    withDI(module) {
+        val controller by LocalDI.current.di.instance<CommandController>()
+        val lineViewModel by LocalDI.current.di.instance<LineViewModel>()
+        val enderVisionService by LocalDI.current.di.instance<EnderVisionService>()
+
+        val lines = remember { mutableStateListOf<Line>() }
+        LaunchedEffect(Unit) {
+            (this + CoroutineExceptionHandler { _, throwable ->
+                println(throwable.message)
+            }).launch {
+                enderVisionService.connect()
+                lineViewModel.lineFlow.collect {
+                    lines.add(it)
+                }
+            }
+        }
         Row(Modifier.fillMaxSize().background(Color(0xFF464D49))) {
             Box(Modifier.fillMaxHeight().weight(1f)) {
-                Console()
+                Console(lines) {
+                    controller.sendCommand(it)
+                }
             }
             Box(Modifier.fillMaxHeight().width(200.dp)) {
-                SideBar(onExit)
+                SideBar {
+                    enderVisionService.disconnect()
+                    onExit()
+                }
             }
         }
     }
@@ -61,12 +91,7 @@ fun EmptyConnections(onDidConnect: (Server) -> Unit) {
             Button(onClick = {
                 scope.launch {
                     kotlin.runCatching {
-                        val module = createPresentationModule(
-                            host,
-                            port.toInt(),
-                            this
-                        )
-                        onDidConnect(Server(module))
+                        onDidConnect(Server(host, port.toUShortOrNull() ?: 50051.toUShort()))
                     }.onFailure {
                         failed = it
                     }

@@ -4,22 +4,24 @@ import awesome_minecraft_console.endervision.EnderVisionGrpcKt
 import awesome_minecraft_console.weaver.WeaverOuterClass
 import com.google.protobuf.Empty
 import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.*
+import io.grpc.ConnectivityState
 import io.grpc.ManagedChannel
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import java.io.Closeable
 import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 interface EnderVisionClient : Closeable {
-    fun connectConsole()
-    fun connectManagement()
-    fun connectOnlinePlayers()
+    suspend fun connectConsole()
+    suspend fun connectManagement()
+    suspend fun connectOnlinePlayers()
 }
-
-
 
 class EnderVisionClientImpl(
     private val channel: ManagedChannel,
@@ -28,26 +30,32 @@ class EnderVisionClientImpl(
     private val mutableNotificationFlow: MutableSharedFlow<Notification>,
     private val operationFlow: Flow<Operation>,
     private val mutableOnlinePlayersFlow: MutableSharedFlow<OnlinePlayers>,
-    private val parent: CoroutineContext
-) : EnderVisionClient, CoroutineScope {
-    override val coroutineContext: CoroutineContext
-        get() = parent + CoroutineExceptionHandler { _, throwable ->
-            if (throwable is CancellationException) {
-                close()
-            }
-        }
+    context: CoroutineContext
+) : EnderVisionClient, CoroutineScope by CoroutineScope(context) {
+    private val stub = EnderVisionGrpcKt.EnderVisionCoroutineStub(channel).withWaitForReady()
 
-    private val stub = EnderVisionGrpcKt.EnderVisionCoroutineStub(channel)
-
-    override fun connectConsole() {
-        launch {
-            stub.console(commandFlow.map { WeaverOuterClass.Command.newBuilder().setCommand(it.value).build() }).collect {
-                mutableLineFlow.emit(Line(it.line))
+    private suspend fun joinReady() {
+        if (channel.getState(true) != ConnectivityState.READY) {
+            suspendCoroutine<Unit> {
+                channel.notifyWhenStateChanged(ConnectivityState.READY) {
+                    it.resume(Unit)
+                }
             }
         }
     }
 
-    override fun connectManagement() {
+    override suspend fun connectConsole() {
+        joinReady()
+        launch {
+            stub.console(commandFlow.map { WeaverOuterClass.Command.newBuilder().setCommand(it.value).build() })
+                .collect {
+                    mutableLineFlow.emit(Line(it.line))
+                }
+        }
+    }
+
+    override suspend fun connectManagement() {
+        joinReady()
         launch {
             stub.management(operationFlow.map {
                 val type = when (it) {
@@ -60,7 +68,8 @@ class EnderVisionClientImpl(
         }
     }
 
-    override fun connectOnlinePlayers() {
+    override suspend fun connectOnlinePlayers() {
+        joinReady()
         launch {
             stub.onlinePlayers(Empty.newBuilder().build()).collect {
                 mutableOnlinePlayersFlow.emit(it.onlinePlayersList.map { onlinePlayer ->

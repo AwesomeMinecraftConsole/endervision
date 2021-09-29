@@ -3,27 +3,22 @@ package com.uramnoil.awesome_minecraft_console.endervision.infrastructure
 import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.*
 import com.uramnoil.awesome_minecraft_console.endervision.grpc.EnderVisionClient
 import com.uramnoil.awesome_minecraft_console.endervision.grpc.EnderVisionClientImpl
-import io.grpc.ManagedChannelBuilder
-import io.grpc.netty.shaded.io.netty.util.internal.ThreadExecutorMap.apply
+import io.grpc.ManagedChannel
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import java.util.concurrent.TimeUnit
 import kotlin.coroutines.CoroutineContext
 
 class EnderVisionServiceImpl(
     private val newLineUseCaseInputPort: NewLineUseCaseInputPort,
     private val sendNotificationUseCaseInputPort: SendNotificationUseCaseInputPort,
     private val updateOnlinePlayersUseCaseInputPort: UpdateOnlinePlayersUseCaseInputPort,
-    private val channel: ManagedChannelBuilder<*>,
-    coroutineContext: CoroutineContext
-) :
-    EnderVisionService,
-    CoroutineScope by CoroutineScope(coroutineContext) {
-    private lateinit var flowJob: Job
-
+    private val channel: ManagedChannel,
+    context: CoroutineContext
+) : EnderVisionService, CoroutineScope by CoroutineScope(context) {
     private val mutableLineFlow = MutableSharedFlow<Line>()
     private val mutableCommandFlow = MutableSharedFlow<Command>()
     private val mutableNotificationFlow = MutableSharedFlow<Notification>()
@@ -32,8 +27,8 @@ class EnderVisionServiceImpl(
 
     private var client: EnderVisionClient? = null
 
-    private var _isConnecting = false
-    val isConnecting: Boolean
+    private var _isConnecting = MutableStateFlow(false)
+    override val isConnecting: StateFlow<Boolean>
         get() = _isConnecting
 
     private fun launchFlow() = launch {
@@ -48,13 +43,13 @@ class EnderVisionServiceImpl(
         }
     }
 
-    override fun connect() {
-        if (isConnecting) throw IllegalAccessError("Client is now running")
+    override suspend fun connect() {
+        if (isConnecting.value) throw IllegalAccessError("Client is now running")
 
-        flowJob = launchFlow()
+        launchFlow()
 
         client = EnderVisionClientImpl(
-            channel = channel.build(),
+            channel = channel,
             mutableLineFlow = mutableLineFlow,
             commandFlow = mutableCommandFlow,
             mutableNotificationFlow = mutableNotificationFlow,
@@ -72,7 +67,7 @@ class EnderVisionServiceImpl(
 
     override fun disconnect() {
         client?.close()
-        flowJob.cancel()
+        _isConnecting.value = false
     }
 
     override fun sendCommand(command: Command) {
@@ -84,59 +79,6 @@ class EnderVisionServiceImpl(
     override fun sendOperation(operation: Operation) {
         launch {
             mutableOperationFlow.emit(operation)
-        }
-    }
-}
-
-fun EnderVisionServiceImpl(
-    host: String,
-    port: Int,
-    mutableLineSharedFlow: MutableSharedFlow<Line>,
-    mutableNotificationSharedFlow: MutableSharedFlow<Notification>,
-    mutableOnlinePlayersSharedFlow: MutableSharedFlow<List<OnlinePlayer>>,
-    coroutineScope: CoroutineScope,
-): EnderVisionServiceImpl {
-    val presenter = EnderVisionPresenter(
-        mutableLineSharedFlow,
-        mutableNotificationSharedFlow,
-        mutableOnlinePlayersSharedFlow,
-        coroutineContext = coroutineScope.coroutineContext
-    )
-    return EnderVisionServiceImpl(
-        newLineUseCaseInputPort = NewLineUseCaseInteractor(presenter),
-        sendNotificationUseCaseInputPort = SendNotificationUseCaseInteractor(presenter),
-        updateOnlinePlayersUseCaseInputPort = UpdateOnlinePlayersUseCaseInteractor(presenter),
-        channel = ManagedChannelBuilder.forAddress(host, port).apply {
-            if (System.getenv("ENDERVISION_USEPLAINTEXT").toBoolean()) usePlaintext()
-            keepAliveTime(1000, TimeUnit.MILLISECONDS)
-            keepAliveTimeout(5000, TimeUnit.MILLISECONDS)
-        },
-        coroutineContext = coroutineScope.coroutineContext
-    )
-}
-
-class EnderVisionPresenter(
-    private val mutableLineSharedFlow: MutableSharedFlow<Line>,
-    private val mutableOperationFlow: MutableSharedFlow<Notification>,
-    private val mutableOnlinePlayersFlow: MutableSharedFlow<OnlinePlayers>,
-    coroutineContext: CoroutineContext
-) : NewLineUseCaseOutputPort, SendNotificationUseCaseOutputPort, UpdateOnlinePlayersUseCaseOutputPort,
-    CoroutineScope by CoroutineScope(coroutineContext) {
-    override fun handle(line: Line) {
-        launch {
-            mutableLineSharedFlow.emit(line)
-        }
-    }
-
-    override fun handle(notification: Notification) {
-        launch {
-            mutableOperationFlow.emit(notification)
-        }
-    }
-
-    override fun handle(onlinePlayers: OnlinePlayers) {
-        launch {
-            mutableOnlinePlayersFlow.emit(onlinePlayers)
         }
     }
 }
