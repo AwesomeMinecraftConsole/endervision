@@ -43,7 +43,6 @@ data class Server(val host: String, val port: UShort)
 
 @Composable
 fun ServerManager(server: Server, onExit: () -> Unit = {}) {
-    val scope = rememberCoroutineScope()
     val module = remember { createPresentationModule(server.host, server.port, Dispatchers.IO) }
     withDI(module) {
         val controller by LocalDI.current.di.instance<CommandController>()
