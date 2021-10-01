@@ -18,6 +18,7 @@ import com.uramnoil.awesome_minecraft_console.endervision.compose.organisms.Side
 import com.uramnoil.awesome_minecraft_console.endervision.presentation.CommandController
 import com.uramnoil.awesome_minecraft_console.endervision.presentation.createPresentationModule
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
@@ -43,7 +44,7 @@ data class Server(val host: String, val port: UShort)
 @Composable
 fun ServerManager(server: Server, onExit: () -> Unit = {}) {
     val scope = rememberCoroutineScope()
-    val module = remember { createPresentationModule(server.host, server.port, scope.coroutineContext) }
+    val module = remember { createPresentationModule(server.host, server.port, Dispatchers.IO) }
     withDI(module) {
         val controller by LocalDI.current.di.instance<CommandController>()
         val lineViewModel by LocalDI.current.di.instance<LineViewModel>()
