@@ -3,20 +3,23 @@ package com.uramnoil.awesome_minecraft_console.endervision.infrastructure
 import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.*
 import com.uramnoil.awesome_minecraft_console.endervision.grpc.EnderVisionClient
 import com.uramnoil.awesome_minecraft_console.endervision.grpc.EnderVisionClientImpl
-import io.grpc.ManagedChannel
+import io.grpc.ManagedChannelBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit
 import kotlin.coroutines.CoroutineContext
+
+data class GrpcSetting(val host: String, val port: UShort, val plaintext: Boolean = true)
 
 class EnderVisionServiceImpl(
     private val newLineUseCaseInputPort: NewLineUseCaseInputPort,
     private val sendNotificationUseCaseInputPort: SendNotificationUseCaseInputPort,
     private val updateOnlinePlayersUseCaseInputPort: UpdateOnlinePlayersUseCaseInputPort,
-    private val channel: ManagedChannel,
+    setting: GrpcSetting,
     context: CoroutineContext
 ) : EnderVisionService, CoroutineScope by CoroutineScope(context) {
     private val mutableLineFlow = MutableSharedFlow<Line>()
@@ -24,6 +27,17 @@ class EnderVisionServiceImpl(
     private val mutableNotificationFlow = MutableSharedFlow<Notification>()
     private val mutableOperationFlow = MutableSharedFlow<Operation>()
     private val mutableOnlinePlayersFlow = MutableSharedFlow<OnlinePlayers>()
+
+    private val channel = ManagedChannelBuilder
+        .forAddress(setting.host, setting.port.toInt())
+        .apply {
+            if (setting.plaintext) {
+                usePlaintext()
+            }
+        }
+        .keepAliveTime(1_000L, TimeUnit.MILLISECONDS)
+        .keepAliveTimeout(20_000L, TimeUnit.MILLISECONDS)
+        .build()
 
     private var client: EnderVisionClient? = null
 
