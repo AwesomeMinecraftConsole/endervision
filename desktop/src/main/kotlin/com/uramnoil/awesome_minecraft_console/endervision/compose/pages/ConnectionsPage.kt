@@ -17,11 +17,8 @@ import com.uramnoil.awesome_minecraft_console.endervision.compose.organisms.Cons
 import com.uramnoil.awesome_minecraft_console.endervision.compose.organisms.SideBar
 import com.uramnoil.awesome_minecraft_console.endervision.presentation.CommandController
 import com.uramnoil.awesome_minecraft_console.endervision.presentation.createPresentationModule
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.plus
 import org.kodein.di.compose.LocalDI
 import org.kodein.di.compose.withDI
 import org.kodein.di.instance
@@ -43,7 +40,7 @@ data class Server(val host: String, val port: UShort)
 
 @Composable
 fun ServerManager(server: Server, onExit: () -> Unit = {}) {
-    val module = remember { createPresentationModule(server.host, server.port, Dispatchers.IO) }
+    val module = remember { createPresentationModule(server.host, server.port, Dispatchers.IO + Job()) }
     withDI(module) {
         val controller by LocalDI.current.di.instance<CommandController>()
         val lineViewModel by LocalDI.current.di.instance<LineViewModel>()
