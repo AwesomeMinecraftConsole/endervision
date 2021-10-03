@@ -1,15 +1,15 @@
 package com.uramnoil.awesome_minecraft_console.endervision.grpc
 
 class EnderVisionClientStub : EnderVisionClient {
-    override fun connectConsole() {
+    override suspend fun connectConsole() {
         TODO("Not yet implemented")
     }
 
-    override fun connectManagement() {
+    override suspend fun connectManagement() {
         TODO("Not yet implemented")
     }
 
-    override fun connectOnlinePlayers() {
+    override suspend fun connectOnlinePlayers() {
         TODO("Not yet implemented")
     }
 
