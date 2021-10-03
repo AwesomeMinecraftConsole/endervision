@@ -7,10 +7,12 @@ import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.*
 import io.grpc.ConnectivityState
 import io.grpc.ManagedChannel
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.job
 import kotlinx.coroutines.launch
 import java.io.Closeable
 import kotlin.coroutines.CoroutineContext
@@ -31,7 +33,7 @@ class EnderVisionClientImpl(
     private val operationFlow: Flow<Operation>,
     private val mutableOnlinePlayersFlow: MutableSharedFlow<OnlinePlayers>,
     context: CoroutineContext
-) : EnderVisionClient, CoroutineScope by CoroutineScope(context) {
+) : EnderVisionClient, CoroutineScope by CoroutineScope(context + Job(context.job)) {
     private val stub = EnderVisionGrpcKt.EnderVisionCoroutineStub(channel).withWaitForReady()
 
     private suspend fun joinReady() {
