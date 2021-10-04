@@ -34,7 +34,8 @@ kotlin {
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material)
-                api("androidx.compose.ui:ui-tooling:1.0.3")
+                api(compose.ui)
+                api(compose.preview)
                 implementation("com.github.ajalt.mordant:mordant:2.0.0-beta2")
             }
         }
