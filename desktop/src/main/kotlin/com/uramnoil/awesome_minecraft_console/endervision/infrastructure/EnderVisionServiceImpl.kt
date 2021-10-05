@@ -5,23 +5,25 @@ import com.uramnoil.awesome_minecraft_console.endervision.grpc.EnderVisionClient
 import com.uramnoil.awesome_minecraft_console.endervision.grpc.EnderVisionClientImpl
 import io.grpc.ManagedChannelBuilder
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.job
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 import kotlin.coroutines.CoroutineContext
 
-data class GrpcSetting(val host: String, val port: UShort, val plaintext: Boolean = true)
+data class GrpcSetting(val host: String, val port: UShort, val plaintext: Boolean = false)
 
 class EnderVisionServiceImpl(
     private val newLineUseCaseInputPort: NewLineUseCaseInputPort,
     private val sendNotificationUseCaseInputPort: SendNotificationUseCaseInputPort,
     private val updateOnlinePlayersUseCaseInputPort: UpdateOnlinePlayersUseCaseInputPort,
     setting: GrpcSetting,
-    context: CoroutineContext
-) : EnderVisionService, CoroutineScope by CoroutineScope(context) {
+    private val context: CoroutineContext
+) : EnderVisionService, CoroutineScope by CoroutineScope(context + Job(context.job)) {
     private val mutableLineFlow = MutableSharedFlow<Line>()
     private val mutableCommandFlow = MutableSharedFlow<Command>()
     private val mutableNotificationFlow = MutableSharedFlow<Notification>()
@@ -36,7 +38,8 @@ class EnderVisionServiceImpl(
             }
         }
         .keepAliveTime(1_000L, TimeUnit.MILLISECONDS)
-        .keepAliveTimeout(20_000L, TimeUnit.MILLISECONDS)
+        .keepAliveTimeout(10_000L, TimeUnit.MILLISECONDS)
+        .keepAliveWithoutCalls(true)
         .build()
 
     private var client: EnderVisionClient? = null
@@ -79,7 +82,7 @@ class EnderVisionServiceImpl(
         }
     }
 
-    override fun disconnect() {
+    override suspend fun disconnect() {
         client?.close()
         _isConnecting.value = false
     }

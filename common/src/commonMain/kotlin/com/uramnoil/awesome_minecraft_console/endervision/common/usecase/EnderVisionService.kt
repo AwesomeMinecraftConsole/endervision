@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.StateFlow
 
 interface EnderVisionService {
     suspend fun connect()
-    fun disconnect()
+    suspend fun disconnect()
     fun sendCommand(command: Command)
     fun sendOperation(operation: Operation)
     val isConnecting: StateFlow<Boolean>

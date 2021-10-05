@@ -6,23 +6,21 @@ import com.google.protobuf.Empty
 import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.*
 import io.grpc.ConnectivityState
 import io.grpc.ManagedChannel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.job
-import kotlinx.coroutines.launch
-import java.io.Closeable
+import java.util.concurrent.TimeUnit
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-interface EnderVisionClient : Closeable {
+interface EnderVisionClient {
     suspend fun connectConsole()
     suspend fun connectManagement()
     suspend fun connectOnlinePlayers()
+    suspend fun close()
 }
 
 class EnderVisionClientImpl(
@@ -81,7 +79,9 @@ class EnderVisionClientImpl(
         }
     }
 
-    override fun close() {
-        channel.shutdown()
+    override suspend fun close() {
+        withContext(Dispatchers.Default) {
+            channel.awaitTermination(5_000L, TimeUnit.MILLISECONDS)
+        }
     }
 }
