@@ -11,17 +11,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.uramnoil.awesome_minecraft_console.endervision.common.presentation.LineViewModel
-import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.EnderVisionService
+import com.uramnoil.awesome_minecraft_console.endervision.common.presentation.NotificationViewModel
+import com.uramnoil.awesome_minecraft_console.endervision.common.presentation.OnlinePlayersViewModel
+import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.EnderVisionConnectionController
 import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.Line
 import com.uramnoil.awesome_minecraft_console.endervision.compose.organisms.Console
+import com.uramnoil.awesome_minecraft_console.endervision.compose.organisms.LeftSideBar
 import com.uramnoil.awesome_minecraft_console.endervision.compose.organisms.SideBar
 import com.uramnoil.awesome_minecraft_console.endervision.presentation.CommandController
-import com.uramnoil.awesome_minecraft_console.endervision.presentation.createPresentationModule
+import com.uramnoil.awesome_minecraft_console.endervision.presentation.OperationController
+import com.uramnoil.awesome_minecraft_console.endervision.presentation.createServerPresentations
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
-import org.kodein.di.compose.LocalDI
-import org.kodein.di.compose.withDI
-import org.kodein.di.instance
 
 @Composable
 fun ConnectionsPage() {
@@ -29,7 +30,29 @@ fun ConnectionsPage() {
 
     Box(Modifier.fillMaxSize()) {
         if (server != null) {
-            ServerManager(server!!) { server = null }
+            val (
+                lineViewModel,
+                notificationViewModel,
+                onlinePlayersViewModel,
+                enderVisionConnectionController,
+                commandController,
+                operationController
+            ) = remember {
+                createServerPresentations(
+                    server!!.host,
+                    server!!.port,
+                    Dispatchers.IO + Job()
+                )
+            }
+
+            ServerManager(
+                lineViewModel,
+                notificationViewModel,
+                onlinePlayersViewModel,
+                enderVisionConnectionController,
+                commandController,
+                operationController
+            ) { server = null }
         } else {
             EmptyConnections { server = it }
         }
@@ -39,33 +62,42 @@ fun ConnectionsPage() {
 data class Server(val host: String, val port: UShort)
 
 @Composable
-fun ServerManager(server: Server, onExit: () -> Unit = {}) {
-    val module = remember { createPresentationModule(server.host, server.port, Dispatchers.IO + Job()) }
-    withDI(module) {
-        val controller by LocalDI.current.di.instance<CommandController>()
-        val lineViewModel by LocalDI.current.di.instance<LineViewModel>()
-        val enderVisionService by LocalDI.current.di.instance<EnderVisionService>()
+fun ServerManager(
+    lineViewModel: LineViewModel,
+    notificationViewModel: NotificationViewModel,
+    onlinePlayersViewModel: OnlinePlayersViewModel,
+    enderVisionConnectionController: EnderVisionConnectionController,
+    commandController: CommandController,
+    operationController: OperationController,
+    onExit: () -> Unit = {}
+) {
+    val scope = rememberCoroutineScope()
 
-        val lines = remember { mutableStateListOf<Line>() }
-        LaunchedEffect(Unit) {
-            (this + CoroutineExceptionHandler { _, throwable ->
-                println(throwable.message)
-            }).launch {
-                enderVisionService.connect()
-                lineViewModel.lineFlow.collect {
-                    lines.add(it)
-                }
+    val lines = remember { mutableStateListOf<Line>() }
+    LaunchedEffect(Unit) {
+        (this + CoroutineExceptionHandler { _, throwable ->
+            println(throwable.message)
+        }).launch {
+            enderVisionConnectionController.connect()
+            lineViewModel.flow.collect {
+                lines.add(it)
             }
         }
-        Row(Modifier.fillMaxSize().background(Color(0xFF464D49))) {
-            Box(Modifier.fillMaxHeight().weight(1f)) {
-                Console(lines) {
-                    controller.sendCommand(it)
-                }
+    }
+
+    Row(Modifier.fillMaxSize().background(Color(0xFF464D49))) {
+        Box(Modifier.fillMaxHeight().weight(0.5f)) {
+            LeftSideBar()
+        }
+        Box(Modifier.fillMaxHeight().weight(1f)) {
+            Console(lines) {
+                commandController.sendCommand(it)
             }
-            Box(Modifier.fillMaxHeight().width(200.dp)) {
-                SideBar {
-                    enderVisionService.disconnect()
+        }
+        Box(Modifier.fillMaxHeight().width(200.dp)) {
+            SideBar {
+                scope.launch {
+                    enderVisionConnectionController.disconnect()
                     onExit()
                 }
             }

@@ -3,50 +3,57 @@ package com.uramnoil.awesome_minecraft_console.endervision.presentation
 import com.uramnoil.awesome_minecraft_console.endervision.common.presentation.LineViewModel
 import com.uramnoil.awesome_minecraft_console.endervision.common.presentation.NotificationViewModel
 import com.uramnoil.awesome_minecraft_console.endervision.common.presentation.OnlinePlayersViewModel
+import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.EnderVisionConnectionController
 import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.Line
 import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.Notification
 import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.OnlinePlayer
 import com.uramnoil.awesome_minecraft_console.endervision.infrastructure.*
 import kotlinx.coroutines.flow.MutableSharedFlow
-import org.kodein.di.DI
-import org.kodein.di.bindSingleton
-import org.kodein.di.instance
 import kotlin.coroutines.CoroutineContext
 
-fun createPresentationModule(host: String, port: UShort, context: CoroutineContext): DI {
+data class Presentations(
+    val viewModel: LineViewModel,
+    val notificationViewModel: NotificationViewModel,
+    val onlinePlayersViewModel: OnlinePlayersViewModel,
+    val enderVisionService: EnderVisionConnectionController,
+    val commandController: CommandController,
+    val operationController: OperationController
+)
+
+fun createServerPresentations(host: String, port: UShort, connectionContext: CoroutineContext): Presentations {
     val mutableLineSharedFlow = MutableSharedFlow<Line>()
     val mutableNotificationSharedFlow = MutableSharedFlow<Notification>()
     val mutableOnlinePlayersSharedFlow = MutableSharedFlow<List<OnlinePlayer>>()
 
-    return DI {
-        bindSingleton {
-            LineViewModel(mutableLineSharedFlow)
-        }
-        bindSingleton {
-            NotificationViewModel(mutableNotificationSharedFlow)
-        }
-        bindSingleton {
-            OnlinePlayersViewModel(mutableOnlinePlayersSharedFlow)
-        }
+    val lineViewModel = LineViewModel(mutableLineSharedFlow)
+    val notificationViewModel = NotificationViewModel(mutableNotificationSharedFlow)
+    val onlinePlayersViewModel = OnlinePlayersViewModel(mutableOnlinePlayersSharedFlow)
 
-        bindSingleton {
-            val presenter = EnderVisionPresenter(
-                mutableLineSharedFlow,
-                mutableNotificationSharedFlow,
-                mutableOnlinePlayersSharedFlow,
-                context
-            )
-            EnderVisionServiceImpl(
-                newLineUseCaseInputPort = NewLineUseCaseInteractor(presenter),
-                sendNotificationUseCaseInputPort = SendNotificationUseCaseInteractor(presenter),
-                updateOnlinePlayersUseCaseInputPort = UpdateOnlinePlayersUseCaseInteractor(presenter),
-                GrpcSetting(host, port, false),
-                context
-            )
-        }
+    val presenter = EnderVisionPresenter(
+        mutableLineSharedFlow,
+        mutableNotificationSharedFlow,
+        mutableOnlinePlayersSharedFlow,
+        connectionContext
+    )
+    val enderVisionService = EnderVisionServiceImpl(
+        newLineUseCaseInputPort = NewLineUseCaseInteractor(presenter),
+        sendNotificationUseCaseInputPort = SendNotificationUseCaseInteractor(presenter),
+        updateOnlinePlayersUseCaseInputPort = UpdateOnlinePlayersUseCaseInteractor(presenter),
+        GrpcSetting(host, port, true),
+        connectionContext
+    )
 
+    val enderVisionConnectionController: EnderVisionConnectionController =
+        EnderVisionConnectionControllerImpl(enderVisionService)
+    val commandController = CommandController(SendCommandUseCaseInteractor(enderVisionService))
+    val operationController = OperationController(SendOperationUseCaseInteractor(enderVisionService))
 
-        bindSingleton { CommandController(SendCommandUseCaseInteractor(instance())) }
-        bindSingleton { OperationController(SendOperationUseCaseInteractor(instance())) }
-    }
+    return Presentations(
+        lineViewModel,
+        notificationViewModel,
+        onlinePlayersViewModel,
+        enderVisionConnectionController,
+        commandController,
+        operationController
+    )
 }
