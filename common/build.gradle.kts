@@ -36,7 +36,7 @@ kotlin {
                 api(compose.material)
                 api(compose.ui)
                 api(compose.preview)
-                implementation("com.github.ajalt.mordant:mordant:2.0.0-beta2")
+                api(compose.uiTooling)
             }
         }
         val commonTest by getting {
