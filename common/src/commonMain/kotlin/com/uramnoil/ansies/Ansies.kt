@@ -114,8 +114,7 @@ fun List<AnsiEscapeSequenceOrString>.toSpans(): List<Span> {
 
     // The SGR of each span inherits attributes of SRG of previous span.
     mutableList.fold(SelectGraphicRendition()) { acc, span ->
-        span.sgr.basedOn(acc)
-        span.sgr.copy()
+        acc.overridedBy(span.sgr)
     }
 
     return mutableList

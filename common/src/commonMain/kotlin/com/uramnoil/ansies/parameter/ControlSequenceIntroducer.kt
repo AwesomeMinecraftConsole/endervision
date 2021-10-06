@@ -295,52 +295,58 @@ fun SelectGraphicRendition(parameters: Set<SelectGraphicRenditionParameter>): Se
     }
 }
 
-fun SelectGraphicRendition.basedOn(base: SelectGraphicRendition) = apply {
-    if (intensity == null) {
-        intensity = base.intensity
+fun SelectGraphicRendition.overridedBy(base: SelectGraphicRendition): SelectGraphicRendition {
+    if (base.startWithReset != null) {
+        return base
     }
-    if (blink == null) {
-        blink = base.blink
-    }
-    if (reverse == null) {
-        reverse = base.reverse
-    }
-    if (conceal == null) {
-        conceal = base.conceal
-    }
-    if (crossedOut == null) {
-        crossedOut = base.crossedOut
-    }
-    if (foregroundColor == null) {
-        foregroundColor = base.foregroundColor
-    }
-    if (backgroundColor == null) {
-        backgroundColor = base.backgroundColor
-    }
-    if (underline == null) {
-        underline = base.underline
-    }
-    if (underlineColor == null) {
-        underlineColor = base.underlineColor
-    }
-    if (emojiVariation == null) {
-        emojiVariation = base.emojiVariation
-    }
-    if (overline == null) {
-        overline = base.overline
-    }
-    if (ideogram == null) {
-        ideogram = base.ideogram
-    }
-    if (script == null) {
-        script = base.script
-    }
-    if (brightForegroundColor == null) {
-        brightForegroundColor = base.brightForegroundColor
-    }
-    if (brightBackgroundColor == null) {
-        brightBackgroundColor = base.brightBackgroundColor
-    }
+
+    return apply {
+        if (base.intensity != null) {
+            intensity = base.intensity
+        }
+        if (base.blink != null) {
+            blink = base.blink
+        }
+        if (base.reverse != null) {
+            reverse = base.reverse
+        }
+        if (base.conceal != null) {
+            conceal = base.conceal
+        }
+        if (base.crossedOut != null) {
+            crossedOut = base.crossedOut
+        }
+        if (base.foregroundColor != null) {
+            foregroundColor = base.foregroundColor
+        }
+        if (base.backgroundColor != null) {
+            backgroundColor = base.backgroundColor
+        }
+        if (base.underline != null) {
+            underline = base.underline
+        }
+        if (base.underlineColor != null) {
+            underlineColor = base.underlineColor
+        }
+        if (base.emojiVariation != null) {
+            emojiVariation = base.emojiVariation
+        }
+        if (base.overline != null) {
+            overline = base.overline
+        }
+        if (base.ideogram != null) {
+            ideogram = base.ideogram
+        }
+        if (base.script != null) {
+            script = base.script
+        }
+        if (base.brightForegroundColor != null) {
+            brightForegroundColor = base.brightForegroundColor
+        }
+        if (base.brightBackgroundColor != null) {
+            brightBackgroundColor = base.brightBackgroundColor
+        }
+    }.copy()
 }
 
 class AuxPortOn(val n: Int = 1) : ControlSequenceIntroducerParameter() {
