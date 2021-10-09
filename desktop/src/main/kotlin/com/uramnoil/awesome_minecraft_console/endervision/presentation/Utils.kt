@@ -1,5 +1,6 @@
 package com.uramnoil.awesome_minecraft_console.endervision.presentation
 
+import com.uramnoil.awesome_minecraft_console.endervision.common.presentation.IsConnectingViewModel
 import com.uramnoil.awesome_minecraft_console.endervision.common.presentation.LineViewModel
 import com.uramnoil.awesome_minecraft_console.endervision.common.presentation.NotificationViewModel
 import com.uramnoil.awesome_minecraft_console.endervision.common.presentation.OnlinePlayersViewModel
@@ -15,7 +16,8 @@ data class Presentations(
     val viewModel: LineViewModel,
     val notificationViewModel: NotificationViewModel,
     val onlinePlayersViewModel: OnlinePlayersViewModel,
-    val enderVisionService: EnderVisionConnectionController,
+    val enderVisionConnectionController: EnderVisionConnectionController,
+    val isConnectingViewModel: IsConnectingViewModel,
     val commandController: CommandController,
     val operationController: OperationController
 )
@@ -53,6 +55,7 @@ fun createServerPresentations(host: String, port: UShort, connectionContext: Cor
         notificationViewModel,
         onlinePlayersViewModel,
         enderVisionConnectionController,
+        IsConnectingViewModel(enderVisionService.isConnecting),
         commandController,
         operationController
     )
