@@ -80,7 +80,7 @@ class EnderVisionClientImpl(
     }
 
     override suspend fun close() {
-        withContext(Dispatchers.Default) {
+        withContext(Dispatchers.IO) {
             channel.awaitTermination(5_000L, TimeUnit.MILLISECONDS)
         }
     }
