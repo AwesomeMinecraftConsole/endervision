@@ -4,14 +4,11 @@ import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.*
 import com.uramnoil.awesome_minecraft_console.endervision.grpc.EnderVisionClient
 import com.uramnoil.awesome_minecraft_console.endervision.grpc.EnderVisionClientImpl
 import io.grpc.ManagedChannelBuilder
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.job
-import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 import kotlin.coroutines.CoroutineContext
 
@@ -22,7 +19,7 @@ class EnderVisionServiceImpl(
     private val sendNotificationUseCaseInputPort: SendNotificationUseCaseInputPort,
     private val updateOnlinePlayersUseCaseInputPort: UpdateOnlinePlayersUseCaseInputPort,
     setting: GrpcSetting,
-    private val context: CoroutineContext
+    context: CoroutineContext
 ) : EnderVisionService, CoroutineScope by CoroutineScope(context + Job(context.job)) {
     private val mutableLineFlow = MutableSharedFlow<Line>()
     private val mutableCommandFlow = MutableSharedFlow<Command>()
@@ -48,7 +45,7 @@ class EnderVisionServiceImpl(
     override val isConnecting: StateFlow<Boolean>
         get() = _isConnecting
 
-    private fun launchFlow() = launch {
+    private fun launchFlows() = launch {
         mutableLineFlow.collect {
             newLineUseCaseInputPort.execute(it)
         }
@@ -61,11 +58,11 @@ class EnderVisionServiceImpl(
     }
 
     override suspend fun connect() {
-        if (isConnecting.value) throw IllegalAccessError("Client is now running")
+        if (isConnecting.value) return
 
-        launchFlow()
+        launchFlows()
 
-        client = EnderVisionClientImpl(
+        val client = EnderVisionClientImpl(
             channel = channel,
             mutableLineFlow = mutableLineFlow,
             commandFlow = mutableCommandFlow,
@@ -75,15 +72,20 @@ class EnderVisionServiceImpl(
             coroutineContext
         )
 
-        client?.apply {
+        client.apply {
             connectConsole()
             connectManagement()
             connectOnlinePlayers()
         }
+
+        this.client = client
+
+        _isConnecting.value = true
     }
 
     override suspend fun disconnect() {
         client?.close()
+        coroutineContext.cancel()
         _isConnecting.value = false
     }
 
