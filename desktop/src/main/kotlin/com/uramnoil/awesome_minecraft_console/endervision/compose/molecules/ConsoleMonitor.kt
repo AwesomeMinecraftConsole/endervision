@@ -10,9 +10,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.Line
 import com.uramnoil.awesome_minecraft_console.endervision.compose.atoms.ArrowDownToggleButton
-import com.uramnoil.awesome_minecraft_console.endervision.compose.atoms.Lines
 import com.uramnoil.awesome_minecraft_console.endervision.compose.atoms.Scrollbar
-import kotlinx.coroutines.launch
 
 @Composable
 fun ConsoleMonitor(lines: List<Line>) {
@@ -22,9 +20,11 @@ fun ConsoleMonitor(lines: List<Line>) {
         Modifier.fillMaxSize().background(Color(0xFF272A2B)).padding(5.dp)
     ) {
         val lazyListState = rememberLazyListState()
-        if (isTrackingBottom) {
-            rememberCoroutineScope().launch {
-                lazyListState.animateScrollToItem(lines.size)
+
+        LaunchedEffect(lines.size) {
+            if (isTrackingBottom) {
+                val index = lines.size - 1
+                lazyListState.scrollToItem(if (index < 0) 0 else index)
             }
         }
 

@@ -1,4 +1,4 @@
-package com.uramnoil.awesome_minecraft_console.endervision.compose.atoms
+package com.uramnoil.awesome_minecraft_console.endervision.compose.molecules
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.Line
+import com.uramnoil.awesome_minecraft_console.endervision.compose.atoms.Line
 
 @Composable
 fun Lines(lines: List<Line>, lazyListState: LazyListState) {

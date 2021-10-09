@@ -1,6 +1,7 @@
 package com.uramnoil.awesome_minecraft_console.endervision.compose.atoms
 
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.material.Icon
 import androidx.compose.material.IconToggleButton
@@ -25,4 +26,10 @@ fun ArrowDownToggleButton(
         )
         Icon(Icons.Filled.ArrowDropDown, contentDescription, Modifier, tint.value)
     }
+}
+
+@Preview
+@Composable
+fun ArrowDownToggleButtonPreview() {
+    ArrowDownToggleButton(false, {})
 }

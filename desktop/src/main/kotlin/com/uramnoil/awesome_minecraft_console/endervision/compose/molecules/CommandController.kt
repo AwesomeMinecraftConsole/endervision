@@ -1,17 +1,16 @@
 package com.uramnoil.awesome_minecraft_console.endervision.compose.molecules
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.desktop.ui.tooling.preview.Preview
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
+import androidx.compose.ui.unit.dp
 import com.uramnoil.awesome_minecraft_console.endervision.compose.atoms.CommandInput
-import com.uramnoil.awesome_minecraft_console.endervision.compose.atoms.SubmitButton
+import com.uramnoil.awesome_minecraft_console.endervision.compose.atoms.SendButton
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -36,12 +35,20 @@ fun CommandController(onSubmitCommand: (String) -> Unit = {}) {
         }
     ) {
         Row {
-            Box(Modifier.weight(90f)) {
+            Box(Modifier.weight(1f)) {
                 CommandInput(command, onValueChange = { command = it })
             }
-            Box(Modifier.weight(10f)) {
-                SubmitButton { submitIfInputIsNotBlank() }
+            Box(Modifier.width(50.dp).fillMaxHeight()) {
+                SendButton { submitIfInputIsNotBlank() }
             }
         }
+    }
+}
+
+@Preview
+@Composable
+fun CommandController() {
+    Box(Modifier.fillMaxWidth().height(50.dp)) {
+        CommandController()
     }
 }

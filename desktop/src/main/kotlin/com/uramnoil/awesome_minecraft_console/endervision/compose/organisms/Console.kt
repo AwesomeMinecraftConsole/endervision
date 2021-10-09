@@ -1,5 +1,6 @@
 package com.uramnoil.awesome_minecraft_console.endervision.compose.organisms
 
+import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,5 +20,13 @@ fun Console(lines: List<Line>, onSubmitCommand: (String) -> Unit = {}) {
                 CommandController(onSubmitCommand)
             }
         }
+    }
+}
+
+@Preview
+@Composable
+fun ConsolePreview() {
+    Box(Modifier.fillMaxHeight()) {
+        Console((1..50).map { Line(it.toString()) })
     }
 }
