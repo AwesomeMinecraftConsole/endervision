@@ -27,7 +27,7 @@ class EnderVisionServiceImpl(
     private val mutableOperationFlow = MutableSharedFlow<Operation>()
     private val mutableOnlinePlayersFlow = MutableSharedFlow<OnlinePlayers>()
 
-    private val channel = ManagedChannelBuilder
+    private val builder = ManagedChannelBuilder
         .forAddress(setting.host, setting.port.toInt())
         .apply {
             if (setting.plaintext) {
@@ -37,31 +37,38 @@ class EnderVisionServiceImpl(
         .keepAliveTime(1_000L, TimeUnit.MILLISECONDS)
         .keepAliveTimeout(10_000L, TimeUnit.MILLISECONDS)
         .keepAliveWithoutCalls(true)
-        .build()
 
     private var client: EnderVisionClient? = null
 
-    private var _isConnecting = MutableStateFlow(false)
+    private val _isConnecting = MutableStateFlow(false)
     override val isConnecting: StateFlow<Boolean>
         get() = _isConnecting
 
-    private fun launchFlows() = launch {
-        mutableLineFlow.collect {
-            newLineUseCaseInputPort.execute(it)
+    private fun launch() {
+        launch {
+            mutableLineFlow.collect {
+                newLineUseCaseInputPort.execute(it)
+            }
         }
-        mutableNotificationFlow.collect {
-            sendNotificationUseCaseInputPort.execute(it)
+        launch {
+            mutableNotificationFlow.collect {
+                sendNotificationUseCaseInputPort.execute(it)
+            }
         }
-        mutableOnlinePlayersFlow.collect {
-            updateOnlinePlayersUseCaseInputPort.execute(it)
+        launch {
+            mutableOnlinePlayersFlow.collect {
+                updateOnlinePlayersUseCaseInputPort.execute(it)
+            }
         }
     }
 
     override suspend fun connect() {
+        // You cannot use `Channel#notifyWhenStateChanged()`.
+        // Therefore, the connection state will be changed when this process is finished.
+
         if (isConnecting.value) return
 
-        launchFlows()
-
+        val channel = builder.build()
         val client = EnderVisionClientImpl(
             channel = channel,
             mutableLineFlow = mutableLineFlow,
@@ -72,6 +79,7 @@ class EnderVisionServiceImpl(
             coroutineContext
         )
 
+        launch()
         client.apply {
             connectConsole()
             connectManagement()
@@ -79,13 +87,12 @@ class EnderVisionServiceImpl(
         }
 
         this.client = client
-
         _isConnecting.value = true
     }
 
     override suspend fun disconnect() {
         client?.close()
-        coroutineContext.cancel()
+        coroutineContext.cancelChildren(CancellationException("disconnect"))
         _isConnecting.value = false
     }
 
