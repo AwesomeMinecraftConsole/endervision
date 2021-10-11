@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ansies-jvm-0.1">
+    <output-path>$PROJECT_DIR$/ansies/build/libs</output-path>
+    <root id="archive" name="ansies-jvm-0.1.jar">
+      <element id="module-output" name="com.uramnoil.awesome_minecraft_console.endervision.ansies.jvmMain" />
+    </root>
+  </artifact>
+</component>

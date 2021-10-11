@@ -22,6 +22,7 @@ dependencies {
     val kodein_version: String by project
 
     implementation(project(":common"))
+    implementation(project(":ansies"))
     implementation(compose.desktop.currentOs)
 
     implementation("io.github.aakira:napier:$napier_version")
