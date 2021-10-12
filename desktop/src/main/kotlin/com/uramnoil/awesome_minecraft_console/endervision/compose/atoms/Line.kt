@@ -10,6 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import com.uramnoil.ansies.parameter.*
 import com.uramnoil.ansies.parse.ansi
@@ -21,8 +23,8 @@ fun Line(line: Line) {
     Box(Modifier.fillMaxWidth()) {
         Text(buildAnnotatedString {
             line.value.ansi().asciiCodeOrStringList.toSpans().forEach {
-                val style = SpanStyle(
-                    when (it.sgr.foregroundColor) {
+                val color = SpanStyle(
+                    color = when (it.sgr.foregroundColor) {
                         BlackForeground -> Color.Black
                         BlueForeground -> Color.Blue
                         CyanForeground -> Color.Cyan
@@ -34,9 +36,26 @@ fun Line(line: Line) {
                         WhiteForeground -> Color.White
                         YellowForeground -> Color.Yellow
                         null -> Color.White
+                    },
+                    textDecoration = TextDecoration.combine(
+                        listOf(
+                            when (it.sgr.underline) {
+                                Underlined -> TextDecoration.Underline
+                                else -> TextDecoration.None
+                            },
+                            when (it.sgr.crossedOut) {
+                                CrossedOut -> TextDecoration.LineThrough
+                                else -> TextDecoration.None
+                            }
+                        )
+                    ),
+                    fontWeight = when (it.sgr.intensity) {
+                        BoldOrIncreasedIntensity -> FontWeight.Bold
+                        FaintDecreasedIntensityOrDim -> FontWeight.Light
+                        else -> FontWeight.Normal
                     }
                 )
-                withStyle(style) {
+                withStyle(color) {
                     append(it.string)
                 }
             }
