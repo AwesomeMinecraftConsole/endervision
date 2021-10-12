@@ -1,7 +1,7 @@
 package com.uramnoil.awesome_minecraft_console.endervision.grpc
 
 import awesome_minecraft_console.endervision.EnderVisionGrpcKt
-import awesome_minecraft_console.weaver.WeaverOuterClass
+import awesome_minecraft_console.endervision.Loyalwolf
 import com.google.protobuf.Empty
 import com.uramnoil.awesome_minecraft_console.endervision.common.usecase.*
 import io.grpc.ConnectivityState
@@ -47,7 +47,7 @@ class EnderVisionClientImpl(
     override suspend fun connectConsole() {
         joinReady()
         launch {
-            stub.console(commandFlow.map { WeaverOuterClass.Command.newBuilder().setCommand(it.value).build() })
+            stub.console(commandFlow.map { Loyalwolf.Command.newBuilder().setCommand(it.value).build() })
                 .collect {
                     mutableLineFlow.emit(Line(it.line))
                 }
@@ -59,9 +59,9 @@ class EnderVisionClientImpl(
         launch {
             stub.management(operationFlow.map {
                 val type = when (it) {
-                    Operation.Start -> WeaverOuterClass.Operation.Type.OPERATION_START
+                    Operation.Start -> Loyalwolf.Operation.Type.OPERATION_START
                 }
-                WeaverOuterClass.Operation.newBuilder().setOperation(type).build()
+                Loyalwolf.Operation.newBuilder().setOperation(type).build()
             }).collect {
                 mutableNotificationFlow.emit(Notification(it.notification))
             }
