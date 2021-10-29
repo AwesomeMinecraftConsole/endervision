@@ -56,6 +56,9 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "EnderVision"
+
+            // MAJOR[.MINOR][.PATCH]
+            // MAJOR is an integer > 0;
             packageVersion = "1.0.0"
         }
     }
